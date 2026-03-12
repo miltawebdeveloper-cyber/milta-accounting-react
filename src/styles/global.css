@@ -1,0 +1,99 @@
+/* ================= GLOBAL.CSS ================= */
+
+/* ================= GOOGLE FONTS ================= */
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap");
+
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ================= BODY ================= */
+body {
+  font-family: var(--uk-font-secondary);
+  font-size: var(--uk-body-size);
+  background-color: #ffffff;
+  color: #1a1a1a;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ================= HEADINGS ================= */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--uk-font-primary);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 { font-size: var(--uk-h1-size); }
+h2 { font-size: var(--uk-h2-size); }
+h3 { font-size: var(--uk-h3-size); }
+h4 { font-size: var(--uk-h4-size); }
+h5 { font-size: var(--uk-h5-size); }
+h6 { font-size: var(--uk-h6-size); }
+
+/* ================= PARAGRAPH ================= */
+p {
+  font-size: var(--uk-body-size);
+  margin-bottom: 16px;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+/* ================= LINKS ================= */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ================= IMAGES ================= */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ================= BUTTON GLOBAL ================= */
+button {
+  font-family: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+/* ================= SECTION GLOBAL ================= */
+section {
+  padding: var(--uk-section-padding) 0;
+}
+
+/* ================================================= */
+/* ================= RESPONSIVE FIXES ================= */
+/* ================================================= */
+
+/* Tablet Fix */
+@media (max-width: 768px) {
+  body {
+    line-height: 1.6;
+  }
+
+  section {
+    padding: 60px 0;
+  }
+}
+
+/* Mobile Fix */
+@media (max-width: 480px) {
+  section {
+    padding: 45px 0;
+  }
+
+  p {
+    font-size: 14px;
+  }
+}

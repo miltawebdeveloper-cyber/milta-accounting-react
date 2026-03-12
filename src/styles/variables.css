@@ -1,0 +1,80 @@
+/* ================= VARIABLES.CSS ================= */
+:root {
+  /* ================= BRAND COLORS ================= */
+  --uk-primary: #2b6d2a;
+  --uk-secondary: #97ba3a;
+  --uk-bg: #ffffff;
+  --uk-text: #1a1a1a;
+
+  /* ================= TYPOGRAPHY ================= */
+  --uk-font-primary: 'Poppins', sans-serif;
+  --uk-font-secondary: 'Poppins', sans-serif;
+
+  /* ================= FONT SIZES (Desktop Default) ================= */
+  --uk-h1-size: 52px;
+  --uk-h2-size: 42px;
+  --uk-h3-size: 34px;
+  --uk-h4-size: 28px;
+  --uk-h5-size: 22px;
+  --uk-h6-size: 18px;
+  --uk-body-size: 16px;
+
+  /* ================= LAYOUT SIZES ================= */
+  --uk-max-width: 1600px;
+  --uk-header-height: 80px;
+  --uk-section-padding: 120px;
+  --uk-container-padding: 24px;
+
+  /* ================= BORDER + SHADOW ================= */
+  --uk-radius: 16px;
+  --uk-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* ================================================= */
+/* ================= RESPONSIVE BREAKPOINTS ================= */
+/* ================================================= */
+
+/* ========== Large Tablets (≤1024px) ========== */
+@media (max-width: 1024px) {
+  :root {
+    --uk-h1-size: 44px;
+    --uk-h2-size: 36px;
+    --uk-h3-size: 28px;
+
+    --uk-header-height: 70px;
+    --uk-section-padding: 90px;
+    --uk-container-padding: 20px;
+  }
+}
+
+/* ========== Tablets (≤768px) ========== */
+@media (max-width: 768px) {
+  :root {
+    --uk-h1-size: 38px;
+    --uk-h2-size: 30px;
+    --uk-h3-size: 24px;
+    --uk-h4-size: 22px;
+
+    --uk-body-size: 15px;
+
+    --uk-header-height: 65px;
+    --uk-section-padding: 70px;
+    --uk-container-padding: 16px;
+  }
+}
+
+/* ========== Mobile (≤480px) ========== */
+@media (max-width: 480px) {
+  :root {
+    --uk-h1-size: 30px;
+    --uk-h2-size: 24px;
+    --uk-h3-size: 20px;
+    --uk-h4-size: 18px;
+
+    --uk-body-size: 14px;
+
+    --uk-header-height: 60px;
+    --uk-section-padding: 50px;
+    --uk-container-padding: 12px;
+  }
+}  

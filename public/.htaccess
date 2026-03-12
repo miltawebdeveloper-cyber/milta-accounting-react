@@ -1,0 +1,82 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase 
+
+
+# CORE PAGES
+
+RewriteRule ^career-opportunities\.php$ /career [R=301,L]
+RewriteRule ^contact\.php$ /contact [R=301,L]
+RewriteRule ^about\.php$ /about [R=301,L]
+RewriteRule ^services\.php$ /services [R=301,L]
+RewriteRule ^faq.php$ /faqs [R=301,L]
+RewriteRule ^areas-we-serve\.php$ /areas-we-serve [R=301,L]
+RewriteRule ^our-team\.php$ /about [R=301,L]
+
+##################################
+# JOBS
+##################################
+RewriteRule ^us-accountant-jobs\.php$ /career [R=301,L]
+RewriteRule ^us-tax-analyst-jobs\.php$ /career [R=301,L]
+RewriteRule ^business-development-executive-jobs\.php$ /career [R=301,L]
+RewriteRule ^apply-job\.php$ /career [R=301,L]
+
+##################################
+# SERVICE PAGES
+##################################
+RewriteRule ^accounting-data-entry-services\.php$ /us/services/outsourcing-accounting-data-entry-services-in-the-usa/ [R=301,L]
+RewriteRule ^expert-tax-planning-and-preparation-service\.php$ /us/services/tax-planning-and-preparation-services-usa/ [R=301,L]
+RewriteRule ^fractional-controller-services\.php$ /us/services/financial-controller-services-in-the-usa/ [R=301,L]
+RewriteRule ^accounting-virtual-assistant-service\.php$ /us/services/virtual-assistant-service-in-the-usa/ [R=301,L]
+RewriteRule ^outsourced-bookkeeping-services-usa\.php$ /us/services/bookkeeping-company-in-the-usa/ [R=301,L]
+RewriteRule ^best-digital-marketing-agency\.php$ /us/services/best-digital-marketing-agency-in-usa/ [R=301,L]
+RewriteRule ^best-cpa-service-for-small-businesses\.php$ /us/services/best-cpa-services-for-small-businesses-in-the-usa/ [R=301,L]
+RewriteRule ^virtual-assistant\.php$ /us/services/virtual-assistant-service-in-the-usa/ [R=301,L]
+
+##################################
+# BLOG LISTING
+##################################
+RewriteRule ^blogs\.php$ /blogs [R=301,L]
+
+##################################
+# BLOG ARTICLES
+##################################
+RewriteRule ^blogs/outsource-accounting-services\.php$ /blogs/outsourced-accounting-benefit-your-small-business-usa [R=301,L]
+RewriteRule ^blogs/bookkeeping-trends-and-accounting-trends\.php$ /blogs [R=301,L]
+RewriteRule ^blogs/best-bookkeeping-software-small-business\.php$ /blogs [R=301,L]
+RewriteRule ^blogs/how-to-find-a-good-cpa-for-small-business\.php$ /blogs/how-cpa-services-drive-small-business-financial-success [R=301,L]
+RewriteRule ^blogs/10-accounting-tips-for-small-business\.php$ /blogs [R=301,L]
+RewriteRule ^blogs/cpa-accounting-services\.php$ /blogs [R=301,L]
+RewriteRule ^blogs/benefits-of-bookkeeping-and-accounting$ /blogs [R=301,L]
+
+##################################
+# US BLOGS
+##################################
+RewriteRule ^us/blogs/how-to-fill-out-a-1040-form\.php$ /us/blogs/how-to-fill-out-a-1040-form [R=301,L]
+RewriteRule ^us/blogs/the-last-tax-deadlines-in-this-year\.php$ /us/blogs/the-last-tax-deadlines-in-this-year [R=301,L]
+RewriteRule ^us/blogs/quality-financial-management-in-health-services\.php$ /us/blogs/quality-financial-management-in-health-services [R=301,L]
+RewriteRule ^us/blogs/how-to-improve-client-satisfaction-in-2025\.php$ /us/blogs/how-to-improve-client-satisfaction-in-2025 [R=301,L]
+RewriteRule ^us/blogs/india-how-outsourcing-bookkeeping-services-to-usa-saves-money\.php$ /us/blogs/india-how-outsourcing-bookkeeping-services-to-usa-saves-money [R=301,L]
+RewriteRule ^us/blogs/how-our-digital-marketing-services-can-boost-your-business-growth\.php$ /us/blogs/how-our-digital-marketing-services-can-boost-your-business-growth [R=301,L]
+RewriteRule ^us/blogs/reason-for-using-indian-data-entry-services-in-the-usa\.php$ /us/blogs/reason-for-using-indian-data-entry-services-in-the-usa [R=301,L]
+
+##################################
+# LEGAL
+##################################
+RewriteRule ^privacy-policy\.php$ /privacy-policy [R=301,L]
+RewriteRule ^terms-of-service\.php$ /terms-of-service [R=301,L]
+
+##################################
+# REACT SPA ROUTING (KEEP LAST)
+##################################
+# Ignore existing files and directories
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Ignore API backend routes specifically so they aren't caught by the SPA React Router
+RewriteCond %{REQUEST_URI} !^/api/ [NC]
+
+# Redirect all remaining non-file/non-directory requests to index.html
+RewriteRule ^(.*)$ /index.html [QSA,L]
+
+</IfModule>

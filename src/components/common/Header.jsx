@@ -1,0 +1,351 @@
+// src/components/common/Header.jsx
+import React, { useState, useEffect } from "react";
+import {
+  AppBar,
+  Toolbar,
+  Button,
+  Box,
+  IconButton,
+  Drawer,
+  List,
+  Typography,
+  Menu,
+  MenuItem,
+  useTheme,
+  useMediaQuery,
+  Container,
+  Collapse,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import logo from "../../assets/logo.svg";
+import { Link } from "react-router-dom";
+import ReactCountryFlag from "react-country-flag";
+import { useNavigate } from "react-router-dom";
+
+
+const navItems = [
+  { label: "Home", to: "/" },
+  { label: "About", to: "/about" },
+  {
+    label: "Services",
+    to: "/services",
+    submenu: [
+      { label: "Tax Planning and Preparation Services", to: "/us/services/tax-planning-and-preparation-services-usa/" },
+      { label: "Bookkeeping Services", to: "/us/services/bookkeeping-company-in-the-usa/" },
+      { label: "CPA Services", to: "/us/services/best-cpa-services-for-small-businesses-in-the-usa/" },
+      { label: "Virtual Assistant Services", to: "/us/services/virtual-assistant-service-in-the-usa/" },
+      { label: "Data Entry Services", to: "/us/services/outsourcing-accounting-data-entry-services-in-the-usa/" },
+      { label: "Financial Controller Services", to: "/us/services/financial-controller-services-in-the-usa/" },
+      { label: "Digital Marketing Services", to: "/us/services/best-digital-marketing-agency-in-usa/" },
+      { label: "Payroll Management Services", to: "/us/services/payroll-management-services-in-the-usa/" },
+    ],
+  },
+  {
+    label: "Industry",
+    submenu: [
+      { label: "Contractors", to: "/us/industry/bookkeeping-for-contractors-companies/" },
+      { label: "Real Estate", to: "/us/industry/bookkeeping-for-real-estate-companies/" },
+      { label: "Manufacturing", to: "/us/industry/accounting-services-for-manufacturing/" },
+      { label: "Healthcare", to: "/us/industry/accounting-services-for-healthcare/" },
+      { label: "Non-Profit", to: "/us/industry/accounting-services-for-nonprofit-organizations/" },
+      { label: "Restaurant", to: "/us/industry/accounting-services-for-restaurant-businesses/" },
+      { label: "Retail Business", to: "/us/industry/accounting-services-for-retail-businesses/" },
+      { label: "Law Firms", to: "/us/industry/accounting-services-for-lawfirms/" },
+    ],
+  },
+  { label: "Blogs", to: "/blogs" },
+  { label: "Career", to: "/career" },
+  { label: "Contact", to: "/contact" },
+];
+
+function Header() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [submenuOpen, setSubmenuOpen] = useState({});
+  const [anchorEls, setAnchorEls] = useState({});
+  const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 0, seconds: 0 });
+const navigate = useNavigate();
+
+
+  // Country selector
+  const [countryAnchor, setCountryAnchor] = useState(null);
+  const [country, setCountry] = useState("US");
+ const countries = [
+  { code: "US", label: "United States" },
+  { code: "GB", label: "United Kingdom" },
+];
+
+
+  const handleDrawerToggle = () => setMobileOpen((s) => !s);
+
+  // Countdown Timer
+  useEffect(() => {
+    const targetTime = Date.now() + 5 * 60 * 60 * 1000;
+    const id = setInterval(() => {
+      const diff = targetTime - Date.now();
+      if (diff <= 0) {
+        clearInterval(id);
+        setTimeLeft({ hours: 0, minutes: 0, seconds: 0 });
+      } else {
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+        setTimeLeft({ hours, minutes, seconds });
+      }
+    }, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  const handleCalendlyClick = () => {
+    window.open("/services", "_blank", "noopener,noreferrer");
+  };
+
+  const toggleSubmenu = (label) => {
+    setSubmenuOpen((prev) => ({ ...prev, [label]: !prev[label] }));
+  };
+
+  // Mobile Drawer with collapsible submenus + country selector
+  const mobileDrawer = (
+    <Box sx={{ width:"100%", px: 2, py: 2 }}>
+      {/* Logo */}
+      <Box sx={{ textAlign: "center", mb: 2 }}>
+        <Box component="img" src={logo} alt="Logo" sx={{ width: "100%", maxWidth: 220, height: "auto", mx: "auto", display: "block" }} />
+      </Box>
+
+      <List>
+        {navItems.map((item) => (
+          <Box key={item.label} sx={{ mb: 0.5 }}>
+            <Box
+              sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", py: 1, cursor: "pointer" }}
+              onClick={() => {
+                if (item.submenu) toggleSubmenu(item.label);
+              }}
+            >
+              {item.submenu ? (
+                <Typography sx={{ color: "#000", fontWeight: 600, fontSize: "15px" }}>
+                  {item.label}
+                </Typography>
+              ) : (
+                <Link
+                  to={item.to}
+                  style={{ textDecoration: "none", color: "#000", fontWeight: 600, fontSize: "15px" }}
+                  onClick={handleDrawerToggle}
+                >
+                  {item.label}
+                </Link>
+              )}
+              {item.submenu && (
+                <ArrowDropDownIcon sx={{ transform: submenuOpen[item.label] ? "rotate(180deg)" : "rotate(0deg)", color: "#1d4230", transition: "0.3s" }} />
+              )}
+            </Box>
+
+            {item.submenu && (
+              <Collapse in={submenuOpen[item.label]} timeout="auto" unmountOnExit>
+                <Box sx={{ pl: 3, pb: 1 }}>
+                  {item.to && (
+                    <Link
+                      to={item.to}
+                      style={{ display: "block", padding: "6px 0", textDecoration: "none", color: "#1d4230", fontSize: "14px", fontWeight: 600 }}
+                      onClick={handleDrawerToggle}
+                    >
+                      View All {item.label}
+                    </Link>
+                  )}
+                  {item.submenu.map((sub) => (
+                    <Link key={sub.label} to={sub.to} style={{ display: "block", padding: "6px 0", textDecoration: "none", color: "#444", fontSize: "14px" }} onClick={handleDrawerToggle}>
+                      {sub.label}
+                    </Link>
+                  ))}
+                </Box>
+              </Collapse>
+            )}
+          </Box>
+        ))}
+      </List>
+
+      {/* Country Selector in Mobile Drawer */}
+       {/* Mobile Drawer Country Selector */}
+<Box sx={{ mt: 2, px: 1 }}>
+  <Button
+    onClick={(e) => setCountryAnchor(e.currentTarget)}
+    sx={{
+      width: "100%",
+      justifyContent: "flex-start",
+      textTransform: "none",
+      fontWeight: 600,
+      color: "#000",
+      border: "1px solid #ccc",
+      borderRadius: "8px",
+      px: 2,
+      py: 1,
+      backgroundColor: "#f9f9f9",
+      "&:hover": { backgroundColor: "#f0f0f0" },
+    }}
+    endIcon={<ArrowDropDownIcon />}
+  >
+    <ReactCountryFlag
+      countryCode={country}
+      svg
+      style={{ width: '22px', height: '16px', marginRight: '6px' }}
+    />
+    {country}
+  </Button>
+
+  <Menu
+    anchorEl={countryAnchor}
+    open={Boolean(countryAnchor)}
+    onClose={() => setCountryAnchor(null)}
+  >
+    {countries.map((c) => (
+      <MenuItem
+        key={c.code}
+        onClick={() => {
+          setCountry(c.code);
+          setCountryAnchor(null);
+          setMobileOpen(false); // close drawer
+          if (c.code === "US") navigate("/");
+          else if (c.code === "GB") navigate("/uk");
+        }}
+        sx={{ fontWeight: 500 }}
+      >
+        <ReactCountryFlag
+          countryCode={c.code}
+          svg
+          style={{ width: '22px', height: '16px', marginRight: '6px' }}
+        />
+        {c.code}
+      </MenuItem>
+    ))}
+  </Menu>
+</Box>
+
+    </Box>
+  );
+
+  return (
+    <>
+      <AppBar position={isMobile ? "static" : "sticky"} elevation={0} sx={{ backgroundColor: "#ffffff", borderBottom: "1px solid #eee", zIndex: 1300 }}>
+        <Container maxWidth={false} sx={{ maxWidth: "1300px", py:"10px", minHeight: { xs: 56, sm: 64, md: 72 }}}>
+          <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
+            {/* Logo */}
+            <Box sx={{ display: "flex", alignItems: "center", height: "100%" }}>
+              <Link to="/" style={{ display: "flex", alignItems: "center", height: "100%" }}>
+                <Box component="img" src={logo} alt="Logo" sx={{ maxHeight: { xs: 32, sm: 42, md: 56 }, width: "auto", objectFit: "contain" }} />
+              </Link>
+            </Box>
+
+            {/* Desktop Navigation */}
+            <Box sx={{ display: { xs: "none", sm: "flex" }, alignItems: "center", gap: 2 }}>
+              {navItems.map((item) =>
+                item.submenu ? (
+                  <Box key={item.label} sx={{ position: "relative", display: "flex", alignItems: "center" }}>
+                    {item.to ? (
+                      <Button component={Link} to={item.to} sx={{ color: "#000", textTransform: "none", fontWeight: 500, "&:hover": { color: "#ff9401" }, px: 1 }}>
+                        {item.label}
+                      </Button>
+                    ) : (
+                      <Typography sx={{ color: "#000", fontWeight: 500, px: 1.2 }}>
+                        {item.label}
+                      </Typography>
+                    )}
+                    <IconButton
+                      size="small"
+                      onMouseEnter={(e) => setAnchorEls({ [item.label]: e.currentTarget })}
+                      onClick={(e) => setAnchorEls((prev) => ({ [item.label]: prev[item.label] ? null : e.currentTarget }))}
+                      sx={{ ml: 0.2, color: "#000", "&:hover": { color: "#ff9401", background: "transparent" } }}
+                    >
+                      <ArrowDropDownIcon sx={{ transform: anchorEls[item.label] ? "rotate(180deg)" : "rotate(0deg)", transition: "0.3s" }} />
+                    </IconButton>
+                    <Menu anchorEl={anchorEls[item.label] ?? null} open={Boolean(anchorEls[item.label])} onClose={() => setAnchorEls({})} MenuListProps={{ onMouseLeave: () => setAnchorEls({}) }} anchorOrigin={{ vertical: "bottom", horizontal: "left" }} transformOrigin={{ vertical: "top", horizontal: "left" }} sx={{ mt: 1, "& .MuiPaper-root": { borderRadius: "10px", boxShadow: "0 6px 20px rgba(0,0,0,0.08)", backgroundColor: "#fffaf3" } }}>
+                      {item.submenu.map((sub) => (
+                        <MenuItem key={sub.label} component={Link} to={sub.to} onClick={() => setAnchorEls({})} sx={{ fontWeight: 500, "&:hover": { backgroundColor: "#ff9401", color: "#fff" } }}>
+                          {sub.label}
+                        </MenuItem>
+                      ))}
+                    </Menu>
+                  </Box>
+                ) : (
+                  <Button key={item.label} component={Link} to={item.to} sx={{ color: "#000", textTransform: "none", fontWeight: 500, "&:hover": { color: "#ff9401" } }}>
+                    {item.label}
+                  </Button>
+                )
+              )}
+
+              {/* Desktop Country Selector */}
+              {/* Desktop Country Selector */}
+<Box>
+  <Button
+    onClick={(e) => setCountryAnchor(e.currentTarget)}
+    sx={{
+      textTransform: "none",
+      fontWeight: 600,
+      color: "#000",
+      border: "1px solid #ccc",
+      borderRadius: "8px",
+      px: 2,
+      py: 0.8,
+      backgroundColor: "#f9f9f9",
+      "&:hover": { backgroundColor: "#f0f0f0" },
+    }}
+    endIcon={<ArrowDropDownIcon />}
+  >
+    <ReactCountryFlag
+      countryCode={country}
+      svg
+      style={{ width: '22px', height: '16px', marginRight: '6px' }}
+    />
+    {country}
+  </Button>
+
+  <Menu
+    anchorEl={countryAnchor}
+    open={Boolean(countryAnchor)}
+    onClose={() => setCountryAnchor(null)}
+  >
+    {countries.map((c) => (
+      <MenuItem
+        key={c.code}
+        onClick={() => {
+          setCountry(c.code); 
+          setCountryAnchor(null); 
+          if (c.code === "US") navigate("/"); 
+          else if (c.code === "GB") navigate("/uk");
+        }}
+        sx={{ fontWeight: 500 }}
+      >
+        <ReactCountryFlag
+          countryCode={c.code}
+          svg
+          style={{ width: '22px', height: '16px', marginRight: '6px' }}
+        />
+        {c.code}
+      </MenuItem>
+    ))}
+  </Menu>
+</Box>
+
+              {/* Get Started Button */}
+              <Button variant="contained" onClick={handleCalendlyClick} sx={{ ml: 1, background: "linear-gradient(135deg, #2b6d2a, #4f8630)", textTransform: "none", fontWeight: 600, px: 3, py: 1, borderRadius: "25px" }}>
+                Get Started
+              </Button>
+            </Box>
+
+            {/* Mobile Hamburger */}
+            <IconButton edge="end" sx={{ display: { sm: "none" }, color: "#4f8630" }} onClick={handleDrawerToggle}>
+              <MenuIcon />
+            </IconButton>
+          </Toolbar>
+        </Container>
+      </AppBar>
+
+      {/* Mobile Drawer */}
+      <Drawer anchor="right" open={mobileOpen} onClose={handleDrawerToggle} sx={{ "& .MuiDrawer-paper": { width: 260, paddingTop: "10px", backgroundColor: "#fff" } }}>
+        {mobileDrawer}
+      </Drawer>
+    </>
+  );
+}
+
+export default Header;
