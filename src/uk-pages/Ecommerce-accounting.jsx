@@ -16,16 +16,53 @@ import ContactForm from "../components/common/ContactForm";
 import useFullSEO from "../utils/useFullSEO";
 
 function App() {
+   const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "1. What does ecommerce accounting include?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Ecommerce accounting covers bookkeeping, sales reconciliation, inventory and COGS tracking, payroll, financial reporting, and cash flow management, specifically tailored to online businesses."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "2. Do you support Amazon, Shopify, and WooCommerce sellers?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. We work with ecommerce sellers on Amazon, Shopify, WooCommerce, and other platforms, integrating all sales data into a single, accurate accounting system."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "3. Is your service suitable for small and growing ecommerce businesses in the UK?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Absolutely. Our ecommerce accounting services are designed to support startups, growing online stores, and established UK ecommerce businesses, scaling with your business."
+      }
+    }
+  ]
+};
+  
 
-useFullSEO({
-  title: "Ecommerce Accounting Services for UK Businesses",
-  description:
-    "At Milta, we provide end-to-end ecommerce accounting services and back-office services designed specifically for UK online sellers.",
-  keywords:
-    "ecommerce accounting services, accounting services for ecommerce, ecommerce bookkeeping services, shopify bookkeeping",
-  author: "Milta Accounting",
-  canonical: "https://www.miltafs.com/uk/ecommerce-accounting-service/",
-});
+  useFullSEO({
+    title: "Ecommerce Accounting Services for UK Businesses",
+    description:
+      "At Milta, we provide end-to-end ecommerce accounting services and back-office services designed specifically for UK online sellers.",
+    keywords:
+      "ecommerce accounting services, accounting services for ecommerce, ecommerce bookkeeping services, shopify bookkeeping",
+    author: "Milta Accounting",
+    canonical: "https://www.miltafs.com/uk/ecommerce-accounting-service/",
+      ogTitle: "Ecommerce Accounting Services for UK Businesses",
+    ogDescription: "At Milta, we provide end-to-end ecommerce accounting services and back-office services designed specifically for UK online sellers.",
+    ogImage: "https://www.miltafs.com/images/miltafs-og.jpg",
+    ogUrl: "https://www.miltafs.com/uk/ecommerce-accounting-service/",
+    schema: faqSchema,
+
+  });
 
   return (
     <main>
@@ -83,7 +120,7 @@ useFullSEO({
             <Box id="offer"><Offer /></Box>
             <Box id="why"><WhyChoose /></Box>
             <Box id="strategies"><Strategies /></Box>
-            
+
             <Box id="faq"><Faq /></Box>
           </Box>
 

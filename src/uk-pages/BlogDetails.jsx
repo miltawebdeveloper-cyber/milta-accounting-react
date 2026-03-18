@@ -22,7 +22,7 @@ const BlogDetails = () => {
 
       console.log("Fetching blog with slug:", slug);
 
-      const response = await getBlogBySlug(`${slug}?table=blogs_uk`);
+      const response = await getBlogBySlug(slug, 'blogs_uk');
 
       if (response && response.blog) {
         setBlog(response.blog);

@@ -1,7 +1,11 @@
+Options -MultiViews
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteBase 
+RewriteBase /
 
+# FORCE HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://www.miltafs.com/$1 [R=301,L]
 
 # CORE PAGES
 

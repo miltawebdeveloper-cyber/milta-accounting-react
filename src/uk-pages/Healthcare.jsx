@@ -17,15 +17,60 @@ import useFullSEO from "../utils/useFullSEO";
 
 function App() {
 
- useFullSEO({
-  title: "Healthcare Accounting Services for UK Businesses",
-  description:
-    "We provide specialised healthcare accounting services customized to the unique financial needs of the UK medical sector. As one of the trusted healthcare accounting firms.",
-  keywords:
-    "healthcare accounting services, accounting services for healthcare, healthcare accounting, healthcare bookkeeping, healthcare accounting firms, accountant for medical practice, accounting for healthcare professionals, healthcare bookkeeping services, accounting for healthcare services",
-  author: "Milta Accounting",
-  canonical: "https://www.miltafs.com/uk/accounting-services-for-healthcare/",
-});
+  const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "1. What do healthcare accounting services include?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Healthcare accounting services cover bookkeeping, payroll, VAT support, financial reporting, HMRC compliance, and specialist support for NHS and private healthcare income."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "2. Why do healthcare organisations need specialised accounting services?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Healthcare businesses face unique regulations, VAT exemptions, payroll complexities, and NHS reporting requirements, making specialist healthcare accounting essential for compliance and accuracy."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "3. Do you support payroll and pensions for healthcare staff?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, we manage healthcare payroll, RTI submissions, auto-enrolment duties, and NHS pension contributions."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "4. What software do you use for healthcare accounting?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We work with Xero, QuickBooks, MS Dynamics, and other secure cloud-based platforms commonly used by healthcare accounting firms."
+      }
+    }
+  ]
+};
+
+  useFullSEO({
+    title: "Healthcare Accounting Services for UK Businesses",
+    description:
+      "We provide specialised healthcare accounting services customized to the unique financial needs of the UK medical sector. As one of the trusted healthcare accounting firms.",
+    keywords:
+      "healthcare accounting services, accounting services for healthcare, healthcare accounting, healthcare bookkeeping, healthcare accounting firms, accountant for medical practice, accounting for healthcare professionals, healthcare bookkeeping services, accounting for healthcare services",
+    author: "Milta Accounting",
+    canonical: "https://www.miltafs.com/uk/accounting-services-for-healthcare/",
+    ogTitle: "Healthcare Accounting Services for UK Businesses",
+    ogDescription: "We provide specialised healthcare accounting services customized to the unique financial needs of the UK medical sector.",
+    ogImage: "https://www.miltafs.com/images/miltafs-og.jpg",
+    ogUrl: "https://www.miltafs.com/uk/accounting-services-for-healthcare/",
+        schema: faqSchema,
+
+  });
 
   return (
     <main>
@@ -80,10 +125,10 @@ function App() {
           >
             <Box id="overview"><IntroSection /></Box>
             <Box id="services"><ServicesSection /></Box>
-             <Box id="why"><WhyChoose /></Box>
-             <Box id="strategies"><Strategies /></Box>
-            
-            
+            <Box id="why"><WhyChoose /></Box>
+            <Box id="strategies"><Strategies /></Box>
+
+
             <Box id="faq"><Faq /></Box>
           </Box>
 

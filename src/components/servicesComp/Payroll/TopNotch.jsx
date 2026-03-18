@@ -120,7 +120,7 @@ const TopNotch = () => {
           <Box
             component="img"
             src="https://img.freepik.com/free-vector/hr-management-concept-illustration_114360-2104.jpg"
-            alt="Payroll management services illustration"
+            alt="Payroll management services"
             sx={{
               width: "100%",
               maxWidth: 420,

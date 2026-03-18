@@ -15,16 +15,19 @@ import useFullSEO from "../utils/useFullSEO";
 
 const TermsOfService = () => {
   useFullSEO({
-   // MAIN SEO
-   title: "Know the Rules! milta's Terms of Service Explained",
-   description:
-     "Transparency is our promise. Milta’s terms are clear, fair, and designed with you in mind. Click to review and see why clients stick with us.",
-   keywords:
-     "Milta terms of services, terms of services, terms of business, terms of management.",
-   author: "Milta Accounting",
-   canonical: "https://www.miltafs.com/terms-of-service",
-    
- });
+    // MAIN SEO
+    title: "Know the Rules! milta's Terms of Service Explained",
+    description:
+      "Transparency is our promise. Milta’s terms are clear, fair, and designed with you in mind. Click to review and see why clients stick with us.",
+    keywords:
+      "Milta terms of services, terms of services, terms of business, terms of management.",
+    author: "Milta Accounting",
+    canonical: "https://www.miltafs.com/terms-of-service",
+   ogTitle: "Know the Rules! milta's Terms of Service Explained",
+    ogDescription: "Transparency is our promise. Milta’s terms are clear, fair, and designed with you in mind. Click to review and see why clients stick with us.",
+    ogImage: "https://www.miltafs.com/images/miltafs-og.jpg",
+    ogUrl: "https://www.miltafs.com/terms-of-service",
+  });
 
   const sections = [
     {

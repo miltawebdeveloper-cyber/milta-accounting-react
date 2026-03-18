@@ -108,6 +108,7 @@ const BookkeepingIntro = () => {
                   component="img"
                   src={item.img}
                   alt={item.title}
+                  
                   sx={{
                     width: { xs: 90, sm: 110, md: 130 },
                     height: { xs: 90, sm: 110, md: 130 },

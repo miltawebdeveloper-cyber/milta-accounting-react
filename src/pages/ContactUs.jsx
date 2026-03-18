@@ -4,39 +4,43 @@ import theme from "../theme";
 import GetInTouch from "../components/contact/GetInTouch";
 import Location from "../components/contact/Location";
 import HeroContact from "../components/contact/HeroContact";
-import Numbers from "../components/contact/Numbers"; 
+import Numbers from "../components/contact/Numbers";
 import LoveMilta from "../components/contact/LoveMilta";
 import useFullSEO from "../utils/useFullSEO";
 
 
 function App() {
 
-useFullSEO({
-   // MAIN SEO
-   title: "Connect with Experts Ready to Support Your Needs | Milta",
-   description:
-     "Your success matters to us. Need advice or a solution? Click to connect with Milta’s friendly team today let’s make things happen together!",
-   keywords:
-     "business development jobs, digital marketing jobs, virtual assistant jobs, us tax analyst jobs, business development executive, digital marketing specialist, digital marketing",
-   author: "Milta Accounting",
-   canonical: "https://www.miltafs.com/contact",
-    
- });
+  useFullSEO({
+    // MAIN SEO
+    title: "Connect with Experts Ready to Support Your Needs | Milta",
+    description:
+      "Your success matters to us. Need advice or a solution? Click to connect with Milta’s friendly team today let’s make things happen together!",
+    keywords:
+      "business development jobs, digital marketing jobs, virtual assistant jobs, us tax analyst jobs, business development executive, digital marketing specialist, digital marketing",
+    author: "Milta Accounting",
+    canonical: "https://www.miltafs.com/contact",
+    ogTitle: "Connect with Experts Ready to Support Your Needs | Milta",
+    ogDescription: "Your success matters to us. Need advice or a solution? Click to connect with Milta’s friendly team today let’s make things happen together!",
+    ogImage: "https://www.miltafs.com/images/miltafs-og.jpg",
+    ogUrl: "https://www.miltafs.com/contact",
+
+  });
 
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      
+
       <main>
         <HeroContact />
         <LoveMilta />
-        <Numbers/>
+        <Numbers />
         <GetInTouch />
         <Location />
-       
+
       </main>
-      
+
     </ThemeProvider>
   );
 }

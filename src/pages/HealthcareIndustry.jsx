@@ -19,57 +19,61 @@ import useFullSEO from "../utils/useFullSEO";
 function App() {
 
   const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What are accounting services for healthcare providers?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Accounting services for healthcare include bookkeeping, payroll, tax planning, financial reporting, budgeting, and compliance support tailored to meet the unique needs of medical professionals and organizations such as clinics, hospitals, and pharmacies."
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What are accounting services for healthcare providers?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Accounting services for healthcare include bookkeeping, payroll, tax planning, financial reporting, budgeting, and compliance support tailored to meet the unique needs of medical professionals and organizations such as clinics, hospitals, and pharmacies."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "What types of healthcare providers does Milta support?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Milta serves a wide range of healthcare professionals, including dentists, physicians, medical clinics, hospitals and healthcare facilities, and pharmacies. Our personalized healthcare accounting services are designed to support providers of all sizes."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "Are you able to assist healthcare professionals with their tax returns?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Absolutely. We specialize in healthcare tax returns, including Forms 1040, 1120, and 1065. Our experts help ensure compliance with tax regulations while maximizing eligible deductions, including those related to Medicare and Medicaid reimbursements."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "Is outsourcing healthcare accounting safe and compliant?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. At Milta, we use secure, encrypted, cloud-based systems and follow HIPAA-compliant processes where applicable. We prioritize transparency while ensuring your financial data remains protected and fully compliant with industry standards."
+        }
       }
-    },
-    {
-      "@type": "Question",
-      name: "What types of healthcare providers does Milta support?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Milta serves a wide range of healthcare professionals, including dentists, physicians, medical clinics, hospitals and healthcare facilities, and pharmacies. Our personalized healthcare accounting services are designed to support providers of all sizes."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Are you able to assist healthcare professionals with their tax returns?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Absolutely. We specialize in healthcare tax returns, including Forms 1040, 1120, and 1065. Our experts help ensure compliance with tax regulations while maximizing eligible deductions, including those related to Medicare and Medicaid reimbursements."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Is outsourcing healthcare accounting safe and compliant?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. At Milta, we use secure, encrypted, cloud-based systems and follow HIPAA-compliant processes where applicable. We prioritize transparency while ensuring your financial data remains protected and fully compliant with industry standards."
-      }
-    }
-  ]
-};
+    ]
+  };
 
 
   useFullSEO({
-  title: "We Provide Accounting Services For Healthcare",
-  description:
-    "Our specialized accounting services for healthcare professionals ensure accurate bookkeeping, tax planning, and financial management for doctors and medical practices.",
-  keywords:
-    "accounting services for healthcare, healthcare accounting firms, accounting for healthcare professionals, accounting in the healthcare industry, accountants for medical professionals, tax returns for healthcare",
-  author: "Milta Accounting",
-  canonical:
-    "https://www.miltafs.com/us/industry/accounting-services-for-healthcare/",
-      schema: faqSchema,
+    title: "We Provide Accounting Services For Healthcare",
+    description:
+      "Our specialized accounting services for healthcare professionals ensure accurate bookkeeping, tax planning, and financial management for doctors and medical practices.",
+    keywords:
+      "accounting services for healthcare, healthcare accounting firms, accounting for healthcare professionals, accounting in the healthcare industry, accountants for medical professionals, tax returns for healthcare",
+    author: "Milta Accounting",
+    canonical:
+      "https://www.miltafs.com/us/industry/accounting-services-for-healthcare/",
+    ogTitle: "We Provide Accounting Services For Healthcare",
+    ogDescription: "Our specialized accounting services for healthcare professionals ensure accurate bookkeeping, tax planning, and financial management for doctors and medical practices.",
+    ogImage: "https://www.miltafs.com/images/miltafs-og.jpg",
+    ogUrl: "https://www.miltafs.com/us/industry/accounting-services-for-healthcare/",
+    schema: faqSchema,
 
-});
+  });
 
   return (
     <ThemeProvider theme={theme}>

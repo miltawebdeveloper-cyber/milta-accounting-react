@@ -15,17 +15,21 @@ import useFullSEO from "../utils/useFullSEO";
 
 const PrivacyPolicy = () => {
 
-    useFullSEO({
-   // MAIN SEO
-   title: "Your Privacy Is Safe With Us | Milta’s Policy",
-   description:
-     "We know trust matters. That’s why Milta is dedicated to protecting your personal and business information. Click to see how we keep you safe.",
-   keywords:
-     "milta privacy policy, security policy, privacy policy, Business security policy",
-   author: "Milta Accounting",
-   canonical: "https://www.miltafs.com/privacy-policy",
-    
- });
+  useFullSEO({
+    // MAIN SEO
+    title: "Your Privacy Is Safe With Us | Milta’s Policy",
+    description:
+      "We know trust matters. That’s why Milta is dedicated to protecting your personal and business information. Click to see how we keep you safe.",
+    keywords:
+      "milta privacy policy, security policy, privacy policy, Business security policy",
+    author: "Milta Accounting",
+    canonical: "https://www.miltafs.com/privacy-policy",
+    ogTitle: "Your Privacy Is Safe With Us | Milta’s Policy",
+    ogDescription: "We know trust matters. That’s why Milta is dedicated to protecting your personal and business information. Click to see how we keep you safe.",
+    ogImage: "https://www.miltafs.com/images/miltafs-og.jpg",
+    ogUrl: "https://www.miltafs.com/privacy-policy"
+
+  });
 
 
   return (
@@ -48,7 +52,7 @@ const PrivacyPolicy = () => {
         </Typography>
 
         {/* Intro */}
-        <h2><strong>Your Trusted Partner in Financial Success</strong></h2> 
+        <h2><strong>Your Trusted Partner in Financial Success</strong></h2>
         <Typography
           variant="body1"
           sx={{
@@ -125,7 +129,7 @@ const PrivacyPolicy = () => {
                 primaryTypographyProps={{
                   fontWeight: 600,
                   lineHeight: 1.5,
-                  mt:-0.5,
+                  mt: -0.5,
                   color: "#053131",
                 }}
                 secondaryTypographyProps={{

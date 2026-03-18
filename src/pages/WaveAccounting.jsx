@@ -119,16 +119,20 @@ const processSteps = [
 
 const WaveAccountingModern = () => {
   useFullSEO({
-  // MAIN SEO
-  title: "Bookkeeping with Wave Software - Milta",
-  description:
-    "Wave is a free yet powerful software built for freelancers, startups, and small service-based businesses.",
-  keywords:
-    "wave accounting for small business, waves bookkeeping, wave for bookkeeping",
-  author: "Milta Accounting",
-  canonical:
-    "https://www.miltafs.com/us/software/wave-accounting-for-small-business/",
-});
+    // MAIN SEO
+    title: "Bookkeeping with Wave Software - Milta",
+    description:
+      "Wave is a free yet powerful software built for freelancers, startups, and small service-based businesses.",
+    keywords:
+      "wave accounting for small business, waves bookkeeping, wave for bookkeeping",
+    author: "Milta Accounting",
+    canonical:
+      "https://www.miltafs.com/us/software/wave-accounting-for-small-business/",
+    ogTitle: "Bookkeeping with Wave Software - Milta",
+    ogDescription: "Wave is a free yet powerful software built for freelancers, startups, and small service-based businesses.",
+    ogImage: "https://www.miltafs.com/images/miltafs-og.jpg",
+    ogUrl: "https://www.miltafs.com/us/software/wave-accounting-for-small-business/",
+  });
 
   return (
     <Box

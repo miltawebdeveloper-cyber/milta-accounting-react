@@ -1,34 +1,74 @@
-// Automatically use local proxy in development, or the live backend server in production.
-// TODO: Replace the placeholder URL below with your actual Render/Heroku backend URL!
-const API_BASE = import.meta.env.PROD 
-  ? 'https://miltafs-api.onrender.com/api' 
-  : '/api';
+import { createClient } from '@supabase/supabase-js';
+
+// Supabase client — used directly for blog reads (public data, no backend needed)
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+// Backend API — used for write operations (contact, applications)
+const API_BASE = import.meta.env.VITE_API_URL || (import.meta.env.PROD
+  ? 'https://miltafs-api.onrender.com/api'
+  : '/api');
+
+/* =========================================
+   BLOG READS — directly via Supabase (always available)
+   ========================================= */
 
 export const getBlogs = async (params = {}) => {
   try {
-    const query = new URLSearchParams(params).toString();
-    const url = `${API_BASE}/blogs${query ? `?${query}` : ''}`;
-    const response = await fetch(url);
-    if (!response.ok) throw new Error('Failed to fetch blogs');
-    return await response.json();
+    const { featured, editors_pick, limit, order, ascending, table } = params;
+    const tableName = table || 'blogs';
+
+    let query = supabase.from(tableName).select('*');
+
+    if (featured === 'true' || featured === true) {
+      query = query.eq('featured', true);
+    }
+    if (editors_pick === 'true' || editors_pick === true) {
+      query = query.eq('editors_pick', true);
+    }
+    if (order) {
+      const isAsc = ascending === 'true' || ascending === true;
+      query = query.order(order, { ascending: isAsc });
+    }
+    if (limit) {
+      query = query.limit(parseInt(limit, 10));
+    }
+
+    const { data, error } = await query;
+    if (error) throw error;
+    return data || [];
   } catch (error) {
-    console.error('getBlogs error:', error);
+    console.error('getBlogs error:', error.message || error);
     return [];
   }
 };
 
-export const getBlogBySlug = async (slug) => {
+export const getBlogBySlug = async (slug, table = 'blogs') => {
   try {
-    const response = await fetch(`${API_BASE}/blogs/${slug}`);
-    if (!response.ok) throw new Error('Failed to fetch blog');
-    return await response.json();
+    const { data: blog, error } = await supabase
+      .from(table)
+      .select('*')
+      .eq('slug', slug)
+      .maybeSingle();
+
+    if (error) throw error;
+    if (!blog) return null;
+
+    const { data: latestPosts } = await supabase
+      .from('blogs')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .limit(5);
+
+    return { blog, latestPosts: latestPosts || [] };
   } catch (error) {
-    console.error('getBlogBySlug error:', error);
+    console.error('getBlogBySlug error:', error.message || error);
     return null;
   }
 };
 
-export const updateBlogContent = async (id, content, table = "blogs") => {
+export const updateBlogContent = async (id, content, table = 'blogs') => {
   try {
     const response = await fetch(`${API_BASE}/blogs/${id}/update`, {
       method: 'POST',
@@ -42,6 +82,10 @@ export const updateBlogContent = async (id, content, table = "blogs") => {
     return { error };
   }
 };
+
+/* =========================================
+   WRITE OPERATIONS — via backend API
+   ========================================= */
 
 export const submitContactForm = async (formData) => {
   try {

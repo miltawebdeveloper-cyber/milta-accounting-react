@@ -13,30 +13,34 @@ import "../styles/variables.css";
 
 function App() {
 
-   useFullSEO({
-      // MAIN SEO
-      title: "Trusted Partner for Accounting Outsourcing Servicesfor Small Business",
-      description:
-        "We specialize in providing exceptional accounting outsourcing services customized specifically for small businesses in the USA. We understand your unique needs and provide tailored solutions to help you grow your business.",
-      keywords:
-        "business outsourcing services, accounting services for small business, finance and accounting outsourcing, outsource accounting services, virtual cfo services.",
-      author: "Milta Accounting",
-      canonical: "https://miltafs.com/about",
-  
-    });
+  useFullSEO({
+    // MAIN SEO
+    title: "Best Payroll Service For Small Business in the UK",
+    description:
+      "We provide fully managed payroll services for small business, SMEs, and growing organisations across the UK.",
+    keywords:
+      "payroll services for small business, payroll outsourcing, best payroll service for small business, global payroll service, best payroll service, payroll services for small business near me, payroll service providers, affordable payroll services for small business, payroll outsourcing companies, payroll service companies, business payroll services, payroll processing services, international payroll services",
+    author: "Milta Accounting",
+    canonical: "https://www.miltafs.com/uk/payroll-services-for-small-business/",
+    ogTitle: "Best Payroll Service For Small Business in the UK",
+    ogDescription: "We provide fully managed payroll services for small business, SMEs, and growing organisations across the UK.",
+    ogImage: "https://www.miltafs.com/images/miltafs-og.jpg",
+    ogUrl: "https://www.miltafs.com/uk/payroll-services-for-small-business/",
+
+  });
 
   return (
-      <main>
-        <Hero />
-        <IntroSection />
-        <Offer />
-        <WhyChoose />
-        <ServicesSection />
-        <Faq />
-        
-      
-        
-      </main>
+    <main>
+      <Hero />
+      <IntroSection />
+      <Offer />
+      <WhyChoose />
+      <ServicesSection />
+      <Faq />
+
+
+
+    </main>
 
   );
 }

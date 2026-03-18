@@ -22,15 +22,19 @@ import useFullSEO from "../utils/useFullSEO";
 
 function App() {
   useFullSEO({
-  title: "Bookkeeping For Manufacturing Companies | Milta",
-  description:
-    "We provide professional accounting and bookkeeping services for manufacturing companies, ensuring accurate financial tracking and full tax compliance.",
-  keywords:
-    "accounting services for manufacturing, bookkeeping for manufacturing companies, accounting for manufacturing companies, accounting for manufacturing, manufacturing accounting, tax returns for manufacturing, manufacturing tax planning, tax planning for manufacturing",
-  author: "Milta Accounting",
-  canonical:
-    "https://www.miltafs.com/us/industry/accounting-services-for-manufacturing/",
-});
+    title: "Bookkeeping For Manufacturing Companies | Milta",
+    description:
+      "We provide professional accounting and bookkeeping services for manufacturing companies, ensuring accurate financial tracking and full tax compliance.",
+    keywords:
+      "accounting services for manufacturing, bookkeeping for manufacturing companies, accounting for manufacturing companies, accounting for manufacturing, manufacturing accounting, tax returns for manufacturing, manufacturing tax planning, tax planning for manufacturing",
+    author: "Milta Accounting",
+    canonical:
+      "https://www.miltafs.com/us/industry/accounting-services-for-manufacturing/",
+    ogTitle: "Bookkeeping For Manufacturing Companies | Milta",
+    ogDescription: "We provide professional accounting and bookkeeping services for manufacturing companies, ensuring accurate financial tracking and full tax compliance.",
+    ogImage: "https://www.miltafs.com/images/miltafs-og.jpg",
+    ogUrl: "https://www.miltafs.com/us/industry/accounting-services-for-manufacturing/",
+  });
 
   return (
     <ThemeProvider theme={theme}>

@@ -72,6 +72,10 @@ function App() {
   author: "Milta Accounting",
   canonical:
     "https://www.miltafs.com/us/industry/bookkeeping-for-contractors-companies/",
+    ogTitle: "Advanced Bookkeeping Services in the USA | Free Bookkeeping Quotes",
+    ogDescription: "We create customized bookkeeping solutions for small and growing businesses in the USA. Speak with our bookkeeping pros and get a free consultation today.",
+    ogImage: "https://www.miltafs.com/images/miltafs-og.jpg",
+    ogUrl: "https://www.miltafs.com/us/services/bookkeeping-company-in-the-usa/",
      schema: faqSchema,
 });
 

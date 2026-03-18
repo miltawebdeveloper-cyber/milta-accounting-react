@@ -44,6 +44,8 @@ const ConsultationSection = () => {
     <Box
       component="section"
       sx={{
+        // Hide on mobile (xs), show on sm and up
+        display: { xs: "none", sm: "block" },
         py: { xs: 7, sm: 8, md: 12, lg: 14 },
         backgroundColor: "#ffffff",
       }}

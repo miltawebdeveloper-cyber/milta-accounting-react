@@ -14,15 +14,56 @@ import ContactForm from "../components/common/ContactForm";
 import useFullSEO from "../utils/useFullSEO";
 
 function App() {
-useFullSEO({
-  title: "Best Law Firm Accounting Services in the UK",
-  description:
-    "We deliver specialist law firm accounting services designed to provide complete financial clarity and compliance.",
-  keywords:
-    "law firm accounting services, law firm accounting, law firm bookkeeping, legal accounting, local bookkeeping services near me, bookkeeping for lawyers, law firm bookkeeping services, legal bookkeeping services, bookkeeping for attorneys, bookkeeping services for law firms",
-  author: "Milta Accounting",
-  canonical: "https://www.miltafs.com/uk/law-firm-accounting-services/",
-});
+
+  const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "1. Do you work with UK law firms?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, we specialise in supporting UK law firms, solicitors, and legal professionals with accounting, compliance, and bookkeeping services."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "2. Do you offer a free trial?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, we provide a no-cost 5-hour free trial task so you can experience our service before making any commitment."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "3. Why Choose Our Law Firm Bookkeeping Services?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Legal Expertise That Matters, Accurate & Reliable Support, Dedicated Team, Cost-Effective Outsourcing, Flexible & Scalable Services."
+      }
+    }
+  ]
+};
+
+
+  useFullSEO({
+    title: "Best Law Firm Accounting Services in the UK",
+    description:
+      "We deliver specialist law firm accounting services designed to provide complete financial clarity and compliance.",
+    keywords:
+      "law firm accounting services, law firm accounting, law firm bookkeeping, legal accounting, local bookkeeping services near me, bookkeeping for lawyers, law firm bookkeeping services, legal bookkeeping services, bookkeeping for attorneys, bookkeeping services for law firms",
+    author: "Milta Accounting",
+    canonical: "https://www.miltafs.com/uk/law-firm-accounting-services/",
+    ogImage: "https://www.miltafs.com/images/miltafs-og.jpg",
+     ogTitle: "Best Law Firm Accounting Services in the UK",
+    ogDescription: "We deliver specialist law firm accounting services designed to provide complete financial clarity and compliance.",
+    ogImage: "https://www.miltafs.com/images/miltafs-og.jpg",
+    ogUrl: "https://www.miltafs.com/uk/law-firm-accounting-services/",
+        schema: faqSchema,
+
+  });
+
 
   return (
     <main>
@@ -77,7 +118,7 @@ useFullSEO({
             <Box id="services"><ServicesSection /></Box>
             <Box id="offer"><Offer /></Box>
             <Box id="why"><WhyChoose /></Box>
-            
+
           </Box>
 
           {/* ===== RIGHT CONTACT FORM (Desktop Only) ===== */}

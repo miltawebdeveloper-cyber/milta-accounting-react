@@ -19,55 +19,59 @@ import useFullSEO from "../utils/useFullSEO";
 function App() {
 
   const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Do you specialize in tax returns for restaurant businesses?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes, we specialize in preparing accurate tax returns for restaurants, cafés, and food service businesses. We understand the complex tax and regulatory challenges restaurant operators face and help them navigate these requirements with confidence."
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Do you specialize in tax returns for restaurant businesses?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, we specialize in preparing accurate tax returns for restaurants, cafés, and food service businesses. We understand the complex tax and regulatory challenges restaurant operators face and help them navigate these requirements with confidence."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "What’s included in your restaurant tax preparation services?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Our restaurant tax preparation services include detailed tax return filing, year-end financial reporting, deduction optimization covering tips, payroll, and food costs, as well as proactive tax planning strategies."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "Can Milta manage quarterly estimated tax payments for restaurant businesses?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Absolutely. We calculate and schedule quarterly estimated tax payments to help restaurants avoid IRS penalties and manage seasonal cash flow more effectively."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "When should I begin tax planning for my restaurant business?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Tax planning should begin early and continue throughout the year. This approach allows us to identify deductions, plan around peak seasons, and maintain accurate records for smooth and timely year-end tax filing."
+        }
       }
-    },
-    {
-      "@type": "Question",
-      name: "What’s included in your restaurant tax preparation services?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Our restaurant tax preparation services include detailed tax return filing, year-end financial reporting, deduction optimization covering tips, payroll, and food costs, as well as proactive tax planning strategies."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Can Milta manage quarterly estimated tax payments for restaurant businesses?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Absolutely. We calculate and schedule quarterly estimated tax payments to help restaurants avoid IRS penalties and manage seasonal cash flow more effectively."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "When should I begin tax planning for my restaurant business?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Tax planning should begin early and continue throughout the year. This approach allows us to identify deductions, plan around peak seasons, and maintain accurate records for smooth and timely year-end tax filing."
-      }
-    }
-  ]
-};
+    ]
+  };
 
   useFullSEO({
-  title: "Accounting and Bookkeeping for Small Restaurant Business - Milta",
-  description:
-    "We provide expert accounting and bookkeeping services for small restaurant businesses to help you stay organized, compliant, and profitable.",
-  keywords:
-    "bookkeeping for small restaurant, accounting for small restaurant business, bookkeeping for restaurant business, bookkeeping for restaurant, restaurant bookkeeping service, tax returns for restaurant",
-  author: "Milta Accounting",
-  canonical:
-    "https://www.miltafs.com/us/industry/accounting-services-for-restaurant-businesses/",
+    title: "Accounting and Bookkeeping for Small Restaurant Business - Milta",
+    description:
+      "We provide expert accounting and bookkeeping services for small restaurant businesses to help you stay organized, compliant, and profitable.",
+    keywords:
+      "bookkeeping for small restaurant, accounting for small restaurant business, bookkeeping for restaurant business, bookkeeping for restaurant, restaurant bookkeeping service, tax returns for restaurant",
+    author: "Milta Accounting",
+    canonical:
+      "https://www.miltafs.com/us/industry/accounting-services-for-restaurant-businesses/",
+    ogTitle: "Accounting and Bookkeeping for Small Restaurant Business - Milta",
+    ogDescription: "We provide expert accounting and bookkeeping services for small restaurant businesses to help you stay organized, compliant, and profitable.",
+    ogImage: "https://www.miltafs.com/images/miltafs-og.jpg",
+    ogUrl: "https://www.miltafs.com/us/industry/accounting-services-for-restaurant-businesses/",
     schema: faqSchema,
-});
+  });
 
 
   return (

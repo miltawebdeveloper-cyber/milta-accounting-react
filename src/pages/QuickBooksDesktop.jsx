@@ -141,16 +141,20 @@ const processSteps = [
 
 const QuickBooksDesktopModernHybrid = () => {
   useFullSEO({
-  // MAIN SEO
-  title: "QuickBooks Desktop for Small Business - Milta",
-  description:
-    "Our team has over five years of experience managing U.S. clients specifically on QuickBooks Desktop.",
-  keywords:
-    "quickbooks desktop for small business, quickbooks desktop",
-  author: "Milta Accounting",
-  canonical:
-    "https://www.miltafs.com/us/software/bookkeeping-with-quickbook-desktop/",
-});
+    // MAIN SEO
+    title: "QuickBooks Desktop for Small Business - Milta",
+    description:
+      "Our team has over five years of experience managing U.S. clients specifically on QuickBooks Desktop.",
+    keywords:
+      "quickbooks desktop for small business, quickbooks desktop",
+    author: "Milta Accounting",
+    canonical:
+      "https://www.miltafs.com/us/software/bookkeeping-with-quickbook-desktop/",
+    ogTitle: "QuickBooks Desktop for Small Business - Milta",
+    ogDescription: "Our team has over five years of experience managing U.S. clients specifically on QuickBooks Desktop.",
+    ogImage: "https://www.miltafs.com/images/miltafs-og.jpg",
+    ogUrl: "https://www.miltafs.com/us/software/bookkeeping-with-quickbook-desktop/",
+  });
 
   return (
     <Box
@@ -278,99 +282,99 @@ const QuickBooksDesktopModernHybrid = () => {
 
         {/* ================= SECTION 3 ================= */}
         <Typography
-  variant="h4"
-  align="center"
-  fontWeight={700}
-  color="#0b3d2e"
-  mt={9}
-  mb={6}
->
-  Our Process: How We Work With Your Accounting Software
-</Typography>
-
-<Grid container spacing={4} justifyContent="center">
-  {processSteps.map((step, index) => {
-    // Green to orange gradient
-    const gradients = [
-      "linear-gradient(135deg, #0b3d2e, #f57c00)", // dark green to orange
-      "linear-gradient(135deg, #145a32, #ff9800)", // lighter green to orange
-      "linear-gradient(135deg, #0b3d2e, #ffb74d)",
-      "linear-gradient(135deg, #145a32, #ffa726)",
-      "linear-gradient(135deg, #0b3d2e, #fb8c00)",
-      "linear-gradient(135deg, #145a32, #ff9800)",
-    ];
-
-    return (
-      <Grid item key={index}>
-        <Paper
-          sx={{
-            width: 350,
-            height: 440,
-            p: 3,
-            borderRadius: 3,
-            background: gradients[index % gradients.length],
-            color: "#333",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            textAlign: "center",
-            position: "relative",
-            boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
-            transition: "all 0.3s ease",
-            cursor: "pointer",
-
-            "&:hover": {
-              transform: "translateY(-8px)",
-              boxShadow: "0 12px 24px rgba(0,0,0,0.25)",
-            },
-          }}
+          variant="h4"
+          align="center"
+          fontWeight={700}
+          color="#0b3d2e"
+          mt={9}
+          mb={6}
         >
-          {/* Step Label */}
-          <Typography
-            fontWeight={700}
-            mb={2}
-            sx={{ color: "#fff", letterSpacing: 1 }}
-          >
-            STEP {String(index + 1).padStart(2, "0")}
-          </Typography>
+          Our Process: How We Work With Your Accounting Software
+        </Typography>
 
-          {/* Inner Card with fixed height */}
-          <Paper
-            sx={{
-              width: "100%",
-              
-              height:"100%",
-              maxHeight: 340, // fixed height for all cards
-              borderRadius: 2,
-              p: 2,
-              backgroundColor: "#fff",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-            }}
-          >
-            <Typography fontWeight={600} mb={1} sx={{ color: "#333" }}>
-              {step.title}
-            </Typography>
+        <Grid container spacing={4} justifyContent="center">
+          {processSteps.map((step, index) => {
+            // Green to orange gradient
+            const gradients = [
+              "linear-gradient(135deg, #0b3d2e, #f57c00)", // dark green to orange
+              "linear-gradient(135deg, #145a32, #ff9800)", // lighter green to orange
+              "linear-gradient(135deg, #0b3d2e, #ffb74d)",
+              "linear-gradient(135deg, #145a32, #ffa726)",
+              "linear-gradient(135deg, #0b3d2e, #fb8c00)",
+              "linear-gradient(135deg, #145a32, #ff9800)",
+            ];
 
-            <Typography variant="body2" sx={{ opacity: 0.7, mb: 1 }}>
-              {step.desc}
-            </Typography>
+            return (
+              <Grid item key={index}>
+                <Paper
+                  sx={{
+                    width: 350,
+                    height: 440,
+                    p: 3,
+                    borderRadius: 3,
+                    background: gradients[index % gradients.length],
+                    color: "#333",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    textAlign: "center",
+                    position: "relative",
+                    boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
+                    transition: "all 0.3s ease",
+                    cursor: "pointer",
 
-            <List dense>
-              {step.items.map((item, i) => (
-                <ListItem key={i} sx={{ justifyContent: "center", py: 0 }}>
-                  <Typography variant="body2">{item}</Typography>
-                </ListItem>
-              ))}
-            </List>
-          </Paper>
-        </Paper>
-      </Grid>
-    );
-  })}
-</Grid>
+                    "&:hover": {
+                      transform: "translateY(-8px)",
+                      boxShadow: "0 12px 24px rgba(0,0,0,0.25)",
+                    },
+                  }}
+                >
+                  {/* Step Label */}
+                  <Typography
+                    fontWeight={700}
+                    mb={2}
+                    sx={{ color: "#fff", letterSpacing: 1 }}
+                  >
+                    STEP {String(index + 1).padStart(2, "0")}
+                  </Typography>
+
+                  {/* Inner Card with fixed height */}
+                  <Paper
+                    sx={{
+                      width: "100%",
+
+                      height: "100%",
+                      maxHeight: 340, // fixed height for all cards
+                      borderRadius: 2,
+                      p: 2,
+                      backgroundColor: "#fff",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "center",
+                      boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                    }}
+                  >
+                    <Typography fontWeight={600} mb={1} sx={{ color: "#333" }}>
+                      {step.title}
+                    </Typography>
+
+                    <Typography variant="body2" sx={{ opacity: 0.7, mb: 1 }}>
+                      {step.desc}
+                    </Typography>
+
+                    <List dense>
+                      {step.items.map((item, i) => (
+                        <ListItem key={i} sx={{ justifyContent: "center", py: 0 }}>
+                          <Typography variant="body2">{item}</Typography>
+                        </ListItem>
+                      ))}
+                    </List>
+                  </Paper>
+                </Paper>
+              </Grid>
+            );
+          })}
+        </Grid>
 
 
         {/* FOOTER */}

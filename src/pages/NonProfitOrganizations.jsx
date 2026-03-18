@@ -18,63 +18,67 @@ import useFullSEO from "../utils/useFullSEO";
 function App() {
 
   const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Why do nonprofit organizations need bookkeeping services?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Nonprofits must maintain transparent and accurate financial records to ensure compliance with IRS regulations, attract donors, and manage grants effectively. Reliable nonprofit bookkeeping in the US also supports informed decision-making and long-term sustainability."
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Why do nonprofit organizations need bookkeeping services?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Nonprofits must maintain transparent and accurate financial records to ensure compliance with IRS regulations, attract donors, and manage grants effectively. Reliable nonprofit bookkeeping in the US also supports informed decision-making and long-term sustainability."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "Which tax returns are required of nonprofits?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Most nonprofit organizations in the US are required to file IRS Form 990, 990-EZ, or 990-N annually, depending on annual revenue. At Milta, our nonprofit tax preparation experts ensure accurate and timely filings while helping organizations avoid penalties and remain IRS-compliant."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "How secure is my nonprofit’s financial data with Milta?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Your data security is our top priority. We use encrypted, cloud-based accounting systems with strict access controls to safeguard all client information, ensuring confidentiality for nonprofits of every size."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "Can you help with late or missed nonprofit tax filings?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. If your nonprofit has missed required tax filings, our experts can assess your situation, prepare and submit the necessary documents, and help restore your organization’s good standing with the IRS."
+        }
       }
-    },
-    {
-      "@type": "Question",
-      name: "Which tax returns are required of nonprofits?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Most nonprofit organizations in the US are required to file IRS Form 990, 990-EZ, or 990-N annually, depending on annual revenue. At Milta, our nonprofit tax preparation experts ensure accurate and timely filings while helping organizations avoid penalties and remain IRS-compliant."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "How secure is my nonprofit’s financial data with Milta?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Your data security is our top priority. We use encrypted, cloud-based accounting systems with strict access controls to safeguard all client information, ensuring confidentiality for nonprofits of every size."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Can you help with late or missed nonprofit tax filings?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. If your nonprofit has missed required tax filings, our experts can assess your situation, prepare and submit the necessary documents, and help restore your organization’s good standing with the IRS."
-      }
-    }
-  ]
-};
+    ]
+  };
 
 
 
   useFullSEO({
-  title: "Best Bookkeeping for Nonprofits in the US",
-  description:
-    "Milta provides accurate and reliable bookkeeping for nonprofits in the US. Whether you're launching a new nonprofit or managing a growing organization, we support your financial operations.",
-  keywords:
-    "bookkeeping for nonprofits in the us, nonprofit accountants near me, bookkeeping for nonprofit, bookkeeping for nonprofit organizations in the us, non profit accountant near me, accounting for small nonprofits, tax returns for nonprofit, nonprofit tax preparation, nonprofit tax preparers near me, tax filing for nonprofit corporation, nonprofit corporation tax filing",
-  author: "Milta Accounting",
-  canonical:
-    "https://www.miltafs.com/us/industry/accounting-services-for-nonprofit-organizations/",
+    title: "Best Bookkeeping for Nonprofits in the US",
+    description:
+      "Milta provides accurate and reliable bookkeeping for nonprofits in the US. Whether you're launching a new nonprofit or managing a growing organization, we support your financial operations.",
+    keywords:
+      "bookkeeping for nonprofits in the us, nonprofit accountants near me, bookkeeping for nonprofit, bookkeeping for nonprofit organizations in the us, non profit accountant near me, accounting for small nonprofits, tax returns for nonprofit, nonprofit tax preparation, nonprofit tax preparers near me, tax filing for nonprofit corporation, nonprofit corporation tax filing",
+    author: "Milta Accounting",
+    canonical:
+      "https://www.miltafs.com/us/industry/accounting-services-for-nonprofit-organizations/",
+    ogTitle: "Best Bookkeeping for Nonprofits in the US",
+    ogDescription: "Milta provides accurate and reliable bookkeeping for nonprofits in the US. Whether you're launching a new nonprofit or managing a growing organization, we support your financial operations.",
+    ogImage: "https://www.miltafs.com/images/miltafs-og.jpg",
+    ogUrl: "https://www.miltafs.com/us/industry/accounting-services-for-nonprofit-organizations/",
     schema: faqSchema,
-});
+  });
 
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      
+
 
       <main>
         {/* ===== HERO SECTION ===== */}

@@ -133,16 +133,20 @@ const processSteps = [
 
 const XeroAccountingModern = () => {
   useFullSEO({
-  // MAIN SEO
-  title: "Xero Accounting for the United States - Milta",
-  description:
-    "Xero is one of the fastest-growing cloud accounting tools in the USA, especially popular among startups and real estate businesses.",
-  keywords:
-    "xero for small business, xero accounting for small business, xero accounting for united states",
-  author: "Milta Accounting",
-  canonical:
-    "https://www.miltafs.com/us/software/xero-for-small-business/",
-});
+    // MAIN SEO
+    title: "Xero Accounting for the United States - Milta",
+    description:
+      "Xero is one of the fastest-growing cloud accounting tools in the USA, especially popular among startups and real estate businesses.",
+    keywords:
+      "xero for small business, xero accounting for small business, xero accounting for united states",
+    author: "Milta Accounting",
+    canonical:
+      "https://www.miltafs.com/us/software/xero-for-small-business/",
+    ogTitle: "Xero Accounting for the United States - Milta",
+    ogDescription: "Xero is one of the fastest-growing cloud accounting tools in the USA, especially popular among startups and real estate businesses.",
+    ogImage: "https://www.miltafs.com/images/miltafs-og.jpg",
+    ogUrl: "https://www.miltafs.com/us/software/xero-for-small-business/",
+  });
 
   return (
     <Box

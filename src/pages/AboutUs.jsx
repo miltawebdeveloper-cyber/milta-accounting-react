@@ -18,7 +18,7 @@ import useFullSEO from "../utils/useFullSEO";
 
 function App() {
 
-    useFullSEO({
+  useFullSEO({
     // MAIN SEO
     title: "Trusted Partner for Accounting Outsourcing Servicesfor Small Business",
     description:
@@ -28,24 +28,29 @@ function App() {
     author: "Milta Accounting",
     canonical: "https://miltafs.com/about",
 
+    ogTitle: "Trusted Partner for Accounting Outsourcing Servicesfor Small Business",
+    ogDescription: "We specialize in providing exceptional accounting outsourcing services customized specifically for small businesses in the USA. We understand your unique needs and provide tailored solutions to help you grow your business.",
+    ogImage: "https://www.miltafs.com/images/miltafs-og.jpg",
+    ogUrl: "https://miltafs.com/about",
+
   });
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <main>
-        <HeroSection/>
+        <HeroSection />
         <Team />
         <SaleSupport />
         <MiltaAccountingOverview />
         <PartnerSection />
 
-        <Path/>
+        <Path />
         <CTASection />
-        
+
         <OurStrengthsSection />
-        <ServicesCarousel /> 
-        
+        <ServicesCarousel />
+
       </main>
     </ThemeProvider>
   );

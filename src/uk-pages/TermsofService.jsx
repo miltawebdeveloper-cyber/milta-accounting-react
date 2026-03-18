@@ -21,6 +21,10 @@ const TermsOfService = () => {
       "terms of service, terms and conditions, accounting terms, Miltafs terms",
     author: "Milta Accounting",
     canonical: "https://www.miltafs.com/terms-of-service",
+    ogTitle: "Terms of Service | Milta Accounting",
+    ogDescription: "Review the terms and conditions for using Miltafs accounting services and website. Learn about client responsibilities, payment terms, and more.",
+    ogImage: "https://www.miltafs.com/images/miltafs-og.jpg",
+    ogUrl: "https://www.miltafs.com/terms-of-service",
   });
 
   return (

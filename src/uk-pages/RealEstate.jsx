@@ -15,15 +15,61 @@ import ContactForm from "../components/common/ContactForm";
 import useFullSEO from "../utils/useFullSEO";
 
 function App() {
-useFullSEO({
-  title: "Best accounting services for real estate in the UK",
-  description:
-    "We offer real estate bookkeeping to strategic tax planning and compliance, we understand the complexities of property transactions, rental income tracking, and etc.",
-  keywords:
-    "real estate accounting services, accounting services for real estate, property management accounting, quickbooks for property management, real estate accountant near me, real estate bookkeeping, real estate accounting, property management bookkeeping",
-  author: "Milta Accounting",
-  canonical: "https://www.miltafs.com/uk/accounting-services-for-real-estate/",
-});
+
+  const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "1. What is included in real estate accounting services?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Real estate accounting services generally involve maintaining accurate financial records, monitoring rental income, managing property-related transactions, handling tax obligations, preparing financial statements, and completing annual accounts."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "2. Do you support real estate investors with accounting?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, we provide tailored accounting support for property investors, covering revenue tracking, cost control, portfolio performance reporting, and structured tax planning."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "3. Do you provide outsourced real estate bookkeeping?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, our outsourced real estate bookkeeping solutions allow property businesses to lower internal costs while ensuring their financial records remain organised, accurate, and compliant."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "4. How do I choose a dependable real estate accountant near me?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "When looking for a real estate accountant near me, consider firms with strong experience in property accounting, tax compliance, portfolio reporting, and multi-entity financial management."
+      }
+    }
+  ]
+};
+
+  useFullSEO({
+    title: "Best accounting services for real estate in the UK",
+    description:
+      "We offer real estate bookkeeping to strategic tax planning and compliance, we understand the complexities of property transactions, rental income tracking, and etc.",
+    keywords:
+      "real estate accounting services, accounting services for real estate, property management accounting, quickbooks for property management, real estate accountant near me, real estate bookkeeping, real estate accounting, property management bookkeeping",
+    author: "Milta Accounting",
+    canonical: "https://www.miltafs.com/uk/accounting-services-for-real-estate/",
+    ogTitle: "Best accounting services for real estate in the UK",
+    ogDescription: "We offer real estate bookkeeping to strategic tax planning and compliance, we understand the complexities of property transactions, rental income tracking, and etc.",
+    ogImage: "https://www.miltafs.com/images/miltafs-og.jpg",
+    ogUrl: "https://www.miltafs.com/uk/accounting-services-for-real-estate/",
+        schema: faqSchema,
+
+  });
 
   return (
     <main>

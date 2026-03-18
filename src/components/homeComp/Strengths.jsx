@@ -8,7 +8,7 @@ import AppsIcon from "@mui/icons-material/Apps";
 
 const stats = [
   { icon: EmojiEventsIcon, value: "10+", label: "Years Of Success" },
-  { icon: PeopleAltIcon, value: "600+", label: "Happy Clients" },
+  { icon: PeopleAltIcon, value: "100+", label: "Happy Clients" },
   { icon: AssignmentTurnedInIcon, value: "1000+", label: "Completed Projects" },
   { icon: AppsIcon, value: "20+", label: "Software Used" },
 ];
@@ -35,7 +35,7 @@ const StrengthsSection = () => {
           Strengths
         </Typography>
 
-        <Grid container spacing={2.5} justifyContent="center"> 
+        <Grid container spacing={2.5} justifyContent="center">
           {stats.map((item, index) => {
             const Icon = item.icon;
 

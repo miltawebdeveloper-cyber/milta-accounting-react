@@ -12,11 +12,12 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 const slides = [
   {
-    title: "Expert Outsourcing <br> Accounting & Bookkeeping Services",
+    title: "<h1>Expert Outsourcing <br> Accounting & Bookkeeping Services</h1>",
     description:
       "Trusted by 100+ Clients Across 12 Countries. Proudly serving small businesses, growing enterprises, and Fortune 500 companies.",
     image:
       "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg",
+       alt: "Outsourcing accounting and bookkeeping services for global businesses",
   },
   {
     title: "Tax Planning and <br> Preparation Services in the USA!",
@@ -24,24 +25,28 @@ const slides = [
       "Professional US Expat Tax Service for Federal, State, and City Tax Preparation.",
     image:
       "https://images.pexels.com/photos/4386379/pexels-photo-4386379.jpeg",
+      alt: "Tax planning and preparation services for businesses in the USA",
   },
   {
     title: "The Best CPA Service <br> for Small Businesses in the USA",
     description: "We offer the best CPA service for small businesses in the USA.",
     image:
       "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg",
+       alt: "Certified public accountant services for small businesses in the USA",
   },
   {
     title: "Boost Your Business <br> with a Virtual Assistant!",
     description: "Get the skilled help you need to scale faster.",
     image:
       "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg",
+       alt: "Virtual assistant helping businesses improve productivity",
   },
   {
     title: "Expert Financial Controller <br> Services in the USA",
     description: "Improve your accounting systems with experts.",
     image:
       "https://images.pexels.com/photos/4386442/pexels-photo-4386442.jpeg",
+       alt: "Professional financial controller services for business accounting",
   },
 ];
 
@@ -117,7 +122,7 @@ export default function BannerSlider() {
                   <Grid item xs={12} md={6}>
                     <Box sx={{ maxWidth: 650, mx: { xs: "auto", md: 0 } }}>
                       <Typography
-                        component="h1"
+
                         sx={{
                           fontWeight: 700,
                           mb: 2,
@@ -189,7 +194,8 @@ export default function BannerSlider() {
                       <Box
                         component="img"
                         src={slide.image}
-                        alt="Slide"
+                        alt={slide.alt}
+
                         sx={{
                           width: "100%",
                           height: "100%",

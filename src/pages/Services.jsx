@@ -50,6 +50,10 @@ function App() {
       "bookkeeping services for small business, tax planning and preparation service, cpa services for small business, virtual assistant service, digital marketing services usa, financial controller services, accounting data entry services",
     author: "Milta Accounting",
     canonical: "https://www.miltafs.com/services",
+    ogTitle: "Milta - Our Services You Can Trust to Make Business Easier.",
+    ogDescription:"At Milta, we don’t just provide services, we provide solutions. Our services are customised to meet your specific needs and planned solutions.",
+    ogImage: "https://www.miltafs.com/images/miltafs-og.jpg",
+    ogUrl: "https://www.miltafs.com/services",
     schema: faqSchema, // ✅ ERROR FIXED
   });
 

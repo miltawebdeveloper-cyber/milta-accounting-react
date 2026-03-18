@@ -5,6 +5,8 @@ import {
   Container,
   Card,
   Button,
+  useTheme,
+  useMediaQuery,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -57,25 +59,35 @@ const services = [
 ];
 
 const ServicesSection = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
+
   return (
     <Box
       component="section"
       sx={{
-        pt: { xs: 6, md: 10 },
-        pb: { xs: 8, md: 16 },
+        pt: { xs: 4, sm: 6, md: 10 },
+        pb: { xs: 6, sm: 8, md: 16 },
         backgroundColor: "#f5f7f8",
         fontFamily: "'Poppins', sans-serif",
       }}
     >
-      <Container maxWidth="xl">
+      <Container 
+        maxWidth="xl" 
+        sx={{
+          px: { xs: 2, sm: 3, md: 4 }
+        }}
+      >
         {/* ================= HEADER ================= */}
-        <Box textAlign="center" mb={{ xs: 5, md: 9 }}>
+        <Box textAlign="center" mb={{ xs: 4, sm: 5, md: 9 }}>
           <Typography
             sx={{
               color: "#97ba3a",
               fontWeight: 600,
-              mb: 2,
-              fontSize: "15px",
+              mb: { xs: 1.5, md: 2 },
+              fontSize: { xs: "14px", sm: "15px", md: "16px" },
+              letterSpacing: "0.5px",
             }}
           >
             ● Our Services
@@ -85,15 +97,17 @@ const ServicesSection = () => {
             component="h2"
             sx={{
               fontWeight: 600,
-              lineHeight: 1.25,
-              maxWidth: 650,
+              lineHeight: { xs: 1.3, sm: 1.25 },
+              maxWidth: { xs: "100%", sm: 550, md: 650 },
               mx: "auto",
               fontSize: {
-                xs: "22px",
-                sm: "30px",
-                md: "42px",
+                xs: "24px",
+                sm: "32px",
+                md: "38px",
+                lg: "42px",
               },
               color: "#2b6d2a",
+              px: { xs: 2, sm: 0 },
             }}
           >
             The largest truly global wealth manager
@@ -107,10 +121,12 @@ const ServicesSection = () => {
             flexWrap: "wrap",
             justifyContent: "center",
             gap: { xs: 2, sm: 3, md: 4 },
+            mx: { xs: -1, sm: -1.5, md: -2 }, // Negative margin to offset card padding
           }}
         >
           {services.map((item, index) => {
-            const direction = index % 2 === 0 ? -80 : 80;
+            // Adjust animation direction based on screen size
+            const direction = isMobile ? 0 : (index % 2 === 0 ? -50 : 50);
 
             return (
               <Box
@@ -118,23 +134,28 @@ const ServicesSection = () => {
                 sx={{
                   width: {
                     xs: "100%",
-                    sm: "calc(50% - 16px)",
+                    sm: "calc(50% - 24px)",
                     md: "calc(33.333% - 32px)",
                   },
                   maxWidth: {
-                    xs: 400,
+                    xs: "100%",
                     sm: "none",
                   },
                   display: "flex",
                   justifyContent: "center",
+                  px: { xs: 1, sm: 1.5, md: 2 }, // Padding to create gaps
+                  mb: { xs: 2, sm: 3, md: 4 },
                 }}
               >
                 <motion.div
                   initial={{ opacity: 0, x: direction }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  style={{ width: "100%" }}
+                  transition={{ 
+                    duration: 0.5,
+                    delay: isMobile ? 0 : index * 0.1, // Stagger effect only on desktop
+                  }}
+                  viewport={{ once: true, amount: isMobile ? 0.1 : 0.2 }}
+                  style={{ width: "100%", height: "100%" }}
                 >
                   <Card
                     sx={{
@@ -143,30 +164,42 @@ const ServicesSection = () => {
                       display: "flex",
                       flexDirection: "column",
                       justifyContent: "space-between",
-                      borderRadius: "16px",
+                      borderRadius: { xs: "12px", sm: "14px", md: "16px" },
                       padding: {
-                        xs: "20px 16px",
-                        sm: "32px 24px",
-                        md: "40px 32px",
+                        xs: "24px 20px",
+                        sm: "28px 24px",
+                        md: "32px 28px",
+                        lg: "40px 32px",
                       },
-                      boxShadow: "0 6px 18px rgba(0, 0, 0, 0.08)",
+                      boxShadow: "0 8px 20px rgba(0, 0, 0, 0.06)",
                       background: item.featured
-                        ? "linear-gradient(180deg, #2b6d2a, #97ba3a)"
+                        ? "linear-gradient(135deg, #2b6d2a 0%, #97ba3a 100%)"
                         : "#fff",
-                      transition: "all 0.4s ease",
+                      transition: "all 0.3s ease-in-out",
                       "&:hover": {
-                        transform: { md: "translateY(-8px)" },
+                        transform: !isMobile ? "translateY(-8px)" : "none",
+                        boxShadow: !isMobile ? "0 16px 30px rgba(0, 0, 0, 0.12)" : "0 8px 20px rgba(0, 0, 0, 0.06)",
                       },
                     }}
                   >
                     {/* CONTENT - Always visible */}
                     <Box>
                       {/* ICON */}
-                      <Box sx={{ width: { xs: 45, sm: 55 }, height: { xs: 45, sm: 55 }, mb: 2 }}>
+                      <Box 
+                        sx={{ 
+                          width: { xs: 45, sm: 50, md: 55 }, 
+                          height: { xs: 45, sm: 50, md: 55 }, 
+                          mb: { xs: 2, sm: 2.5, md: 3 },
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "flex-start",
+                        }}
+                      >
                         <Box
                           component="img"
                           src={item.icon}
                           alt={item.title}
+                          loading="lazy"
                           sx={{
                             width: "100%",
                             height: "100%",
@@ -174,6 +207,10 @@ const ServicesSection = () => {
                             filter: item.featured
                               ? "brightness(0) invert(1)"
                               : "none",
+                            transition: "transform 0.3s ease",
+                            "&:hover": {
+                              transform: !isMobile ? "scale(1.1)" : "none",
+                            },
                           }}
                         />
                       </Box>
@@ -183,12 +220,14 @@ const ServicesSection = () => {
                         sx={{
                           fontWeight: 700,
                           fontSize: {
-                            xs: "0.95rem",
-                            sm: "1rem",
-                            md: "1.1rem",
+                            xs: "1.1rem",
+                            sm: "1.15rem",
+                            md: "1.2rem",
+                            lg: "1.25rem",
                           },
-                          mb: 1.5,
+                          mb: { xs: 1.5, sm: 1.75, md: 2 },
                           color: item.featured ? "#fff" : "#2b6d2a",
+                          lineHeight: 1.3,
                         }}
                       >
                         {item.title}
@@ -198,14 +237,16 @@ const ServicesSection = () => {
                       <Typography
                         sx={{
                           fontSize: {
-                            xs: "0.85rem",
-                            sm: "0.9rem",
+                            xs: "0.9rem",
+                            sm: "0.92rem",
                             md: "0.95rem",
+                            lg: "1rem",
                           },
-                          lineHeight: 1.6,
+                          lineHeight: { xs: 1.5, sm: 1.55, md: 1.6 },
                           color: item.featured
-                            ? "rgba(255,255,255,0.9)"
+                            ? "rgba(255,255,255,0.95)"
                             : "rgba(0,0,0,0.7)",
+                          mb: { xs: 2, sm: 2.5, md: 3 },
                         }}
                       >
                         {item.description}
@@ -213,7 +254,7 @@ const ServicesSection = () => {
                     </Box>
 
                     {/* BUTTON */}
-                    <Box mt={{ xs: 2, sm: 3, md: 4 }}>
+                    <Box>
                       <Button
                         component={Link}
                         to={item.link}
@@ -221,20 +262,31 @@ const ServicesSection = () => {
                         sx={{
                           textTransform: "none",
                           fontWeight: 600,
-                          borderRadius: "30px",
-                          px: 2,
-                          py: { xs: 0.75, sm: 1 },
-                          fontSize: { xs: "0.8rem", sm: "0.9rem" },
+                          borderRadius: { xs: "25px", sm: "28px", md: "30px" },
+                          px: { xs: 2, sm: 2.5, md: 3 },
+                          py: { xs: 0.75, sm: 1, md: 1.25 },
+                          fontSize: { 
+                            xs: "0.85rem", 
+                            sm: "0.88rem", 
+                            md: "0.9rem",
+                            lg: "0.95rem" 
+                          },
                           backgroundColor: item.featured
                             ? "#ffffff"
                             : "#2b6d2a",
                           color: item.featured
                             ? "#2b6d2a"
                             : "#fff",
+                          border: item.featured ? "none" : "none",
+                          transition: "all 0.3s ease",
                           "&:hover": {
                             backgroundColor: item.featured
-                              ? "rgba(255,255,255,0.85)"
-                              : "#245c23",
+                              ? "rgba(255,255,255,0.9)"
+                              : "#1f4d1e",
+                            transform: !isMobile ? "scale(1.02)" : "none",
+                          },
+                          "&:active": {
+                            transform: "scale(0.98)",
                           },
                         }}
                       >

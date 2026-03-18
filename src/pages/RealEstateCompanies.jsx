@@ -23,56 +23,60 @@ import useFullSEO from "../utils/useFullSEO";
 function App() {
 
   const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What makes Milta the right choice for real estate bookkeeping outsourcing?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "We recognize the unique financial requirements of the real estate business. Whether you're a real estate agent, investor, or property manager, our bookkeeping solutions are built to scale with your business and streamline complex financial processes."
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What makes Milta the right choice for real estate bookkeeping outsourcing?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "We recognize the unique financial requirements of the real estate business. Whether you're a real estate agent, investor, or property manager, our bookkeeping solutions are built to scale with your business and streamline complex financial processes."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "What are the benefits of outsourcing bookkeeping for my real estate business?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Outsourcing to Milta helps you reduce operational costs, save time, and gain access to expert services such as real estate tax planning, property income tracking, and regulatory compliance. You can skip the headache of recruiting and training internal employees."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "Can I trust Milta with my financial information?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Absolutely. We use secure, encrypted, cloud-based systems to protect your data at every stage. Our infrastructure is designed to ensure transparency, reliability, and complete peace of mind."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "How do I get started with a free trial?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Getting started is simple. Visit our website or contact us directly to schedule a free consultation or trial, and discover how Milta can transform your real estate financial management."
+        }
       }
-    },
-    {
-      "@type": "Question",
-      name: "What are the benefits of outsourcing bookkeeping for my real estate business?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Outsourcing to Milta helps you reduce operational costs, save time, and gain access to expert services such as real estate tax planning, property income tracking, and regulatory compliance. You can skip the headache of recruiting and training internal employees."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Can I trust Milta with my financial information?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Absolutely. We use secure, encrypted, cloud-based systems to protect your data at every stage. Our infrastructure is designed to ensure transparency, reliability, and complete peace of mind."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "How do I get started with a free trial?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Getting started is simple. Visit our website or contact us directly to schedule a free consultation or trial, and discover how Milta can transform your real estate financial management."
-      }
-    }
-  ]
-};
+    ]
+  };
 
 
   useFullSEO({
-  title: "Reliable Bookkeeping For Real Estate Companies | Milta",
-  description:
-    "Milta offers reliable bookkeeping services for real estate businesses. Book a free consultation today and simplify your property financial management.",
-  keywords:
-    "bookkeeping for real estate, property management bookkeeping, bookkeeping for real estate agents, bookkeeping for real estate investors, property management bookkeeping services, real estate accounting services, real estate tax planning, tax planning for real estate agents, tax planning for property developers, tax planning for real estate developers",
-  author: "Milta Accounting",
-  canonical:
-    "https://www.miltafs.com/us/industry/bookkeeping-for-real-estate-companies/",
-     schema: faqSchema,
-});
+    title: "Reliable Bookkeeping For Real Estate Companies | Milta",
+    description:
+      "Milta offers reliable bookkeeping services for real estate businesses. Book a free consultation today and simplify your property financial management.",
+    keywords:
+      "bookkeeping for real estate, property management bookkeeping, bookkeeping for real estate agents, bookkeeping for real estate investors, property management bookkeeping services, real estate accounting services, real estate tax planning, tax planning for real estate agents, tax planning for property developers, tax planning for real estate developers",
+    author: "Milta Accounting",
+    canonical:
+      "https://www.miltafs.com/us/industry/bookkeeping-for-real-estate-companies/",
+    ogTitle: "Reliable Bookkeeping For Real Estate Companies | Milta",
+    ogDescription: "Milta offers reliable bookkeeping services for real estate businesses. Book a free consultation today and simplify your property financial management.",
+    ogImage: "https://www.miltafs.com/images/miltafs-og.jpg",
+    ogUrl: "https://www.miltafs.com/us/industry/bookkeeping-for-real-estate-companies/",
+    schema: faqSchema,
+  });
 
   return (
     <ThemeProvider theme={theme}>

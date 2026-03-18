@@ -100,6 +100,7 @@ const HeroSection = () => {
 
           {/* Heading */}
           <Typography
+            variant="h1"
             sx={{
               fontFamily: "'Poppins', sans-serif",
               fontWeight: 700,
@@ -109,7 +110,7 @@ const HeroSection = () => {
               color: "#fff",
             }}
           >
-             Outsourced Accounting & Bookkeeping Services in the UK
+            Outsourced Accounting & Bookkeeping Services in the UK
 
           </Typography>
 
@@ -124,8 +125,8 @@ const HeroSection = () => {
               lineHeight: 1.8,
             }}
           >
-Trusted by 100+ clients across 12 countries
-Supporting small businesses, growing companies, and global organisations.
+            Trusted by 100+ clients across 12 countries
+            Supporting small businesses, growing companies, and global organisations.
 
           </Typography>
 

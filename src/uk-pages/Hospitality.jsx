@@ -17,14 +17,51 @@ import useFullSEO from "../utils/useFullSEO";
 
 function App() {
 
+  const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Why does my hospitality business need specialist accounting?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The hospitality sector operates with tight margins, seasonal demand, and complex inventory management. Professional accounting for hospitality ensures accurate cost tracking, improved cash flow management, and full compliance with UK regulations."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "Do you provide bookkeeping for hospitality businesses of all sizes?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Our hospitality bookkeeping services support independent venues, growing restaurant groups, and multi-location hotel operations across the UK. Our services can be scaled to support your company's growth."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "Can you manage payroll for seasonal and part-time staff?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Absolutely. Our hospitality accounting solutions include payroll processing for full-time, part-time, and seasonal employees, ensuring compliance with UK employment and pension regulations."
+      }
+    }
+  ]
+};
+
 useFullSEO({
-  title: "Ecommerce Accounting Services for UK Businesses",
+  title: "Hospitality Accounting Services in the UK",
   description:
-    "At Milta, we provide end-to-end ecommerce accounting services and back-office services designed specifically for UK online sellers.",
+    "We provide accounting services for the hospitality industry, helping UK businesses stay accurate, organized, and compliant.",
   keywords:
-    "ecommerce accounting services, accounting services for ecommerce, ecommerce bookkeeping services, shopify bookkeeping",
+    "hospitality accounting services, bookkeeping for hospitality, accounting for hospitality, hospitality accounting solutions, hospitality bookkeeping services, accounting services for hospitality",
   author: "Milta Accounting",
-  canonical: "https://www.miltafs.com/uk/ecommerce-accounting-service/",
+  canonical: "https://www.miltafs.com/uk/hospitality-accounting-services/",
+   ogTitle: "Hospitality Accounting Services in the UK",
+    ogDescription: "We provide accounting services for the hospitality industry, helping UK businesses stay accurate, organized, and compliant.",
+    ogImage: "https://www.miltafs.com/images/miltafs-og.jpg",
+    ogUrl: "https://www.miltafs.com/uk/hospitality-accounting-services/",
+        schema: faqSchema,
+
 });
 
   return (

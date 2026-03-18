@@ -16,7 +16,7 @@ import AreasWeServe from "../components/common/AreasWeServe";
 import Service from "../components/homeComp/Service";
 import ContractorsSidebar from "../components/Industries/lawFirms/ContractorsSidebar";
 import Faq from "../components/Industries/lawFirms/Faq";
-import  Benefits from "../components/Industries/lawFirms/Benefits";
+import Benefits from "../components/Industries/lawFirms/Benefits";
 import Advantages from "../components/Industries/lawFirms/Advantages";
 import Overview from "../components/Industries/lawFirms/Overview";
 import ContactForm from "../components/common/ContactForm";
@@ -25,59 +25,63 @@ import useFullSEO from "../utils/useFullSEO";
 function App() {
 
   const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Why do law firms need bookkeeping services?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Law firms need specialized bookkeeping to maintain compliance, manage trust accounts, and streamline daily financial operations."
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Why do law firms need bookkeeping services?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Law firms need specialized bookkeeping to maintain compliance, manage trust accounts, and streamline daily financial operations."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "Can you track billable hours and client invoicing?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, we ensure accurate billable time tracking and precise client invoicing for every legal matter."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "Do you handle trust accounting and escrow management?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Absolutely. We specialize in trust and escrow accounting, ensuring compliance with legal and regulatory standards."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "Which accounting program would you suggest for legal firms?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "We integrate with and recommend accounting platforms such as LEAP, QuickBooks, and Clio, based on your firm’s workflow and compliance needs."
+        }
       }
-    },
-    {
-      "@type": "Question",
-      name: "Can you track billable hours and client invoicing?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes, we ensure accurate billable time tracking and precise client invoicing for every legal matter."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Do you handle trust accounting and escrow management?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Absolutely. We specialize in trust and escrow accounting, ensuring compliance with legal and regulatory standards."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Which accounting program would you suggest for legal firms?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "We integrate with and recommend accounting platforms such as LEAP, QuickBooks, and Clio, based on your firm’s workflow and compliance needs."
-      }
-    }
-  ]
-};
+    ]
+  };
 
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const toggleDrawer = () => setMobileOpen(!mobileOpen);
 
   useFullSEO({
-  title: "Bookkeeping And Accounting Services For Law Firms And Lawyers",
-  description:
-    "Outsourced bookkeeping and accounting services for lawyers and law firms. We handle financial management, billing, reporting, and compliance.",
-  keywords:
-    "law firm bookkeeping, bookkeeping for lawyers, law firm accounting services, law firm bookkeeping services, bookkeeping services for lawyers, tax planning lawyer, tax planning law firm",
-  author: "Milta Accounting",
-  canonical:
-    "https://www.miltafs.com/us/industry/accounting-services-for-lawfirms/",
-  schema: faqSchema,
-});
+    title: "Bookkeeping And Accounting Services For Law Firms And Lawyers",
+    description:
+      "Outsourced bookkeeping and accounting services for lawyers and law firms. We handle financial management, billing, reporting, and compliance.",
+    keywords:
+      "law firm bookkeeping, bookkeeping for lawyers, law firm accounting services, law firm bookkeeping services, bookkeeping services for lawyers, tax planning lawyer, tax planning law firm",
+    author: "Milta Accounting",
+    canonical:
+      "https://www.miltafs.com/us/industry/accounting-services-for-lawfirms/",
+    ogTitle: "Bookkeeping And Accounting Services For Law Firms And Lawyers",
+    ogDescription: "Outsourced bookkeeping and accounting services for lawyers and law firms. We handle financial management, billing, reporting, and compliance.",
+    ogImage: "https://www.miltafs.com/images/miltafs-og.jpg",
+    ogUrl: "https://www.miltafs.com/us/industry/accounting-services-for-lawfirms/",
+    schema: faqSchema,
+  });
 
 
   return (
@@ -170,15 +174,15 @@ function App() {
                 px: { xs: 0, md: 1 },
               }}
             >
-               
-               <Box id="overview"><Overview/></Box>
-               <Box id="services"><Service /></Box>
-               <Box id="advantages"><Advantages/></Box>
-               <Box id="benefits"><Benefits/></Box>
-               <Box id="faq"><Faq/></Box>
-                
-                <Box id="areas"><AreasWeServe /></Box>
-                <Box id="industries"><IndustriesWeServe /></Box>
+
+              <Box id="overview"><Overview /></Box>
+              <Box id="services"><Service /></Box>
+              <Box id="advantages"><Advantages /></Box>
+              <Box id="benefits"><Benefits /></Box>
+              <Box id="faq"><Faq /></Box>
+
+              <Box id="areas"><AreasWeServe /></Box>
+              <Box id="industries"><IndustriesWeServe /></Box>
 
             </Box>
 
@@ -205,12 +209,12 @@ function App() {
                   fontWeight: 700,
                   fontSize: { xs: "1rem", md: "1.5rem" },
                   mb: 2,
-                  pt:4,
+                  pt: 4,
                 }}
               >
                 Reach Out Us
               </Box>
-<ContactForm/>
+              <ContactForm />
             </Box>
           </Container>
         </Box>

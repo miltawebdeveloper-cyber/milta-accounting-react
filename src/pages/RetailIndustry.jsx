@@ -19,56 +19,60 @@ import useFullSEO from "../utils/useFullSEO";
 function App() {
 
   const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Are tax returns for retail firms your area of expertise?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes, we specialize in preparing accurate tax returns for retail businesses of all sizes. Our team understands the unique tax challenges retailers face and ensures full compliance with federal and state tax regulations."
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Are tax returns for retail firms your area of expertise?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, we specialize in preparing accurate tax returns for retail businesses of all sizes. Our team understands the unique tax challenges retailers face and ensures full compliance with federal and state tax regulations."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "What’s included in your retail tax preparation services?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Our retail tax preparation services include accurate tax return filing, year-end financial reporting, deduction optimization, and strategic tax planning to help minimize future tax liability."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "How do you ensure accuracy in year-end reports for retailers?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "We use industry-standard accounting tools to reconcile income, expenses, inventory, and payroll, delivering a complete, accurate, and compliant year-end financial report tailored to your retail operations."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "How early should I start planning taxes for my retail business?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Ideally, tax planning should be a year-round process. Starting early allows us to identify tax-saving opportunities in advance and prepare precise year-end financials for a smooth and stress-free tax season."
+        }
       }
-    },
-    {
-      "@type": "Question",
-      name: "What’s included in your retail tax preparation services?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Our retail tax preparation services include accurate tax return filing, year-end financial reporting, deduction optimization, and strategic tax planning to help minimize future tax liability."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "How do you ensure accuracy in year-end reports for retailers?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "We use industry-standard accounting tools to reconcile income, expenses, inventory, and payroll, delivering a complete, accurate, and compliant year-end financial report tailored to your retail operations."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "How early should I start planning taxes for my retail business?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ideally, tax planning should be a year-round process. Starting early allows us to identify tax-saving opportunities in advance and prepare precise year-end financials for a smooth and stress-free tax season."
-      }
-    }
-  ]
-};
+    ]
+  };
 
 
   useFullSEO({
-  title: "Milta - Accounting services for retail Businesses in the USA",
-  description:
-    "We offer professional accounting services for retail businesses in the USA, including expense tracking, cash flow monitoring, tax maintenance, and reporting.",
-  keywords:
-    "bookkeeping for retail, accounting services for retail, retail accounting services, retail accounting, tax returns for retail",
-  author: "Milta Accounting",
-  canonical:
-    "https://www.miltafs.com/us/industry/accounting-services-for-retail-businesses/",
+    title: "Milta - Accounting services for retail Businesses in the USA",
+    description:
+      "We offer professional accounting services for retail businesses in the USA, including expense tracking, cash flow monitoring, tax maintenance, and reporting.",
+    keywords:
+      "bookkeeping for retail, accounting services for retail, retail accounting services, retail accounting, tax returns for retail",
+    author: "Milta Accounting",
+    canonical:
+      "https://www.miltafs.com/us/industry/accounting-services-for-retail-businesses/",
+    ogTitle: "Milta - Accounting services for retail Businesses in the USA",
+    ogDescription: "We offer professional accounting services for retail businesses in the USA, including expense tracking, cash flow monitoring, tax maintenance, and reporting.",
+    ogImage: "https://www.miltafs.com/images/miltafs-og.jpg",
+    ogUrl: "https://www.miltafs.com/us/industry/accounting-services-for-retail-businesses/",
     schema: faqSchema,
-});
+  });
 
   return (
     <ThemeProvider theme={theme}>

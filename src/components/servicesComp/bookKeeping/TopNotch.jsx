@@ -145,7 +145,7 @@ const TopNotch = () => {
           <Box
             component="img"
             src="https://img.freepik.com/free-vector/accounting-concept-illustration_114360-5903.jpg"
-            alt="Bookkeeping illustration"
+            alt="Bookkeeping services for small businesses in the USA"
             sx={{
               width: "100%",
               maxWidth: 420,
