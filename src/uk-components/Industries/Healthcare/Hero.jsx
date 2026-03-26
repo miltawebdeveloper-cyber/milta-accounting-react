@@ -84,13 +84,13 @@ const AboutUs = () => {
               color: "#fff",
             }}
           >
-           Managing a hospitality business means juggling staffing, suppliers, guests, and rising costs. Our professional hospitality accounting services are designed to simplify your finances, improve visibility, and help you make confident business decisions.
- 
+            Managing a hospitality business means juggling staffing, suppliers, guests, and rising costs. Our professional hospitality accounting services are designed to simplify your finances, improve visibility, and help you make confident business decisions.
+
           </Typography>
 
           {/* ✅ Updated Button */}
           <Button
-            href="/contact"
+            href="/uk/contact"
             sx={{
               px: 4,
               py: 1.5,

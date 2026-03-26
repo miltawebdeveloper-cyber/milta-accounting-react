@@ -37,12 +37,12 @@ const BannerSection = () => {
           Top-Rated CPA Firm in New Jersey for Your Business Needs
         </Typography>
 
-        <Typography fontSize={{ xs: "1rem", sm: "1.1rem" }} mb={3} opacity={0.9}>
+        <Typography fontSize={{ xs: "1rem", sm: "1.1rem" }} mb={3} opacity={0.9}  color="#ffffff">
           Elevate Your Financial Health with Premier CPA Services for Small
           Businesses in New Jersey.
         </Typography>
 
-        <Typography fontSize="1rem" mb={4} opacity={0.9}>
+        <Typography fontSize="1rem" mb={4} opacity={0.9}  color="#ffffff">
           Are you searching for CPA services near me? Look no further! Milta is
           your trusted accounting firm in New Jersey, specializing in
           personalized tax planning and preparation for small businesses and

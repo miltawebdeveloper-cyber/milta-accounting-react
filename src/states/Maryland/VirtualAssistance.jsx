@@ -50,7 +50,7 @@ const BannerSection = () => {
         <Typography
           fontSize={{ xs: "1rem", sm: "1.15rem", md: "1.25rem" }}
           mb={4}
-          opacity={0.95}
+          opacity={0.95} color="#ffffff"
         >
           Looking for the best virtual assistant companies? Our virtual assistant
           service in Maryland offers cost-effective solutions to help small
@@ -60,7 +60,7 @@ const BannerSection = () => {
         <Typography
           fontSize={{ xs: "1rem", sm: "1.15rem", md: "1.25rem" }}
           mb={4}
-          opacity={0.95}
+          opacity={0.95} color="#ffffff"
         >
           Optimize Your Business with a Virtual Assistant. Schedule a free
           consultation today and see how a virtual assistant for small business

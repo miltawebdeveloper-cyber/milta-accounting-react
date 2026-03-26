@@ -61,7 +61,7 @@ const companyLinks = [
   { label: "Blogs & Resources", to: "/blogs" },
   { label: "Areas We Serve", to: "/areas-we-serve" },
   { label: "FAQ", to: "/faqs" },
-  
+
 ];
 
 const supportLinks = [
@@ -73,7 +73,7 @@ const supportLinks = [
 
 export default function FooterLayout() {
 
-   const [newsletterEmail, setNewsletterEmail] = useState(""); // ✅ useState for newsletter
+  const [newsletterEmail, setNewsletterEmail] = useState(""); // ✅ useState for newsletter
   const [loading, setLoading] = useState(false);
 
   const handleNewsletterSubmit = (e) => {
@@ -91,6 +91,8 @@ export default function FooterLayout() {
         "template_2p21kkt",     // replace with EmailJS template ID
         {
           form_type: "Newsletter Subscription",
+          newsletter_section: "display:block;",
+          contact_section: "display:none;",
           email: newsletterEmail,
           source: "Footer Newsletter",
         },
@@ -114,7 +116,7 @@ export default function FooterLayout() {
 
   return (
     <Box sx={{ bgcolor: "#f8f8f8", pt: 10 }}>
-      
+
       {/* ======================= NEWSLETTER ======================= */}
       <Container maxWidth="md" sx={{ textAlign: "center", mb: 12, pb: 8 }}>
         <Typography variant="h4" fontWeight={700} mb={1} pb={2}>
@@ -181,11 +183,11 @@ export default function FooterLayout() {
             <Typography
               variant="h4"
               fontWeight={700}
-              
+
               mb={2}
               sx={{ fontSize: { xs: "1.5rem", md: "2rem" } }}
             >
-              Ready to simplify your tasks? 
+              Ready to simplify your tasks?
             </Typography>
 
             <Typography variant="body2" sx={{ opacity: 0.8, mb: 2 }} color={"#fff"}>
@@ -243,57 +245,57 @@ export default function FooterLayout() {
 
             {/* ================= LEFT SIDE ================= */}
             <Grid item xs={12} md={4}>
-              <Box component="img" src={LogoWhite} alt="logo" sx={{ width: "160px"}} />
+              <Box component="img" src={LogoWhite} alt="logo" sx={{ width: "160px" }} />
 
               <Box sx={{ display: "flex", alignItems: "flex-start", mb: 2, mt: 2 }}>
-                <EmailIcon sx={{ fontSize: 20, mr: 1 ,color: "#ec9513" }} />
-                <Typography variant="body2" sx={{color:"#fff"}}>info@miltafs.com</Typography>
+                <EmailIcon sx={{ fontSize: 20, mr: 1, color: "#ec9513" }} />
+                <Typography variant="body2" sx={{ color: "#fff" }}>info@miltafs.com</Typography>
               </Box>
               <Box sx={{ display: "flex", alignItems: "flex-start", mb: 2, color: "#fff" }}>
-  <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                <LocationOnIcon sx={{ fontSize: 20, mr: 1, color: "#ec9513" }} />
-                <Typography variant="body2" sx={{color:"#fff"}}>
-                  No. 175, Sri Sai Tower, 3rd floor,
-                  <br />
-                  Bharathi Colony Rd, Peelamedu,
-                  <br />
-                  Coimbatore, Tamil Nadu 641004, India.
-                </Typography>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                    <LocationOnIcon sx={{ fontSize: 20, mr: 1, color: "#ec9513" }} />
+                    <Typography variant="body2" sx={{ color: "#fff" }}>
+                      No. 175, Sri Sai Tower, 3rd floor,
+                      <br />
+                      Bharathi Colony Rd, Peelamedu,
+                      <br />
+                      Coimbatore, Tamil Nadu 641004, India.
+                    </Typography>
+                  </Box>
+                  {/* US Numbers */}
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                    <Typography
+                      variant="body2"
+                      sx={{ color: "#ff9800", fontWeight: 600, fontSize: 16 }}
+                    >
+                      USA :
+                    </Typography>
+                    <a href="tel:+13254754737" style={{ color: "#fff", textDecoration: "none", fontSize: 15 }}>
+                      +1 325-475-4737
+                    </a>{" "}
+                    /{" "}
+                    <a href="tel:+18133030213" style={{ color: "#fff", textDecoration: "none", fontSize: 15 }}>
+                      +1 813-303-0213
+                    </a>
+                  </Box>
+
+                  {/* India Number */}
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                    <Typography
+                      variant="body2"
+                      sx={{ color: "#ff9800", fontWeight: 600, fontSize: 16 }}
+                    >
+                      IN :
+                    </Typography>
+                    <a href="tel:+919600103723" style={{ color: "#fff", textDecoration: "none", fontSize: 15 }}>
+                      +91-96001 03723
+                    </a>{" "}
+                  </Box>
+
+
+                </Box>
               </Box>
-    {/* US Numbers */}
-<Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-  <Typography
-    variant="body2"
-    sx={{ color: "#ff9800", fontWeight: 600 ,fontSize: 16}}
-  >
-    USA :
-  </Typography>
-   <a href="tel:+13254754737" style={{ color: "#fff", textDecoration: "none", fontSize: 15 }}>
-    +1 325-475-4737
-  </a>{" "}
-  /{" "}
-  <a href="tel:+18133030213" style={{ color: "#fff", textDecoration: "none", fontSize: 15 }}>
-    +1 813-303-0213
-  </a>
-</Box>
-
-{/* India Number */}
-<Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-  <Typography
-    variant="body2"
-    sx={{ color: "#ff9800", fontWeight: 600 ,fontSize: 16}}
-  >
-    IN :
-  </Typography>
-    <a href="tel:+919600103723" style={{ color: "#fff", textDecoration: "none", fontSize: 15 }}>
-  +91-96001 03723
- </a>{" "}
-</Box>
-
-
-  </Box>
-</Box>
 
             </Grid>
 
@@ -327,7 +329,7 @@ export default function FooterLayout() {
                       display: "flex",
                       alignItems: "center",
                       gap: 0.7,
-                      color:"#fff",
+                      color: "#fff",
                       textDecoration: "none",
                       "&:hover": { color: "#ec9513" },
                       fontSize: "0.92rem",
@@ -355,7 +357,7 @@ export default function FooterLayout() {
                       display: "flex",
                       alignItems: "center",
                       gap: 0.7,
-                      color:"#fff",
+                      color: "#fff",
                       textDecoration: "none",
                       "&:hover": { color: "#ec9513" },
                       fontSize: "0.92rem",
@@ -409,21 +411,21 @@ export default function FooterLayout() {
             <Grid container spacing={2} alignItems="center" justifyContent="space-between">
 
               {/* LEFT TEXT */}
-             
+
 
               {/* LEFT TEXT (Copyright) */}
               <Grid item xs={12} md={3} sx={{ textAlign: "center" }}> {/* ⬅ MODIFIED: Set textAlign to "center" for all sizes */}
-                <Typography variant="body2" sx={{ opacity: 0.75 , color:"#fff"}}>
+                <Typography variant="body2" sx={{ opacity: 0.75, color: "#fff" }}>
                   © {new Date().getFullYear()} Milta. All rights reserved.
                 </Typography>
               </Grid>
 
               {/* CERTIFICATIONS */}
               <Grid item xs={12} md={3} sx={{ display: { xs: "none", sm: "flex" }, justifyContent: "center", gap: 3 }}>
-                
+
                 <Box component="img" src={bfirms} sx={{ width: 40 }} />
                 <Box component="img" src={Clutch} sx={{ width: 48 }} />
-                <Box component="img" src={Trustpilot} sx={{ width: 80 , height:30, pt:1}} />
+                <Box component="img" src={Trustpilot} sx={{ width: 80, height: 30, pt: 1 }} />
               </Grid>
 
               {/* PRIVACY & TERMS */}

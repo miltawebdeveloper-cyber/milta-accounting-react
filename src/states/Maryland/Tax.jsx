@@ -47,7 +47,7 @@ const BannerSection = () => {
         <Typography
           fontSize={{ xs: "1rem", sm: "1.1rem", md: "1.2rem" }}
           mb={3}
-          opacity={0.9}
+          opacity={0.9} color="#ffffff"
         >
 Simplify your tax filing with trusted tax services near me. Whether federal, state, or local taxes, our experts provide precise tax planning and preparation. Looking for an accounting firm near me? Get reliable tax preparation services in Maryland today!
         </Typography>

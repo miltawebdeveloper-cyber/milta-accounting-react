@@ -9,11 +9,11 @@ const AboutUs = () => {
   useEffect(() => {
     // Update document title
     document.title = "Hospitality Accounting Services in the UK | Milta Accounting";
-    
+
     // Update or create meta description
     let metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", 
+      metaDescription.setAttribute("content",
         "We provide accounting services for the hospitality industry, helping UK businesses stay accurate, organized, and compliant."
       );
     } else {
@@ -22,11 +22,11 @@ const AboutUs = () => {
       metaDescription.content = "We provide accounting services for the hospitality industry, helping UK businesses stay accurate, organized, and compliant.";
       document.head.appendChild(metaDescription);
     }
-    
+
     // Update or create meta keywords
     let metaKeywords = document.querySelector('meta[name="keywords"]');
     if (metaKeywords) {
-      metaKeywords.setAttribute("content", 
+      metaKeywords.setAttribute("content",
         "hospitality accounting services, bookkeeping for hospitality, accounting for hospitality, hospitality accounting solutions, hospitality bookkeeping services, accounting services for hospitality"
       );
     } else {
@@ -35,7 +35,7 @@ const AboutUs = () => {
       metaKeywords.content = "hospitality accounting services, bookkeeping for hospitality, accounting for hospitality, hospitality accounting solutions, hospitality bookkeeping services, accounting services for hospitality";
       document.head.appendChild(metaKeywords);
     }
-    
+
     // Update or create canonical link
     let canonical = document.querySelector('link[rel="canonical"]');
     if (canonical) {
@@ -129,12 +129,12 @@ const AboutUs = () => {
               color: "#fff",
             }}
           >
-            We provide accounting services for the hospitality industry, helping UK businesses 
+            We provide accounting services for the hospitality industry, helping UK businesses
             stay accurate, organized, and compliant.
           </Typography>
 
           <Button
-            href="/contact"
+            href="/uk/contact"
             sx={{
               px: 4,
               py: 1.5,

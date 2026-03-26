@@ -42,11 +42,11 @@ const BannerSection = () => {
           </Box>
         </Typography>
 
-        <Typography fontSize={{ xs: "1rem", sm: "1.15rem" }} mb={1}>
+        <Typography fontSize={{ xs: "1rem", sm: "1.15rem" }} mb={1} color="#ffffff">
           Achieve success with expert digital marketing services in Maryland.
         </Typography>
 
-        <Typography fontSize={{ xs: "1rem", sm: "1.15rem" }} mb={4}>
+        <Typography fontSize={{ xs: "1rem", sm: "1.15rem" }} mb={4} color="#ffffff">
           Get a tailored strategy with Maryland Internet marketing today!
         </Typography>
 

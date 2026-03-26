@@ -51,7 +51,7 @@ const BannerSection = () => {
             Financial Controller Services in South Carolina
           </Box>
         </Typography>
-        <Typography fontSize={{ xs: "1rem", sm: "1.15rem", md: "1.25rem" }} mb={4} opacity={0.95}>
+        <Typography fontSize={{ xs: "1rem", sm: "1.15rem", md: "1.25rem" }} mb={4} opacity={0.95} color="#ffffff">
           Gain unparalleled financial clarity and operational efficiency with our<br></br> certified financial controller team.
         </Typography>
         <Button

@@ -56,7 +56,7 @@ const BannerSection = () => {
         <Typography
           fontSize={{ xs: "1rem", sm: "1.15rem", md: "1.25rem" }}
           mb={4}
-          opacity={0.95}
+          opacity={0.95} color="#ffffff"
         >
           Drive smarter financial strategy with Milta’s certified financial controllers in Texas,
           delivering accuracy, compliance, and scalable growth.

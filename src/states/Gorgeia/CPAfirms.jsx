@@ -36,10 +36,10 @@ const BannerSection = () => {
         <Typography variant="h4" fontWeight={700} mb={2}>
           Problem Solving CPA Firm in Georgia
         </Typography>
-        <Typography fontSize={{ xs: "1rem", sm: "1.1rem" }} mb={3} opacity={0.9}>
+        <Typography fontSize={{ xs: "1rem", sm: "1.1rem" }} mb={3} opacity={0.9}  color="#ffffff">
           Transform Your Financial Challenges with the Best CPA Service for Small Businesses in Georgia
         </Typography>
-        <Typography fontSize="1rem" mb={4} opacity={0.9}>
+        <Typography fontSize="1rem" mb={4} opacity={0.9}  color="#ffffff">
           Welcome to Milta CPA Services in Georgia, a trusted accounting firm dedicated to helping individuals and businesses with expert financial solutions. As one of the top CPA firms in Georgia, we specialize in accounting, tax preparation, and financial planning to ensure your business stays on track. Our team of certified professionals offers CPA services in Georgia that help you confidently manage your financial needs.
         </Typography>
         <Button

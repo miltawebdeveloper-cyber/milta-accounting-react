@@ -51,7 +51,7 @@ const BannerSection = () => {
             Financial Controller Services in Pennsylvania
           </Box>
         </Typography>
-        <Typography fontSize={{ xs: "1rem", sm: "1.15rem", md: "1.25rem" }} mb={4} opacity={0.95}>
+        <Typography fontSize={{ xs: "1rem", sm: "1.15rem", md: "1.25rem" }} mb={4} opacity={0.95} color="#ffffff">
           Ensure accuracy and compliance with our certified financial controller team, delivering top-tier financial controller services tailored to Pennsylvania businesses. Our outsourced solutions provide precise financial reporting, strategic planning, and seamless regulatory compliance. Improve operations with our accounting controller expertise, ensuring efficient workflows, optimized resources, and reliable financial oversight.
         </Typography>
         <Button

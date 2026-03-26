@@ -49,7 +49,7 @@ const BannerSection = () => {
         <Typography
           fontSize={{ xs: "1rem", sm: "1.15rem", md: "1.25rem" }}
           mb={4}
-          opacity={0.95}
+          opacity={0.95}  color="#ffffff"
         >
           Our specialized solutions are designed to enhance accuracy, optimize workflows, and fuel growth for small businesses.
         </Typography>

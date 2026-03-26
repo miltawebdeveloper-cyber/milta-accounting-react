@@ -49,7 +49,7 @@ const BannerSection = () => {
         <Typography
           fontSize={{ xs: "1rem", sm: "1.15rem", md: "1.25rem" }}
           mb={4}
-          opacity={0.95}
+          opacity={0.95} color="#ffffff"
         >
           Simplify payroll, reduce costs, and stay compliant with our professional
           payroll management services in Massachusetts.

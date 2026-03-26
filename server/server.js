@@ -171,11 +171,12 @@ app.post("/api/apply", upload.single("resume"), async (req, res) => {
         .from("resumes")
         .upload(fileName, file.buffer, {
           contentType: file.mimetype,
+          upsert: true
         });
 
       if (uploadError) {
-        console.error("Storage upload error:", uploadError);
-        throw uploadError;
+        console.error("Supabase Storage Upload Error:", uploadError);
+        return res.status(500).json({ error: `Storage Error: ${uploadError.message}` });
       }
 
       // Get public URL
@@ -186,25 +187,28 @@ app.post("/api/apply", upload.single("resume"), async (req, res) => {
       resumeURL = publicUrlData.publicUrl;
     }
 
-    // Insert application record
+    // Insert application record - Exactly matching provided schema
     const { data, error } = await supabase.from("applications").insert([
       {
-        firstName,
-        phone,
-        jobType,
-        position,
-        email,
+        firstName: firstName,
+        phone: phone,
+        jobType: jobType || null,
+        position: position || null,
+        email: email || null,
         reference: reference || "",
-        resumeURL,
+        resumeURL: resumeURL,
       },
     ]);
 
-    if (error) throw error;
+    if (error) {
+      console.error("Supabase Insert Error:", error);
+      return res.status(500).json({ error: `Database Error: ${error.message}` });
+    }
 
     res.json({ success: true, data, resumeURL });
   } catch (error) {
-    console.error("POST /api/apply error:", error);
-    res.status(500).json({ error: error.message });
+    console.error("POST /api/apply critical error:", error);
+    res.status(500).json({ error: error.message || "Internal server error" });
   }
 });
 

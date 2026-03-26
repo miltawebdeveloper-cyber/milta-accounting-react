@@ -12,7 +12,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 const slides = [
   {
-    title: "<h1>Expert Outsourcing <br> Accounting & Bookkeeping Services</h1>",
+    title: "Expert Outsourcing <br> Accounting & Bookkeeping Services",
     description:
       "Trusted by 100+ Clients Across 12 Countries. Proudly serving small businesses, growing enterprises, and Fortune 500 companies.",
     image:

@@ -56,7 +56,7 @@ const BannerSection = () => {
         <Typography
           fontSize={{ xs: "1rem", sm: "1.15rem", md: "1.25rem" }}
           mb={4}
-          opacity={0.95}
+          opacity={0.95}  color="#ffffff"
         >
           Unlock precision and compliance for your business with our certified financial controller team, offering specialized accounting controller services tailored to New York’s dynamic market. From meticulous financial reporting to strategic analysis, our outsourced solutions ensure accuracy, streamline workflows, and align with regulatory standards.
         </Typography>

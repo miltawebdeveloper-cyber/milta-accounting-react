@@ -56,7 +56,7 @@ const BannerSection = () => {
         <Typography
           fontSize={{ xs: "1rem", sm: "1.15rem", md: "1.25rem" }}
           mb={4}
-          opacity={0.95}
+          opacity={0.95}  color="#ffffff"
         >
           Delivering certified financial controller expertise to refine workflows, elevate reporting, and maintain compliance.
         </Typography>

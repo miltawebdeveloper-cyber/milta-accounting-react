@@ -37,7 +37,7 @@ const BannerSection = () => {
     sm={{ fontSize: "2rem" }}
     md={{ fontSize: "2.5rem" }}
     fontWeight={700}
-    mb={2}
+    mb={2} 
   >
     Bookkeeping Services for Small Businesses in Georgia, USA
   </Typography>
@@ -45,7 +45,7 @@ const BannerSection = () => {
   <Typography
     fontSize={{ xs: "1rem", sm: "1.1rem", md: "1.2rem" }}
     mb={3}
-    opacity={0.9}
+    opacity={0.9}  color="#ffffff"
   >
     With over 15+ years of experience, our bookkeeping company in Georgia specializes in supporting small to medium-sized businesses across Georgia and nearby regions.
     <br />

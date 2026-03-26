@@ -50,7 +50,7 @@ const BannerSection = () => {
         <Typography
           fontSize={{ xs: "1rem", sm: "1.15rem", md: "1.25rem" }}
           mb={4}
-          opacity={0.95}
+          opacity={0.95} color="#ffffff"
         >
           Reliable, cost-effective virtual assistant solutions helping small
           businesses save time and focus on growth.

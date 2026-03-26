@@ -36,11 +36,11 @@ const BannerSection = () => {
           Reliable CPA Firm in Virginia for Your Business Success
         </Typography>
 
-        <Typography fontSize={{ xs: "1rem", sm: "1.1rem" }} mb={3} opacity={0.9}>
+        <Typography fontSize={{ xs: "1rem", sm: "1.1rem" }} mb={3} opacity={0.9} color="#ffffff">
           Optimize Your Business Finances with Expert CPA Services in Virginia
         </Typography>
 
-        <Typography fontSize="1rem" mb={4} opacity={0.9}>
+        <Typography fontSize="1rem" mb={4} opacity={0.9} color="#ffffff">
           Milta is a trusted provider of CPA services for small businesses in
           Virginia. As one of the leading CPA firms in Virginia, we deliver
           expert accounting, tax preparation, and financial advisory solutions

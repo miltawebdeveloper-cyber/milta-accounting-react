@@ -42,10 +42,10 @@ const BannerSection = () => {
         >
           Customized Services for Your Bookkeeping Services <br />Needs in Connecticut (USA)
         </Typography>
-        <Typography fontSize={{ xs: "1rem", sm: "1.1rem", md: "1.2rem" }} mb={3} opacity={0.9}>
+        <Typography fontSize={{ xs: "1rem", sm: "1.1rem", md: "1.2rem" }} mb={3} opacity={0.9} color="#ffffff">
           More than 10+ Years Supporting Small to Medium Sized Businesses in Connecticut, USA, and <br /> Surrounding Areas.
         </Typography>
-        <Button
+        <Button  
           sx={{
             px: { xs: 3, sm: 4 },
             py: { xs: 1, sm: 1.3 },

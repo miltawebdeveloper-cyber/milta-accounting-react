@@ -20,21 +20,21 @@ const slideRightLeft = keyframes`
 const StickyButtons = () => {
   const buttons = [
     {
-      icon: <EmailIcon sx={{ fontSize: 22 }} />,
+      icon: <EmailIcon sx={{ fontSize: { xs: 18, md: 22 } }} />,
       bg: "linear-gradient(135deg, #ff8c00, #ff6600)",
       hoverBg: "linear-gradient(135deg, #ffa733, #ff751a)",
       link: "mailto:info@miltafs.com",
       external: false,
     },
     {
-      icon: <FacebookIcon sx={{ fontSize: 22 }} />,
+      icon: <FacebookIcon sx={{ fontSize: { xs: 18, md: 22 } }} />,
       bg: "linear-gradient(135deg, #25D366, #128C7E)",
       hoverBg: "linear-gradient(135deg, #2fe075, #22a06f)",
-      link: "https://www.facebook.com/people/Milta-Accounting/100078468321860/",
+      link: "https://www.facebook.com/miltaaccountingservices/",
       external: true,
     },
     {
-      icon: <InstagramIcon sx={{ fontSize: 22 }} />,
+      icon: <InstagramIcon sx={{ fontSize: { xs: 18, md: 22 } }} />,
       bg: "linear-gradient(135deg, #ff8c00, #ff6600)",
       hoverBg: "linear-gradient(135deg, #ffa733, #ff751a)",
       link: "https://www.instagram.com/milta_accountings/",
@@ -54,7 +54,7 @@ const StickyButtons = () => {
         flexDirection: "column",
         alignItems: "flex-end",
         gap: 1.5,
-        pr: "5px",
+        pr: { xs: 0, md: "5px" },
 
         /* ✅ Slide Right → Left Animation Only Once */
         animation: `${slideRightLeft} 0.8s ease-out`,
@@ -89,8 +89,8 @@ const StickyButtons = () => {
             },
 
             "@media (max-width:600px)": {
-              width: "42px",
-              height: "42px",
+              width: "36px",
+              height: "36px",
             },
           }}
         >

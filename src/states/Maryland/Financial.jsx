@@ -57,7 +57,7 @@ const BannerSection = () => {
         <Typography
           fontSize={{ xs: "1rem", sm: "1.15rem", md: "1.25rem" }}
           mb={4}
-          opacity={0.95}
+          opacity={0.95} color="#ffffff"
         >
           Ensure accuracy and compliance with our certified financial controller team, delivering top-tier services for Maryland businesses.
         </Typography>

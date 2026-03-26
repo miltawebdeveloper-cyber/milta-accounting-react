@@ -49,7 +49,7 @@ const BannerSection = () => {
         <Typography
           fontSize={{ xs: "1rem", sm: "1.15rem", md: "1.25rem" }}
           mb={4}
-          opacity={0.95}
+          opacity={0.95} color="#ffffff"
         >
           Trust Ohio’s trusted data entry companies for streamlined financial
           operations and scalable solutions.

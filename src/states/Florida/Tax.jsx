@@ -43,7 +43,7 @@ const BannerSection = () => {
         <Typography
           fontSize={{ xs: "1rem", sm: "1.1rem", md: "1.2rem" }}
           mb={3}
-          opacity={0.9}
+          opacity={0.9}  color="#ffffff"
         >
           We handle complicated tax forms and filings, so you don’t have to.
           Get started today with a FREE consultation!

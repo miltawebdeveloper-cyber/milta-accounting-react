@@ -49,7 +49,7 @@ const BannerSection = () => {
         <Typography
           fontSize={{ xs: "1rem", sm: "1.15rem", md: "1.25rem" }}
           mb={4}
-          opacity={0.95}
+          opacity={0.95}  color="#ffffff"
         >
           Businesses in Georgia are embracing virtual assistant services to
           enhance efficiency and streamline operations. Our skilled virtual

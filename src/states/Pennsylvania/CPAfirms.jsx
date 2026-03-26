@@ -35,10 +35,10 @@ const BannerSection = () => {
         <Typography variant="h4" fontWeight={700} mb={2}>
           Trusted CPA Firm in Pennsylvania for Your Business Success
         </Typography>
-        <Typography fontSize={{ xs: "1rem", sm: "1.1rem" }} mb={3} opacity={0.9}>
+        <Typography fontSize={{ xs: "1rem", sm: "1.1rem" }} mb={3} opacity={0.9} color="#ffffff">
           Optimize Your Business Finances with Expert CPA Services in Pennsylvania
         </Typography>
-        <Typography fontSize="1rem" mb={4} opacity={0.9}>
+        <Typography fontSize="1rem" mb={4} opacity={0.9} color="#ffffff">
           Milta provides expert CPA services in Pennsylvania, offering tailored financial solutions for individuals and small businesses. Our certified professionals deliver CPA services for small businesses, ensuring financial clarity and compliance.
         </Typography>
         <Button

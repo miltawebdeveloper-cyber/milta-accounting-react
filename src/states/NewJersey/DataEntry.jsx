@@ -49,7 +49,7 @@ const BannerSection = () => {
         <Typography
           fontSize={{ xs: "1rem", sm: "1.15rem", md: "1.25rem" }}
           mb={4}
-          opacity={0.95}
+          opacity={0.95}  color="#ffffff"
         >
           Our expertise in accounting data entry ensures seamless financial record management, while our comprehensive data management services help you organize, process, and secure critical business information.
         </Typography>

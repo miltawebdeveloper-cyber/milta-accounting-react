@@ -53,56 +53,56 @@ const AboutUs = () => {
           }}
         />
 
-       {/* Hero Content */}
-<Container maxWidth="lg" sx={{ zIndex: 1, px: 2 }}>
- <Typography
-  variant="h1"
-  sx={{
-    fontFamily: "'Poppins', sans-serif",
-    fontWeight: 700,
-    fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
-    mb: 2,
-    textShadow: "2px 2px 10px rgba(0,0,0,0.5)",
-  }}
->
-  Outsource Real Estate Accounting Services to India
-</Typography>
+        {/* Hero Content */}
+        <Container maxWidth="lg" sx={{ zIndex: 1, px: 2 }}>
+          <Typography
+            variant="h1"
+            sx={{
+              fontFamily: "'Poppins', sans-serif",
+              fontWeight: 700,
+              fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
+              mb: 2,
+              textShadow: "2px 2px 10px rgba(0,0,0,0.5)",
+            }}
+          >
+            Outsource Real Estate Accounting Services to India
+          </Typography>
 
-<Typography
-  sx={{
-    fontFamily: "'Poppins', sans-serif",
-    fontSize: { xs: "1rem", sm: "1.2rem", md: "1.25rem" },
-    mb: 4,
-    color: "#fff",
-    lineHeight: 1.6,
-    textShadow: "1px 1px 6px rgba(0,0,0,0.4)",
-    maxWidth: 700,
-    mx: "auto",
-  }}
->
-  For smooth financial management, work with qualified real estate accountants.
-</Typography>
+          <Typography
+            sx={{
+              fontFamily: "'Poppins', sans-serif",
+              fontSize: { xs: "1rem", sm: "1.2rem", md: "1.25rem" },
+              mb: 4,
+              color: "#fff",
+              lineHeight: 1.6,
+              textShadow: "1px 1px 6px rgba(0,0,0,0.4)",
+              maxWidth: 700,
+              mx: "auto",
+            }}
+          >
+            For smooth financial management, work with qualified real estate accountants.
+          </Typography>
 
-<Button
-  href="/contact"
-  sx={{
-    px: 4,
-    py: 1.5,
-    borderRadius: 30,
-    bgcolor: "#2b6d2a",
-    color: "#fff",
-    fontWeight: 700,
-    boxShadow: "0 5px 15px rgba(50, 141, 38, 0.4)",
-    "&:hover": {
-      transform: "scale(1.05)",
-      boxShadow: "0 8px 25px rgba(100, 145, 70, 0.5)",
-    },
-  }}
->
-  Book a Free Demo
-</Button>
+          <Button
+            href="/uk/contact"
+            sx={{
+              px: 4,
+              py: 1.5,
+              borderRadius: 30,
+              bgcolor: "#2b6d2a",
+              color: "#fff",
+              fontWeight: 700,
+              boxShadow: "0 5px 15px rgba(50, 141, 38, 0.4)",
+              "&:hover": {
+                transform: "scale(1.05)",
+                boxShadow: "0 8px 25px rgba(100, 145, 70, 0.5)",
+              },
+            }}
+          >
+            Book a Free Demo
+          </Button>
 
-</Container>
+        </Container>
 
         {/* Gradient Animation Keyframes */}
         <Box

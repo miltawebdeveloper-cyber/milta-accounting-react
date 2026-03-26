@@ -35,10 +35,10 @@ const BannerSection = () => {
         <Typography variant="h4" fontWeight={700} mb={2}>
           Top-Rated CPA Firm in North Carolina for Your Business Needs
         </Typography>
-        <Typography fontSize={{ xs: "1rem", sm: "1.1rem" }} mb={3} opacity={0.9}>
+        <Typography fontSize={{ xs: "1rem", sm: "1.1rem" }} mb={3} opacity={0.9}  color="#ffffff">
           Transform Your Finances with Premier Tax Preparation Services in North Carolina.
         </Typography>
-        <Typography fontSize="1rem" mb={4} opacity={0.9}>
+        <Typography fontSize="1rem" mb={4} opacity={0.9}  color="#ffffff">
           Looking for tax services near me? Milta is your trusted accounting firm near me, delivering expert tax planning and preparation tailored to small businesses and individuals. As a leading provider of tax preparation services in North Carolina, our CPAs ensure accuracy, compliance, and strategic growth. Specializing in NC tax preparation, we streamline filings, maximize deductions, and offer proactive financial guidance. From bookkeeping to complex tax strategies, our team empowers you to thrive. Partner with Milta, the local choice for reliable, results-driven CPA services in North Carolina.
         </Typography>
         <Button

@@ -45,7 +45,7 @@ const BannerSection = () => {
   <Typography 
     fontSize={{ xs: "1rem", sm: "1.1rem", md: "1.2rem" }} 
     mb={3} 
-    opacity={0.9}
+    opacity={0.9}  color="#ffffff"
   >
     More than 10+ Years Supporting Small to Medium Sized Businesses in Florida, USA, and <br /> Surrounding Areas.
   </Typography>

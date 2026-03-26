@@ -44,6 +44,8 @@ const Footer = () => {
         {
           form_type: "Footer Newsletter",
           email: newsletterEmail,
+          newsletter_section: "display:block;",
+          contact_section: "display:none;",
           source: "UK Footer",
         },
         "BYgwI5Ebr7rcWTjuw"
@@ -75,18 +77,18 @@ const Footer = () => {
     { label: "Law Firms", to: "/uk/law-firm-accounting-services" },
     { label: "Real Estate", to: "/uk/accounting-services-for-real-estate" },
     { label: "Hospitality", to: "/uk/hospitality-accounting-services" },
-       
+
   ];
 
- 
+
   const legalLinks = [
-  { label: "Blog", to: "/uk/blogs" },
-  { label: "Contact", to: "/uk/contact" },
-  { label: "About", to: "/uk/about" },
-  { label: "Why Choose Milta", to: "/uk/why-choose-milta" },
-  { label: "Privacy Policy", to: "/uk/privacy-policy" },
-  { label: "Terms of Service", to: "/uk/terms-of-service" },
-];
+    { label: "Blog", to: "/uk/blogs" },
+    { label: "Contact", to: "/uk/contact" },
+    { label: "About", to: "/uk/about" },
+    { label: "Why Choose Milta", to: "/uk/why-choose-milta" },
+    { label: "Privacy Policy", to: "/uk/privacy-policy" },
+    { label: "Terms of Service", to: "/uk/terms-of-service" },
+  ];
 
   return (
     <Box component="footer" sx={{ bgcolor: "#2b6d2a", color: "#fff" }}>
@@ -103,9 +105,9 @@ const Footer = () => {
         >
           {/* ================= LEFT SIDE: Contact & Socials ================= */}
           <Box sx={{ flex: 1 }}>
-           <Typography variant="h6" sx={{ fontWeight: 700, mb: 2 }}>
-                Get In Touch
-              </Typography>
+            <Typography variant="h6" sx={{ fontWeight: 700, mb: 2 }}>
+              Get In Touch
+            </Typography>
 
             {/* Contact Info */}
             <Box sx={{ display: "flex", flexDirection: "column", gap: 2, mb: 3 }}>
@@ -129,51 +131,51 @@ const Footer = () => {
             </Box>
 
             {/* Social Icons */}
-<Box sx={{ display: "flex", gap: 1.2, mt: 2 }}>
-  {/* LinkedIn */}
-  <Link
-    href="https://www.linkedin.com/company/milta-accounding-services-pvt-ltd/"
-    target="_blank"
-    rel="noopener"
-  >
-    <Box sx={socialIconStyle}>
-      <LinkedIn fontSize="small" />
-    </Box>
-  </Link>
+            <Box sx={{ display: "flex", gap: 1.2, mt: 2 }}>
+              {/* LinkedIn */}
+              <Link
+                href="https://www.linkedin.com/company/milta-accounding-services-pvt-ltd/"
+                target="_blank"
+                rel="noopener"
+              >
+                <Box sx={socialIconStyle}>
+                  <LinkedIn fontSize="small" />
+                </Box>
+              </Link>
 
-  {/* Facebook */}
-  <Link
-    href="https://www.facebook.com/miltaaccountingservices/"
-    target="_blank"
-    rel="noopener"
-  >
-    <Box sx={socialIconStyle}>
-      <Facebook fontSize="small" />
-    </Box>
-  </Link>
+              {/* Facebook */}
+              <Link
+                href="https://www.facebook.com/miltaaccountingservices/"
+                target="_blank"
+                rel="noopener"
+              >
+                <Box sx={socialIconStyle}>
+                  <Facebook fontSize="small" />
+                </Box>
+              </Link>
 
-  {/* Instagram */}
-  <Link
-    href="https://www.instagram.com/milta_accountings/"
-    target="_blank"
-    rel="noopener"
-  >
-    <Box sx={socialIconStyle}>
-      <Instagram fontSize="small" />
-    </Box>
-  </Link>
+              {/* Instagram */}
+              <Link
+                href="https://www.instagram.com/milta_accountings/"
+                target="_blank"
+                rel="noopener"
+              >
+                <Box sx={socialIconStyle}>
+                  <Instagram fontSize="small" />
+                </Box>
+              </Link>
 
-  {/* YouTube */}
-  <Link
-    href="https://www.youtube.com/@milta-accounting-service"
-    target="_blank"
-    rel="noopener"
-  >
-    <Box sx={socialIconStyle}>
-      <YouTube fontSize="small" />
-    </Box>
-  </Link>
-</Box>
+              {/* YouTube */}
+              <Link
+                href="https://www.youtube.com/@milta-accounting-service"
+                target="_blank"
+                rel="noopener"
+              >
+                <Box sx={socialIconStyle}>
+                  <YouTube fontSize="small" />
+                </Box>
+              </Link>
+            </Box>
 
           </Box>
 
@@ -188,7 +190,7 @@ const Footer = () => {
                   key={i}
                   variant="body2"
                   color="#fff"
-                 
+
                   onClick={() => navigate(item.to)}
                   sx={{ mb: 1.2, opacity: 0.85, cursor: "pointer", "&:hover": { color: "#97ba3a" } }}
                 >
@@ -199,9 +201,9 @@ const Footer = () => {
 
           </Box>
 
-         
+
           <Box sx={{ flex: 0.8, display: "flex", flexDirection: "column", gap: 3 }}>
-            
+
             <Box>
               <Typography variant="h6" sx={{ fontWeight: 700, mb: 2 }}>
                 Industries
@@ -219,7 +221,7 @@ const Footer = () => {
               ))}
             </Box>
 
-  
+
           </Box>
 
           {/* ================= RIGHT SIDE: Newsletter ================= */}
@@ -251,47 +253,47 @@ const Footer = () => {
         </Box>
 
         {/* ================= BOTTOM LEGAL BAR ================= */}
-<Box
-  sx={{
-    borderTop: "1px solid rgba(255,255,255,0.15)",
-    py: 2,
-    display: "flex",
-    flexDirection: { xs: "column", md: "row" },
-    justifyContent: "space-between",
-    alignItems: "center",
-    fontSize: 11,
-    opacity: 0.65,
-    gap: 2,
-  }}
->
-  {/* Left Column: Legal Links */}
-  <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
-    {legalLinks.map((item, i) => (
-      <Typography
-        key={i}
-        variant="caption"
-        color="#fff"
-        sx={{ cursor: "pointer", "&:hover": { color: "#97ba3a" } }}
-        onClick={() => navigate(item.to)}
-      >
-        {item.label}
-      </Typography>
-    ))}
-  </Box>
+        <Box
+          sx={{
+            borderTop: "1px solid rgba(255,255,255,0.15)",
+            py: 2,
+            display: "flex",
+            flexDirection: { xs: "column", md: "row" },
+            justifyContent: "space-between",
+            alignItems: "center",
+            fontSize: 11,
+            opacity: 0.65,
+            gap: 2,
+          }}
+        >
+          {/* Left Column: Legal Links */}
+          <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
+            {legalLinks.map((item, i) => (
+              <Typography
+                key={i}
+                variant="caption"
+                color="#fff"
+                sx={{ cursor: "pointer", "&:hover": { color: "#97ba3a" } }}
+                onClick={() => navigate(item.to)}
+              >
+                {item.label}
+              </Typography>
+            ))}
+          </Box>
 
-  {/* Right Column: Copyright */}
-  <Typography
-    variant="caption"
-    sx={{
-      
-      color: "#fff",
-      fontSize: 12,
-      textAlign: { xs: "center", md: "right" },
-    }}
-  >
-    © {new Date().getFullYear()} Milta Accounting Services. All rights reserved.
-  </Typography>
-</Box>
+          {/* Right Column: Copyright */}
+          <Typography
+            variant="caption"
+            sx={{
+
+              color: "#fff",
+              fontSize: 12,
+              textAlign: { xs: "center", md: "right" },
+            }}
+          >
+            © {new Date().getFullYear()} Milta Accounting Services. All rights reserved.
+          </Typography>
+        </Box>
 
       </Container>
     </Box>

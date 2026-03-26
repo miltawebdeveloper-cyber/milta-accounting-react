@@ -60,7 +60,7 @@ const NumbersInGoodHands = () => {
                   fontSize: { xs: "1.3rem", sm: "1.4rem", md: "1.6rem" },
                 }}
               >
-                30+ Years
+                10+ Years
               </Typography>
               <Typography
                 sx={{

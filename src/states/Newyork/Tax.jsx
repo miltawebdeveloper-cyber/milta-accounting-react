@@ -46,7 +46,7 @@ const BannerSection = () => {
         <Typography
           fontSize={{ xs: "1rem", sm: "1.1rem", md: "1.2rem" }}
           mb={3}
-          opacity={0.9}
+          opacity={0.9}  color="#ffffff"
         >
           Make your tax filing process seamless with reliable tax services near me. Whether you’re filing federal, state, or city taxes, our expert team offers professional tax planning and preparation to ensure accuracy.
         </Typography>

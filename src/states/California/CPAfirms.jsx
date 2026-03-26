@@ -50,6 +50,7 @@ const BannerSection = () => {
           fontSize={{ xs: "1rem", sm: "1.15rem", md: "1.25rem" }}
           mb={4}
           opacity={0.95}
+          color="#ffffff"
         >
           Professional CPA services in California helping small businesses manage
           accounting, tax compliance, and financial growth with confidence.

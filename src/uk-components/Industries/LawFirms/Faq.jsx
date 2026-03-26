@@ -12,34 +12,21 @@ import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 const faqs = [
   {
     id: "panel1",
-    question: "What does ecommerce accounting include?",
+    question: "Do you work with UK law firms?",
     answer:
-      "Ecommerce accounting covers bookkeeping, sales reconciliation, inventory and COGS tracking, payroll, financial reporting, and cash flow management, specifically tailored to online businesses.",
+      "Yes, we specialise in supporting UK law firms, solicitors, and legal professionals with accounting, compliance, and bookkeeping services.",
   },
   {
     id: "panel2",
-    question: "Do you support Amazon, Shopify, and WooCommerce sellers?",
+    question: "Do you offer a free trial?",
     answer:
-      "Yes. We work with ecommerce sellers on Amazon, Shopify, WooCommerce, and other platforms, integrating all sales data into a single, accurate accounting system.",
+      "Yes, we provide a no-cost 5-hour free trial task so you can experience our service before making any commitment.",
   },
   {
     id: "panel3",
-    question: "How do you reconcile ecommerce sales and payouts?",
+    question: "Why Choose Our Law Firm Bookkeeping Services?",
     answer:
-      "We match sales orders with payment gateway settlements, platform fees, refunds, and bank deposits to ensure your revenue and cash flow figures are accurate.",
-  },
-  {
-    id: "panel4",
-    question: "Can you help with inventory accounting and COGS?",
-    answer:
-      "Yes. We track stock movements and calculate cost of goods sold (COGS) to give you a clear understanding of profitability and inventory performance.",
-  },
-  {
-    id: "panel5",
-    question:
-      "Is your service suitable for small and growing ecommerce businesses in the UK?",
-    answer:
-      "Absolutely. Our ecommerce accounting services are designed to support startups, growing online stores, and established UK ecommerce businesses, scaling as your business grows.",
+      "- Legal Expertise That Matters\n- Accurate & Reliable Support\n- Dedicated Team\n- Cost-Effective Outsourcing\n- Flexible & Scalable Services",
   },
 ];
 
@@ -80,7 +67,7 @@ const FaqSection = () => {
             }}
           />
           <Typography fontWeight={600}>
-            FAQs – Ecommerce Accounting Services in the UK
+            FAQs – Law Firm Bookkeeping Services in the UK
           </Typography>
         </Box>
 

@@ -39,7 +39,7 @@ const BannerSection = () => {
         <Typography
           fontSize={{ xs: "1rem", sm: "1.15rem", md: "1.25rem" }}
           mb={4}
-          opacity={0.95}
+          opacity={0.95}  color="#ffffff"
         >
           Dominate New Jersey’s competitive market with expert digital marketing
           services. Partner with us today and take your brand to the next level.

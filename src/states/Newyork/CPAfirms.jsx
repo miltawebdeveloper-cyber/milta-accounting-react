@@ -35,10 +35,10 @@ const BannerSection = () => {
         <Typography variant="h4" fontWeight={700} mb={2}>
           Top-Rated CPA Firm in South Carolina for Your Business Needs
         </Typography>
-        <Typography fontSize={{ xs: "1rem", sm: "1.1rem" }} mb={3} opacity={0.9}>
+        <Typography fontSize={{ xs: "1rem", sm: "1.1rem" }} mb={3} opacity={0.9}  color="#ffffff">
           Enhance Your Financial Health with Premier CPA Services for Small Businesses in South Carolina.
         </Typography>
-        <Typography fontSize="1rem" mb={4} opacity={0.9}>
+        <Typography fontSize="1rem" mb={4} opacity={0.9}  color="#ffffff">
           Are you on the hunt for CPA firms near me? Look no further! Milta is your trusted accounting firm in South Carolina, focusing on customized tax planning and preparation services for small businesses and individuals. Recognized as one of the best CPA services for small businesses in South Carolina, our certified public accountants are committed to ensuring precision, compliance, and strategic growth tailored to your specific needs.
         </Typography>
         <Button

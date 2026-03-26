@@ -34,10 +34,10 @@ const BannerSection = () => {
         <Typography variant="h4" fontWeight={700} mb={2}>
           Top-Rated CPA Firm in Massachusetts For Your Business Needs
         </Typography>
-        <Typography fontSize={{ xs: "1rem", sm: "1.1rem" }} mb={3} opacity={0.9}>
+        <Typography fontSize={{ xs: "1rem", sm: "1.1rem" }} mb={3} opacity={0.9} color="#ffffff">
           As a trusted certified public accountant near you, we blend local expertise with tailored solutions to empower your enterprise.
         </Typography>
-        <Typography fontSize="1rem" mb={4} opacity={0.9}>
+        <Typography fontSize="1rem" mb={4} opacity={0.9} color="#ffffff">
           Searching for top-rated CPA firms near me? Your search ends here. Milta is your dedicated accounting partner in Massachusetts, delivering customized tax planning, compliance management, and financial advisory services for small businesses and individuals. Recognized as the best CPA service for small businesses in Massachusetts, our certified public accountants focus on accuracy, strategic foresight, and long-term growth.
         </Typography>
         <Button

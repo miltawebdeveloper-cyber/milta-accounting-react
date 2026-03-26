@@ -102,6 +102,7 @@ const EcommerceIntroSection = () => {
             }}
           >
             <Button
+              href="/uk/contact"
               variant="contained"
               sx={{
                 px: 4,
@@ -120,6 +121,7 @@ const EcommerceIntroSection = () => {
             </Button>
 
             <Button
+              href="tel:+919600103723"
               variant="outlined"
               sx={{
                 px: 4,
@@ -139,8 +141,8 @@ const EcommerceIntroSection = () => {
             </Button>
           </Box>
         </Box>
-      </Container>
-    </Box>
+      </Container >
+    </Box >
   );
 };
 

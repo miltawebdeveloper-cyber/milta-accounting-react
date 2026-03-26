@@ -70,19 +70,19 @@ const HealthcareIntroSection = () => {
                 lineHeight: 1.8,
               }}
             >
-              Since 2015, we have been supporting UK businesses with dependable 
-              and customised financial management. Our specialized accounting 
-              services for the hospitality industry cater to restaurant owners, 
-              hotel managers, café operators, and resort directors who need 
+              Since 2015, we have been supporting UK businesses with dependable
+              and customised financial management. Our specialized accounting
+              services for the hospitality industry cater to restaurant owners,
+              hotel managers, café operators, and resort directors who need
               accurate reporting and efficient financial processes.
-              From structured bookkeeping for hospitality to payroll management, 
-              supplier payments, debtor tracking, inventory control, and detailed 
-              financial reporting, we deliver complete hospitality accounting 
+              From structured bookkeeping for hospitality to payroll management,
+              supplier payments, debtor tracking, inventory control, and detailed
+              financial reporting, we deliver complete hospitality accounting
               solutions customized to your operations.
 
-              With a team of over 150 experienced virtual accountants, we provide 
-              specialised accounting for hospitality businesses across the UK, 
-              ensuring compliance, organisation, and financial clarity at every 
+              With a team of over 150 experienced virtual accountants, we provide
+              specialised accounting for hospitality businesses across the UK,
+              ensuring compliance, organisation, and financial clarity at every
               stage.
             </Typography>
           </Box>
@@ -97,6 +97,7 @@ const HealthcareIntroSection = () => {
             }}
           >
             <Button
+              href="/uk/contact"
               variant="contained"
               sx={{
                 px: 4,
@@ -115,6 +116,7 @@ const HealthcareIntroSection = () => {
             </Button>
 
             <Button
+              href="tel:+919600103723"
               variant="outlined"
               sx={{
                 px: 4,

@@ -89,7 +89,7 @@ const AboutUs = () => {
 
           {/* ✅ Updated Button */}
           <Button
-            href="/contact"
+            href="/uk/contact"
             sx={{
               px: 4,
               py: 1.5,

@@ -43,7 +43,7 @@ const contactItems = [
     label: "Contact Number",
     details: (
       <>
-       
+
         India : +91 96001 03723
       </>
     ),
@@ -146,56 +146,58 @@ const ContactInfoSection = () => {
               viewport={{ once: true }}
             >
               <Box sx={{ pl: { md: 6 } }}>
-                {contactItems.map((item, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 60 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{
-                      duration: 0.7,
-                      delay: idx * 0.2,
-                      ease: "easeOut",
-                    }}
-                    viewport={{ once: true }}
-                  >
-                    <Box
-                      display="flex"
-                      alignItems="flex-start"
-                      mb={4}
-                      gap={3}
-                      sx={{
-                        flexDirection: { xs: "column", sm: "row" },
+                <Box sx={{ display: { xs: "none", md: "block" } }}>
+                  {contactItems.map((item, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, y: 60 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{
+                        duration: 0.7,
+                        delay: idx * 0.2,
+                        ease: "easeOut",
                       }}
+                      viewport={{ once: true }}
                     >
                       <Box
+                        display="flex"
+                        alignItems="flex-start"
+                        mb={4}
+                        gap={3}
                         sx={{
-                          width: 56,
-                          height: 56,
-                          color: "#fff",
-                          borderRadius: "50%",
-                          backgroundColor: "#97ba3a",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          flexShrink: 0,
+                          flexDirection: { xs: "column", sm: "row" },
                         }}
                       >
-                        {item.icon}
-                      </Box>
+                        <Box
+                          sx={{
+                            width: 56,
+                            height: 56,
+                            color: "#fff",
+                            borderRadius: "50%",
+                            backgroundColor: "#97ba3a",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            flexShrink: 0,
+                          }}
+                        >
+                          {item.icon}
+                        </Box>
 
-                      <Box>
-                        <Typography fontSize={14} color="text.secondary">
-                          {item.label}
-                        </Typography>
-                        <Typography fontWeight={600}>
-                          {item.details}
-                        </Typography>
+                        <Box>
+                          <Typography fontSize={14} color="text.secondary">
+                            {item.label}
+                          </Typography>
+                          <Typography fontWeight={600}>
+                            {item.details}
+                          </Typography>
+                        </Box>
                       </Box>
-                    </Box>
-                  </motion.div>
-                ))}
+                    </motion.div>
+                  ))}
 
-                <Divider sx={{ my: 4 }} />
+                  <Divider sx={{ my: 4 }} />
+                </Box>
 
                 {/* Social Icons */}
                 <Box display="flex" gap={2} flexWrap="wrap">

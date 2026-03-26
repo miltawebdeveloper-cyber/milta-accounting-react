@@ -80,7 +80,7 @@ const AboutUs = () => {
               textShadow: "1px 1px 6px rgba(0,0,0,0.4)",
               maxWidth: 750,
               mx: "auto",
-               color: "#fff",
+              color: "#fff",
             }}
           >
             Let experienced ecommerce accountants manage your finances and help
@@ -89,7 +89,7 @@ const AboutUs = () => {
 
           {/* ✅ Updated Button */}
           <Button
-            href="/contact"
+            href="/uk/contact"
             sx={{
               px: 4,
               py: 1.5,

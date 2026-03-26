@@ -36,10 +36,10 @@ const BannerSection = () => {
         <Typography variant="h4" fontWeight={700} mb={2}>
           Topnotch CPA Firm in Connecticut
         </Typography>
-        <Typography fontSize={{ xs: "1rem", sm: "1.1rem" }} mb={3} opacity={0.9}>
+        <Typography fontSize={{ xs: "1rem", sm: "1.1rem" }} mb={3} opacity={0.9} color="#ffffff">
           Change Your Financial Problems with Great CPA Accounting Services for Small Business.
         </Typography>
-        <Typography fontSize="1rem" mb={4} opacity={0.9}>
+        <Typography fontSize="1rem" mb={4} opacity={0.9} color="#ffffff">
           Welcome to Milta CPA Services in Connecticut, a top CPA firm in the United States, and a leading accounting services provider in Connecticut. We help people and businesses with accounting, tax preparation, and financial planning. To assist you confidently navigate financial issues, our team of certified public accountants near me offers a variety of options.
         </Typography>
         <Button

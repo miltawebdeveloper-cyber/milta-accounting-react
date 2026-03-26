@@ -96,6 +96,8 @@ const RealEstateIntroSection = () => {
             }}
           >
             <Button
+              href="/uk/contact"
+
               variant="contained"
               sx={{
                 px: 4,
@@ -114,6 +116,7 @@ const RealEstateIntroSection = () => {
             </Button>
 
             <Button
+              href="tel:+919600103723"
               variant="outlined"
               sx={{
                 px: 4,

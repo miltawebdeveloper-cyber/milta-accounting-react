@@ -56,7 +56,7 @@ const BannerSection = () => {
         <Typography
           fontSize={{ xs: "1rem", sm: "1.15rem", md: "1.25rem" }}
           mb={4}
-          opacity={0.95}
+          opacity={0.95} color="#ffffff"
         >
           Enhance your financial management with our outsourced financial controller expertise, delivering precision, optimized processes, and strategic resource deployment. Whether you require continuous oversight or specialized project support, our services equip businesses with the agility to tackle financial complexities and drive informed, data-backed decisions. Collaborate with a certified financial controller today to ensure long-term stability and scalable growth.
         </Typography>

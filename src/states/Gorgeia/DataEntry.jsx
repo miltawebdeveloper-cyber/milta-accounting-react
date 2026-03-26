@@ -50,7 +50,7 @@ const BannerSection = () => {
         <Typography
           fontSize={{ xs: "1rem", sm: "1.15rem", md: "1.25rem" }}
           mb={4}
-          opacity={0.95}
+          opacity={0.95}  color="#ffffff"
         >
           For your small business operations, our professional accounting and data entry services are designed to enhance accuracy, save time, and drive growth.
         </Typography>

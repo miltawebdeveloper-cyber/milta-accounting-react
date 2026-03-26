@@ -47,7 +47,7 @@ const BannerSection = () => {
         <Typography
           fontSize={{ xs: "1rem", sm: "1.1rem", md: "1.2rem" }}
           mb={3}
-          opacity={0.9}
+          opacity={0.9}  color="#ffffff"
         >
           Accelerate your federal, state, and city tax filing with trusted tax services near me. Our experts handle complex tax forms and filings, so you don’t have to. Get Started Today with a Free Consultation!
 

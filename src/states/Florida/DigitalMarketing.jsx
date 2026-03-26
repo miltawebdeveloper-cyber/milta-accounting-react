@@ -49,7 +49,7 @@ const BannerSection = () => {
         <Typography
           fontSize={{ xs: "1.05rem", sm: "1.2rem", md: "1.3rem" }}
           mb={3}
-          fontWeight={600}
+          fontWeight={600}  color="#ffffff"
         >
           Boost Your Revenue This Year with a Leading Digital Marketing Company in
           Florida!

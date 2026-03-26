@@ -35,10 +35,10 @@ const BannerSection = () => {
         <Typography variant="h4" fontWeight={700} mb={2}>
           Maximize Your Financial Potential with Ohio’s Leading CPA Expertise
         </Typography>
-        <Typography fontSize={{ xs: "1rem", sm: "1.1rem" }} mb={3} opacity={0.9}>
+        <Typography fontSize={{ xs: "1rem", sm: "1.1rem" }} mb={3} opacity={0.9} color="#ffffff">
           Premier CPA Services in Ohio to Fuel Your Business Growth
         </Typography>
-        <Typography fontSize="1rem" mb={4} opacity={0.9}>
+        <Typography fontSize="1rem" mb={4} opacity={0.9} color="#ffffff">
           Milta stands out as a top-tier provider of CPA services in Ohio, delivering tailored financial strategies for small businesses and individuals. Recognized among the best CPA firms in Ohio, we excel in tax planning, bookkeeping, and proactive financial management to ensure your business stays compliant and competitive.
         </Typography>
         <Button

@@ -45,7 +45,7 @@ Unlock the Full Potential of Your Refund with Premier Tax Services Near Me!
         <Typography
           fontSize={{ xs: "1rem", sm: "1.1rem", md: "1.2rem" }}
           mb={3}
-          opacity={0.9}
+          opacity={0.9} color="#ffffff"
         >
 We specialize in tax planning and preparation for federal and state filings, including IRS Forms 1040, 1041, 1065, 1120, 1120S, and 990. Let’s tackle your taxes the smarter way.
         </Typography>

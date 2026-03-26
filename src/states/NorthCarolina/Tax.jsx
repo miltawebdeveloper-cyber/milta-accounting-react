@@ -46,7 +46,7 @@ const BannerSection = () => {
         <Typography
           fontSize={{ xs: "1rem", sm: "1.1rem", md: "1.2rem" }}
           mb={3}
-          opacity={0.9}
+          opacity={0.9}  color="#ffffff"
         >
           Simplify tax season using trusted tax preparation services in North Carolina and reliable tax services near me.
         </Typography>

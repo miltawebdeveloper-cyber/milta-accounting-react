@@ -36,7 +36,7 @@ const BannerSection = () => {
           Elite Bookkeeping Services for<br></br> Small Businesses in California, USA
         </Typography>
 
-        <Typography mb={3} opacity={0.9}>
+        <Typography mb={3} opacity={0.9} color="#ffffff">
           Need bookkeeping services near me that streamline your finances?  
           We've got you covered.
         </Typography>
@@ -46,7 +46,7 @@ const BannerSection = () => {
             px: 4,
             py: 1.3,
             bgcolor: hoverOrange,
-            color: "#000",
+            color: "#020000",
             fontWeight: 600,
             borderRadius: 30,
             "&:hover": { bgcolor: "#ffa726" },

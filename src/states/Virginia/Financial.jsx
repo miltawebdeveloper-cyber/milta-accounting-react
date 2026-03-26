@@ -51,7 +51,7 @@ const BannerSection = () => {
             Financial Controller Services in Virginia
           </Box>
         </Typography>
-        <Typography fontSize={{ xs: "1rem", sm: "1.15rem", md: "1.25rem" }} mb={4} opacity={0.95}>
+        <Typography fontSize={{ xs: "1rem", sm: "1.15rem", md: "1.25rem" }} mb={4} opacity={0.95} color="#ffffff">
           Ensure precision and compliance with our certified financial controller team, delivering expert financial controller services tailored to Virginia’s evolving market. Our outsourced financial controller solutions provide meticulous financial reporting, strategic analysis, and seamless regulatory compliance.
         </Typography>
         <Button

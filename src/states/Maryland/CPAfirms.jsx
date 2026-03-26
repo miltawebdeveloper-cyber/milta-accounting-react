@@ -38,11 +38,11 @@ const BannerSection = () => {
           Trusted CPA Firm in Maryland for Business Success
         </Typography>
 
-        <Typography fontSize={{ xs: "1rem", sm: "1.1rem" }} mb={3} opacity={0.9}>
+        <Typography fontSize={{ xs: "1rem", sm: "1.1rem" }} mb={3} opacity={0.9} color="#ffffff">
           Optimize Your Business Finances with Expert CPA Services in Maryland
         </Typography>
 
-        <Typography fontSize="1rem" mb={4} opacity={0.9}>
+        <Typography fontSize="1rem" mb={4} opacity={0.9} color="#ffffff">
           Milta provides expert CPA services in Maryland, offering tailored
           financial solutions for individuals and small businesses. As one of
           the top CPA firms in Maryland, we specialize in accounting, tax

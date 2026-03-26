@@ -38,12 +38,12 @@ const BannerSection = () => {
           Expert CPA Services in Texas for Small Business Success
         </Typography>
 
-        <Typography fontSize={{ xs: "1rem", sm: "1.1rem" }} mb={3} opacity={0.9}>
+        <Typography fontSize={{ xs: "1rem", sm: "1.1rem" }} mb={3} opacity={0.9} color="#ffffff">
           Our Texas-based CPA professionals help small businesses gain financial
           clarity, ensure compliance, and strengthen long-term fiscal control.
         </Typography>
 
-        <Typography fontSize="1rem" mb={4} opacity={0.9}>
+        <Typography fontSize="1rem" mb={4} opacity={0.9} color="#ffffff">
           Milta is a trusted CPA services provider in Texas, offering customized
           accounting and financial solutions for small businesses and
           individuals. Known for expertise in tax planning, bookkeeping, and

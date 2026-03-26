@@ -62,7 +62,7 @@ const BannerSection = () => {
           fontFamily={bodyFont}
           fontSize={{ xs: "1rem", sm: "1.15rem", md: "1.25rem" }}
           mb={4}
-          opacity={0.95}
+          opacity={0.95} color="#ffffff"
         >
           Gain financial clarity, compliance, and strategic control with certified
           financial controller experts in California.

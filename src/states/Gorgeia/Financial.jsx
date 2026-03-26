@@ -58,7 +58,7 @@ const BannerSection = () => {
         <Typography
           fontSize={{ xs: "1rem", sm: "1.15rem", md: "1.25rem" }}
           mb={4}
-          opacity={0.95}
+          opacity={0.95}  color="#ffffff"
         >
           Our Certified Financial Controller leads the way in accounting controller services, ensuring your financial operations are compliant, accurate, and timely.
         </Typography>

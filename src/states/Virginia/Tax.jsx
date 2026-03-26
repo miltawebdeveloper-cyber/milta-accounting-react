@@ -45,7 +45,7 @@ const BannerSection = () => {
 <Typography
   fontSize={{ xs: "1rem", sm: "1.1rem", md: "1.2rem" }}
   mb={3}
-  opacity={0.9}
+  opacity={0.9} color="#ffffff"
 >
   Reliable tax planning and preparation services designed to help Virginia
   businesses and individuals stay compliant while maximizing tax savings.

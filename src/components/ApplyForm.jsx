@@ -75,7 +75,7 @@ const ApplyForm = () => {
 
     if (response.error) {
       console.error("API ERROR:", response.error);
-      alert("Failed to save the application.");
+      alert(`Failed to save the application: ${response.error}`);
       return;
     }
 

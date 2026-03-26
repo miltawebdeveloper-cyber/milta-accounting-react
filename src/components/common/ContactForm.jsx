@@ -22,6 +22,7 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // ✅ Validation
     if (
       !formData.firstName ||
       !formData.lastName ||
@@ -35,6 +36,7 @@ const ContactForm = () => {
 
     setLoading(true);
 
+    // ✅ Save to DB
     const response = await submitContactForm({
       firstName: formData.firstName,
       lastName: formData.lastName,
@@ -51,38 +53,31 @@ const ContactForm = () => {
       return;
     }
 
+    // ✅ SEND EMAIL (CLEAN + SAFE)
     emailjs
       .send(
         "service_pu95ky5",
         "template_2p21kkt",
         {
-      form_type: "Get In Touch",
+          // 🎯 VISIBILITY CONTROL
+          newsletter_section: "display:none;",
+          contact_section: "display:block;",
 
-      // 🔥 VISIBILITY CONTROL
-      job_section: "display:none;",
-      contact_section: "display:block;",
-
-      // ✅ CONTACT FORM DATA
-      first_name: formData.firstName,
-      last_name: formData.lastName,
-      email: formData.email,
-      phone_number: formData.phoneNumber,
-      service_interest: formData.serviceInterest,
-      revenue: "", // optional
-      message: formData.message,
-
-      // 🔒 CLEAR JOB APPLICATION DATA
-      firstName: "",
-      phone: "",
-      jobType: "",
-      position: "",
-      reference: "",
-      resumeURL: "",
-    },
+          // 🎯 TEMPLATE VARIABLES (EXACT MATCH)
+          first_name: formData.firstName || "",
+          last_name: formData.lastName || "",
+          email: formData.email || "",
+          phone_number: formData.phoneNumber || "",
+          service_interest: formData.serviceInterest || "",
+          revenue: "",
+          message: formData.message || "",
+        },
         "BYgwI5Ebr7rcWTjuw"
       )
       .then(() => {
         alert("Message sent successfully!");
+
+        // ✅ Reset form
         setFormData({
           firstName: "",
           lastName: "",
@@ -91,9 +86,11 @@ const ContactForm = () => {
           serviceInterest: "",
           message: "",
         });
+
         setLoading(false);
       })
-      .catch(() => {
+      .catch((error) => {
+        console.error("EmailJS Error:", error);
         alert("Email sending failed.");
         setLoading(false);
       });
@@ -119,14 +116,12 @@ const ContactForm = () => {
       borderBottom: "1px solid",
       borderImage: "linear-gradient(135deg, #1d4230, #2e6f4e) 1",
     },
-    "& .MuiFormLabel-root": {
-      color: "rgba(255,255,255,0.5)",
-    },
   };
 
   return (
     <Box sx={{ px: { xs: 2, sm: 3 }, background: "transparent", borderRadius: "14px" }}>
       <Box component="form" onSubmit={handleSubmit}>
+
         {/* First + Last Name */}
         <Box sx={{ display: "flex", gap: 2, flexDirection: { xs: "column", sm: "row" }, mb: 3 }}>
           <TextField
@@ -185,12 +180,14 @@ const ContactForm = () => {
           <MenuItem value="" disabled>
             Service Interested *
           </MenuItem>
-          <MenuItem value="Consulting">Tax Service</MenuItem>
-          <MenuItem value="Marketing">Bookkeeping Service</MenuItem>
-          <MenuItem value="Accounting">CPA Service</MenuItem>
-          <MenuItem value="Tax Services">Virtual Assistance</MenuItem>
-          <MenuItem value="Data Entry">Data Entry Service</MenuItem>
-          <MenuItem value="Financial Controller">Financial Controller Service</MenuItem>
+          <MenuItem value="Tax Service">Tax Service</MenuItem>
+          <MenuItem value="Bookkeeping Service">Bookkeeping Service</MenuItem>
+          <MenuItem value="CPA Service">CPA Service</MenuItem>
+          <MenuItem value="Virtual Assistance">Virtual Assistance</MenuItem>
+          <MenuItem value="Data Entry Service">Data Entry Service</MenuItem>
+          <MenuItem value="Financial Controller Service">
+            Financial Controller Service
+          </MenuItem>
         </TextField>
 
         {/* Message */}
@@ -218,11 +215,10 @@ const ContactForm = () => {
             fontWeight: 700,
             fontSize: "1rem",
             borderRadius: "8px",
-            background: "linear-gradient(135deg, #1d4230, #2e6f4e)", // Green gradient button
-            color: "#faf5f5ff",
-            transition: "0.3s",
+            background: "linear-gradient(135deg, #1d4230, #2e6f4e)",
+            color: "#fff",
             "&:hover": {
-              background: "linear-gradient(135deg, #2e6f4e, #1d4230)", // Hover gradient
+              background: "linear-gradient(135deg, #2e6f4e, #1d4230)",
               transform: "translateY(-2px)",
               boxShadow: "0px 6px 20px rgba(0,0,0,0.25)",
             },

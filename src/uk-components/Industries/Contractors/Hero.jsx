@@ -66,7 +66,7 @@ const AboutUs = () => {
               textShadow: "2px 2px 10px rgba(0,0,0,0.5)",
             }}
           >
-           LawFirms
+            LawFirms
           </Typography>
 
           <Typography
@@ -85,7 +85,7 @@ const AboutUs = () => {
           </Typography>
 
           <Button
-            href="/contact"
+            href="/uk/contact"
             sx={{
               px: 4,
               py: 1.5,
