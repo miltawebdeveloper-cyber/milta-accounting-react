@@ -95,6 +95,7 @@ export default function FooterLayout() {
           subscription_section: "display:block;",
           contact_section: "display:none;",
           job_section: "display:none;",
+          email: newsletterEmail, 
           subscriber_email: newsletterEmail,
           source: "Footer Newsletter",
 

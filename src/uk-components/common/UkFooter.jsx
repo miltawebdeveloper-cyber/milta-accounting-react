@@ -47,6 +47,7 @@ const Footer = () => {
           subscription_section: "display:block;",
           contact_section: "display:none;",
           job_section: "display:none;",
+          email: newsletterEmail,
           subscriber_email: newsletterEmail,
           source: "UK Footer",
 
@@ -62,7 +63,7 @@ const Footer = () => {
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
       .then(() => {
-        alert("Thank you for subscribing!");
+        // ✅ Silent Success (Removed Alert as requested)
         setNewsletterEmail("");
         setLoading(false);
       })

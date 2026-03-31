@@ -12,9 +12,7 @@ function App() {
     <ErrorBoundary>
       <Router>
         <Routes>
-          {/* US routes */}
-          <Route path="/*" element={<UsRoutes />} />
-          {/* UK routes with ThemeProvider */}
+          {/* UK routes with ThemeProvider - Check first for specificity */}
           <Route
             path="/uk/*"
             element={
@@ -23,6 +21,8 @@ function App() {
               </ThemeProvider>
             }
           />
+          {/* US routes - Wildcard last */}
+          <Route path="/*" element={<UsRoutes />} />
         </Routes>
       </Router>
     </ErrorBoundary>

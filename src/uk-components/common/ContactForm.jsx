@@ -16,7 +16,15 @@ const ContactForm = () => {
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    if (name === "phoneNumber") {
+      const numericValue = value.replace(/\D/g, ""); // 🔥 Remove non-numeric
+      if (numericValue.length <= 10) { // 🔥 Limit 10 digits
+        setFormData({ ...formData, [name]: numericValue });
+      }
+      return;
+    }
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = async (e) => {
@@ -28,6 +36,7 @@ const ContactForm = () => {
       !formData.lastName ||
       !formData.email ||
       !formData.phoneNumber ||
+      formData.phoneNumber.length !== 10 || // 🔥 Ensure exactly 10
       !formData.serviceInterest
     ) {
       alert("Please fill all required fields.");
@@ -67,21 +76,20 @@ const ContactForm = () => {
           contact_section: "display:block;",
           job_section: "display:none;",
 
-          // ✅ CONTACT FORM DATA (template_2p21kkt)
+          // ✅ DATA (template_2p21kkt)
           first_name: formData.firstName || "",
+          firstName: formData.firstName || "", // 🔥 Populated for template compatibility
           last_name: formData.lastName || "",
+          lastName: formData.lastName || "",   // 🔥 Populated for template compatibility
           email: formData.email || "",
           phone_number: formData.phoneNumber || "",
+          phone: formData.phoneNumber || "",   // 🔥 Populated for template compatibility
           service_interest: formData.serviceInterest || "",
           message: formData.message || "",
           revenue: "",
-
-          // 🔒 CLEAR NEWSLETTER DATA
+ 
+          // 🔒 CLEAR OTHER SECTIONS
           subscriber_email: "",
-
-          // 🔒 CLEAR APPLY FORM DATA (Isolation)
-          firstName: "",
-          phone: "",
           jobType: "",
           position: "",
           reference: "",

@@ -47,7 +47,15 @@ const ApplyForm = () => {
   };
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    if (name === "phone") {
+      const numericValue = value.replace(/\D/g, ""); // 🔥 Remove non-numeric
+      if (numericValue.length <= 10) { // 🔥 Limit 10 digits
+        setFormData({ ...formData, [name]: numericValue });
+      }
+      return;
+    }
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleFile = (e) => {
@@ -90,33 +98,44 @@ const ApplyForm = () => {
       form_type: "Job Application",
 
       // 🔥 VISIBILITY CONTROL
-      job_section: "display:block;",
-      contact_section: "display:none;",
-      newsletter_section: "display:none;",
-
       // ✅ JOB APPLICATION DATA
       firstName: formData.firstName,
+      first_name: formData.firstName, // ⚛️ Added snake_case for template compatibility
       email: formData.email,
       phone: formData.phone,
+      phone_number: formData.phone, // ⚛️ Added snake_case support
       jobType: formData.jobType,
       position: formData.position,
       reference: formData.reference,
       resumeURL: resumeURL,
-
-      // 🔒 CLEAR CONTACT FORM DATA (template_2p21kkt variables)
-      first_name: "",
+ 
+      // 🎯 VISIBILITY CONTROL
+      job_section: "display:block;",
+      contact_section: "display:none;",
+      newsletter_section: "display:none;",
+ 
+      // 🔒 CLEAR OTHER SECTIONS
       last_name: "",
-      phone_number: "",
       service_interest: "",
       revenue: "",
       message: "",
-
-      // 🔒 CLEAR NEWSLETTER DATA
       subscriber_email: "",
     },
     import.meta.env.VITE_EMAILJS_PUBLIC_KEY
   )
-      .then(() => {})
+      .then(() => {
+        // ✅ Reset form
+        setFormData({
+          firstName: "",
+          phone: "",
+          jobType: "",
+          position: "",
+          email: "",
+          reference: "",
+          resume: null,
+        });
+        setResumePreview(null);
+      })
       .catch(() => {});
   };
 
