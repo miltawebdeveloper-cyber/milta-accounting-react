@@ -20,8 +20,6 @@ const BlogDetails = () => {
     const load = async () => {
       setLoading(true);
 
-      console.log("Fetching blog with slug:", slug);
-
       const response = await getBlogBySlug(slug, 'blogs_uk');
 
       if (response && response.blog) {

@@ -1,6 +1,6 @@
 // src/components/servicesComp/common/FooterLayout.jsx
 import React, { useState } from "react"; // ✅ Added useState
-import emailjs from "emailjs-com"; // ✅ Added EmailJS import
+import emailjs from "@emailjs/browser"; // ✅ Added EmailJS import
 import {
   Box,
   Container,
@@ -87,16 +87,27 @@ export default function FooterLayout() {
 
     emailjs
       .send(
-        "service_bzq4oup",      // replace with EmailJS service ID
-        "template_2p21kkt",     // replace with EmailJS template ID
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,      // replace with EmailJS service ID
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,     // replace with EmailJS template ID
         {
           form_type: "Newsletter Subscription",
           newsletter_section: "display:block;",
+          subscription_section: "display:block;",
           contact_section: "display:none;",
-          email: newsletterEmail,
+          job_section: "display:none;",
+          subscriber_email: newsletterEmail,
           source: "Footer Newsletter",
+
+          // 🔒 CLEAR CONTACT DATA
+          first_name: "",
+          last_name: "",
+          email: "",
+          phone_number: "",
+          service_interest: "",
+          message: "",
+          revenue: "",
         },
-        "BYgwI5Ebr7rcWTjuw"       // replace with EmailJS public key
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY       // replace with EmailJS public key
       )
       .then(() => {
         alert("Thank you for subscribing!");
@@ -271,12 +282,12 @@ export default function FooterLayout() {
                     >
                       USA :
                     </Typography>
-                    <a href="tel:+13254754737" style={{ color: "#fff", textDecoration: "none", fontSize: 15 }}>
-                      +1 325-475-4737
+                    <a href="tel:+18133030213" style={{ color: "#fff", textDecoration: "none", fontSize: 15 }}>
+                      +1 (813) 303-0213
                     </a>{" "}
                     /{" "}
-                    <a href="tel:+18133030213" style={{ color: "#fff", textDecoration: "none", fontSize: 15 }}>
-                      +1 813-303-0213
+                    <a href="tel:+18135600065" style={{ color: "#fff", textDecoration: "none", fontSize: 15 }}>
+                      +1 (813) 560-0065
                     </a>
                   </Box>
 

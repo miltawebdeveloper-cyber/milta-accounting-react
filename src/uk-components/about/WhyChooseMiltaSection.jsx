@@ -96,7 +96,7 @@ const WhyChooseMiltaSection = () => {
               <motion.div
                 initial={{
                   opacity: 0,
-                  ...reason.direction,
+                  y: 30, // 📱 Use simple fade-up on mobile
                 }}
                 whileInView={{
                   opacity: 1,
@@ -106,9 +106,10 @@ const WhyChooseMiltaSection = () => {
                 transition={{
                   duration: 0.8,
                   ease: "easeOut",
-                  delay: index * 0.15,
+                  delay: index * 0.1, // Faster stagger
                 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.2 }}
+
                 style={{ width: "100%" }}
               >
                 <Box

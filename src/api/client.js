@@ -7,7 +7,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Backend API — used for write operations (contact, applications)
 const API_BASE = import.meta.env.VITE_API_URL || (import.meta.env.PROD
-  ? 'https://miltafs-api.onrender.com/api'
+  ? 'https://milta-website.onrender.com/api'
   : '/api');
 
 /* =========================================
@@ -87,18 +87,23 @@ export const updateBlogContent = async (id, content, table = 'blogs') => {
    WRITE OPERATIONS — via backend API
    ========================================= */
 
-export const submitContactForm = async (formData) => {
+export const submitContactForm = async (data) => {
   try {
     const response = await fetch(`${API_BASE}/contact`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(data),
     });
-    if (!response.ok) throw new Error('Failed to submit contact');
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.error || 'Failed to submit contact');
+    }
+
     return await response.json();
   } catch (error) {
     console.error('submitContactForm error:', error);
-    return { error };
+    return { error: error.message || error };
   }
 };
 
@@ -108,10 +113,15 @@ export const submitApplicationForm = async (formData) => {
       method: 'POST',
       body: formData, // FormData directly
     });
-    if (!response.ok) throw new Error('Failed to submit application');
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.error || 'Failed to submit application');
+    }
+
     return await response.json();
   } catch (error) {
     console.error('submitApplicationForm error:', error);
-    return { error };
+    return { error: error.message || error };
   }
 };

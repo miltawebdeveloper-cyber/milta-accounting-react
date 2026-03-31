@@ -56,27 +56,27 @@ const AboutUs = () => {
 
         {/* Hero Content */}
         <Container maxWidth="lg" sx={{ zIndex: 1, px: 2 }}>
-          {/* ✅ Updated Banner Title */}
           <Typography
             variant="h1"
             sx={{
               fontFamily: "'Poppins', sans-serif",
-              fontWeight: 700,
-              fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
-              mb: 2,
-              textShadow: "2px 2px 10px rgba(0,0,0,0.5)",
+              fontWeight: 800,
+              fontSize: { xs: "1.75rem", sm: "2.5rem", md: "3rem" },
+              mb: { xs: 1.5, md: 2 },
+              textShadow: "1px 1px 12px rgba(0,0,0,0.6)",
+              lineHeight: 1.2,
             }}
           >
-            Outsourced Accounting & Business Support Services for US Companies
+            Outsourced Accounting & Business Support Services for UK Companies
           </Typography>
 
-          {/* ✅ Updated Description */}
+
           <Typography
             sx={{
-              fontSize: { xs: "15px", sm: "16px", md: "18px" },
+              fontSize: { xs: "14px", sm: "16px", md: "18px" },
               maxWidth: 750,
               mx: "auto",
-              mb: 4,
+              mb: { xs: 3, md: 4 },
               lineHeight: 1.7,
               color: "rgba(255,255,255,0.9)",
               textShadow: "1px 1px 8px rgba(0,0,0,0.4)",
@@ -88,16 +88,17 @@ const AboutUs = () => {
             compliance, and efficiency.
           </Typography>
 
-          {/* ✅ Updated Button */}
+
           <Button
             href="/uk/contact"
             sx={{
-              px: 4,
-              py: 1.5,
+              px: { xs: 3, md: 4 },
+              py: { xs: 1.2, md: 1.5 },
               borderRadius: 30,
               bgcolor: "#2b6d2a",
               color: "#fff",
               fontWeight: 700,
+              fontSize: { xs: "14px", md: "15px" },
               boxShadow: "0 5px 15px rgba(50, 141, 38, 0.4)",
               transition: "0.3s ease",
               "&:hover": {
@@ -108,6 +109,7 @@ const AboutUs = () => {
           >
             Explore Our Services
           </Button>
+
         </Container>
 
         {/* Gradient Animation Keyframes */}

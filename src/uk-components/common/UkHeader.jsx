@@ -64,8 +64,8 @@ export default function UkHeader() {
         { label: "Payroll Services", to: "/uk/payroll-services-for-small-business" },
         { label: "Virtual Assistance", to: "/uk/virtual-assistant-services-in-the-uk" },
         { label: "Data Entry Services", to: "/uk/accounting-data-entry-services-uk" },
-       
-        
+
+
 
       ],
     },
@@ -77,7 +77,7 @@ export default function UkHeader() {
         { label: "Law Firms", to: "/uk/law-firm-accounting-services" },
         { label: "Real Estate", to: "/uk/accounting-services-for-real-estate" },
         { label: "Hospitality", to: "/uk/hospitality-accounting-services" },
-       
+
       ],
     },
     { label: "Blog", path: "/uk/blogs" },
@@ -313,7 +313,10 @@ export default function UkHeader() {
           <Toolbar
             sx={{
               justifyContent: "space-between",
-              minHeight: scrolled ? 70 : 85,
+              minHeight: { 
+                xs: scrolled ? 58 : 72, // 📱 Slimmer on mobile
+                md: scrolled ? 70 : 85  // 💻 Standard on desktop
+              },
             }}
           >
             {/* Logo */}
@@ -322,11 +325,13 @@ export default function UkHeader() {
                 src={logo}
                 alt="Milta UK Logo"
                 style={{
-                  height: scrolled ? 55 : 70,
+                  height: scrolled ? "55px" : "70px", // Use a variable in SX instead for true responsiveness if needed
                   transition: "0.3s",
                 }}
+                className="responsive-logo" // I'll add the sx height instead
               />
             </Link>
+
 
             {/* ================= DESKTOP NAV ================= */}
             <Box
@@ -416,7 +421,7 @@ export default function UkHeader() {
                   svg
                   style={{ width: 20, height: 15, marginRight: 6 }}
                 />
-                {country}
+                {countries.find((c) => c.code === country)?.label || country}
               </Button>
             </Box>
 

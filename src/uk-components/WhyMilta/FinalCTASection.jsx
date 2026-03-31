@@ -41,8 +41,8 @@ const HeroSection = () => {
         {/* ================= LEFT CONTENT ================= */}
         <Box
           component={motion.div}
-          initial={{ opacity: 0, x: -80 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 30 }} // 📱 Fade-up on mobile
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
           sx={{
@@ -51,6 +51,7 @@ const HeroSection = () => {
             textAlign: { xs: "center", md: "left" },
           }}
         >
+
           {/* Updated Heading */}
           <Typography
             sx={{
@@ -116,8 +117,8 @@ const HeroSection = () => {
           component={motion.img}
           src={heroImage}
           alt="CTA Visual"
-          initial={{ opacity: 0, x: 100 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 40 }} // 📱 Fade-up on mobile
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
           sx={{

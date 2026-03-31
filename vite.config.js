@@ -25,27 +25,27 @@ export default defineConfig({
     target: "es2018",
     minify: "esbuild",
     sourcemap: false,
-    assetsInlineLimit: 4096,
-    chunkSizeWarningLimit: 1600,
+    assetsInlineLimit: 8096, // Increase to 8KB for small logo/icons base64 to save round-trips
+    chunkSizeWarningLimit: 2000,
 
     rollupOptions: {
       output: {
         manualChunks(id) {
           if (id.includes("node_modules")) {
-            if (id.includes("react") || id.includes("react-dom"))
-              return "react-vendor";          // ✅ fine
+            if (id.includes("react") || id.includes("react-dom") || id.includes("react-router-dom"))
+              return "react-core"; 
 
             if (id.includes("@mui") || id.includes("@emotion"))
-              return "mui-vendor";            // ✅ fine
+              return "mui-framework"; 
 
-            if (id.includes("swiper")) return "swiper-vendor";
-            if (id.includes("chart") || id.includes("recharts"))
-              return "chart-vendor";
+            if (id.includes("swiper") || id.includes("framer-motion") || id.includes("slick")) 
+              return "animation-vendor";
 
-            return "vendor";
+            return "vendors";
           }
         },
       },
     },
+
   },
 });

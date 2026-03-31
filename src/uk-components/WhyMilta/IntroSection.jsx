@@ -8,9 +8,10 @@ const BookkeepingIntroSection = () => {
     <Box
       component="section"
       sx={{
-        py: { xs: "100px", md: "60px" },
+        py: { xs: 5, md: 8 }, // 📱 Balanced vertical padding
         backgroundColor: "#ffffff",
       }}
+
     >
       <Container maxWidth="lg">
         <Box

@@ -61,10 +61,11 @@ const AboutUs = () => {
             variant="h1"
             sx={{
               fontFamily: "'Poppins', sans-serif",
-              fontWeight: 700,
-              fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
-              mb: 2,
-              textShadow: "2px 2px 10px rgba(0,0,0,0.5)",
+              fontWeight: 800, // 📱 Increased weight for impact
+              fontSize: { xs: "1.75rem", sm: "2.5rem", md: "3rem" }, // 📱 Slightly smaller for xs
+              mb: { xs: 1.5, md: 2 },
+              textShadow: "1px 1px 12px rgba(0,0,0,0.6)",
+              lineHeight: 1.2,
             }}
           >
             Professional Bookkeeping Services for Small & Growing Businesses
@@ -73,16 +74,16 @@ const AboutUs = () => {
           {/* ✅ Description */}
           <Typography
             sx={{
-              fontSize: { xs: "15px", sm: "16px", md: "18px" },
+              fontSize: { xs: "14px", sm: "16px", md: "18px" }, // 📱 More compact description
               maxWidth: 750,
               mx: "auto",
-              mb: 4,
+              mb: { xs: 3, md: 4 },
               lineHeight: 1.7,
               color: "rgba(255,255,255,0.9)",
               textShadow: "1px 1px 8px rgba(0,0,0,0.4)",
             }}
           >
-            Our outsourced bookkeeping services help US businesses maintain
+            Our outsourced bookkeeping services help UK businesses maintain
             compliance and make smarter decisions.
           </Typography>
 
@@ -90,13 +91,14 @@ const AboutUs = () => {
           <Button
             href="/uk/contact"
             sx={{
-              px: 4,
-              py: 1.5,
+              px: { xs: 3, md: 4 }, // 📱 Smaller px for mobile
+              py: { xs: 1.2, md: 1.5 },
               borderRadius: 30,
               bgcolor: "#2b6d2a",
               color: "#fff",
               fontWeight: 700,
               boxShadow: "0 5px 15px rgba(50, 141, 38, 0.4)",
+              fontSize: { xs: "14px", md: "16px" },
               "&:hover": {
                 transform: "scale(1.05)",
                 boxShadow: "0 8px 25px rgba(100, 145, 70, 0.5)",

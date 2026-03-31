@@ -100,7 +100,8 @@ const FeatureHighlightSection = () => {
         </motion.div>
 
         {/* ================= FEATURE CARDS ================= */}
-        <Grid container spacing={4} justifyContent="center">
+        <Grid container spacing={{ xs: 3, md: 4 }} justifyContent="center">
+
           {features.map((item, index) => (
             <Grid
               item
@@ -118,15 +119,15 @@ const FeatureHighlightSection = () => {
                 viewport={{ once: true }}
                 style={{ width: "100%" }}
               >
-                {/* ✅ FIXED SIZE CARD */}
+                {/* ✅ RESPONSIVE CARD */}
                 <Box
                   sx={{
                     width: "100%",
-                    maxWidth: 340, // ✅ SAME WIDTH
-                    height: 290, // ✅ SAME HEIGHT
+                    maxWidth: { xs: "100%", sm: 340 }, // 📱 Responsive width
+                    minHeight: { xs: "auto", sm: 320, md: 290 }, // 📱 Dynamic height for text wrap
                     mx: "auto",
-
-                    p: 4,
+ 
+                    p: { xs: 3, md: 4 }, // 📱 Smaller padding on mobile
                     borderRadius: "18px",
                     background:
                       "linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))",
@@ -134,11 +135,13 @@ const FeatureHighlightSection = () => {
                     textAlign: "center",
                     boxShadow: "0 14px 45px rgba(0,0,0,0.18)",
                     transition: "all 0.35s ease",
-
+ 
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "flex-start",
                     alignItems: "center",
+                    pb: { xs: 4, md: 4 }, // Ensure bottom padding
+
 
                     "&:hover": {
                       transform: "translateY(-10px)",

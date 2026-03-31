@@ -1,7 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Typography, TextField, Button } from "@mui/material";
+import emailjs from "@emailjs/browser";
 
 const SubscriptionBanner = () => {
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleNewsletterSubmit = (e) => {
+    e.preventDefault();
+    if (!newsletterEmail) {
+      alert("Please enter your email.");
+      return;
+    }
+
+    setLoading(true);
+
+    emailjs
+      .send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          form_type: "Blog Subscription",
+          newsletter_section: "display:block;",
+          subscription_section: "display:block;",
+          contact_section: "display:none;",
+          job_section: "display:none;",
+          subscriber_email: newsletterEmail,
+          source: "Blog Subscription Banner",
+
+          // 🔒 CLEAR CONTACT DATA
+          first_name: "",
+          last_name: "",
+          email: "",
+          phone_number: "",
+          service_interest: "",
+          message: "",
+          revenue: "",
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      .then(() => {
+        alert("Thank you for subscribing!");
+        setNewsletterEmail("");
+        setLoading(false);
+      })
+      .catch(() => {
+        alert("Failed to send subscription. Try again later.");
+        setLoading(false);
+      });
+  };
+
   return (
     <Box
       sx={{
@@ -45,6 +93,8 @@ const SubscriptionBanner = () => {
 
       {/* Input + Button */}
       <Box
+        component="form"
+        onSubmit={handleNewsletterSubmit}
         sx={{
           mt: 4,
           display: "flex",
@@ -58,6 +108,8 @@ const SubscriptionBanner = () => {
         <TextField
           placeholder="Enter your email"
           size="small"
+          value={newsletterEmail}
+          onChange={(e) => setNewsletterEmail(e.target.value)}
           sx={{
             width: { xs: "100%", sm: "340px" },
             bgcolor: "#fff",
@@ -71,7 +123,9 @@ const SubscriptionBanner = () => {
 
         {/* Subscribe Button */}
         <Button
+          type="submit"
           variant="contained"
+          disabled={loading}
           sx={{
             bgcolor: "#97ba3a",
             color: "#fff",
@@ -84,7 +138,7 @@ const SubscriptionBanner = () => {
             fontFamily: "'Poppins', sans-serif",
           }}
         >
-          Subscribe →
+          {loading ? "Sending..." : "Subscribe →"}
         </Button>
       </Box>
     </Box>

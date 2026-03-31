@@ -1,6 +1,6 @@
 // src/components/ApplyForm.jsx
 import React, { useState } from "react";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 import { submitApplicationForm } from "../api/client";
 
 const ApplyForm = () => {
@@ -84,14 +84,15 @@ const ApplyForm = () => {
 
     emailjs
       .send(
-        "service_bzq4oup",
-        "template_6p07m5m",
+        import.meta.env.VITE_EMAILJS_APPLY_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_APPLY_TEMPLATE_ID,
         {
       form_type: "Job Application",
 
       // 🔥 VISIBILITY CONTROL
       job_section: "display:block;",
       contact_section: "display:none;",
+      newsletter_section: "display:none;",
 
       // ✅ JOB APPLICATION DATA
       firstName: formData.firstName,
@@ -102,18 +103,21 @@ const ApplyForm = () => {
       reference: formData.reference,
       resumeURL: resumeURL,
 
-      // 🔒 CLEAR CONTACT FORM DATA
+      // 🔒 CLEAR CONTACT FORM DATA (template_2p21kkt variables)
       first_name: "",
       last_name: "",
       phone_number: "",
       service_interest: "",
       revenue: "",
       message: "",
+
+      // 🔒 CLEAR NEWSLETTER DATA
+      subscriber_email: "",
     },
-    "BYgwI5Ebr7rcWTjuw"
+    import.meta.env.VITE_EMAILJS_PUBLIC_KEY
   )
-      .then(() => alert("Application sent successfully!"))
-      .catch(() => alert("Failed to send email."));
+      .then(() => {})
+      .catch(() => {});
   };
 
   return (

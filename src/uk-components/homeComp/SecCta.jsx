@@ -42,17 +42,18 @@ const HeroSection = () => {
         {/* LEFT CONTENT */}
         <Box
           component={motion.div}
-          initial={{ opacity: 0, x: 80 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 30 }} // 📱 Fade-up on mobile
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
           sx={{
             width: "100%",
             maxWidth: { xs: "100%", md: "620px" },
             zIndex: 2,
-            order: { xs: 2, md: 1 }, // Image first on mobile, text first on desktop
+            order: { xs: 2, md: 1 }, 
           }}
         >
+
           {/* Heading - Optimized for mobile */}
           <Typography
             sx={{
@@ -136,8 +137,8 @@ const HeroSection = () => {
           component={motion.img}
           src={heroImage}
           alt="Hero Team"
-          initial={{ opacity: 0, x: 100 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
           sx={{
@@ -145,16 +146,16 @@ const HeroSection = () => {
             right: { md: "40px" },
             bottom: { md: "0px" },
             mt: { xs: 0, sm: 2, md: 0 },
-            mb: { xs: 2, sm: 3, md: 0 }, // Add margin bottom on mobile
+            mb: { xs: 1, sm: 2, md: 0 }, // Add margin bottom on mobile
             height: { 
-              xs: "140px", 
+              xs: "120px", 
               sm: "180px", 
               md: "400px", 
               lg: "480px" 
             },
             width: "auto",
             maxWidth: { 
-              xs: "200px", 
+              xs: "180px", 
               sm: "260px", 
               md: "340px", 
               lg: "none" 
@@ -171,4 +172,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;  
+export default HeroSection;

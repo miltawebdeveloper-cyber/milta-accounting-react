@@ -189,13 +189,16 @@ export default function BannerSlider() {
                         borderRadius: "50%",
                         overflow: "hidden",
                         boxShadow: "0 10px 40px rgba(0,0,0,0.4)",
+                        aspectRatio: "1 / 1",
+                        bgcolor: "rgba(255,255,255,0.1)",
                       }}
                     >
                       <Box
                         component="img"
                         src={slide.image}
                         alt={slide.alt}
-
+                        loading={index === 0 ? "eager" : "lazy"}
+                        fetchpriority={index === 0 ? "high" : "low"}
                         sx={{
                           width: "100%",
                           height: "100%",

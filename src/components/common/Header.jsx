@@ -17,7 +17,7 @@ import {
   Collapse,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import logo from "../../assets/logo.svg";
 import { Link } from "react-router-dom";
 import ReactCountryFlag from "react-country-flag";
@@ -65,8 +65,7 @@ function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [submenuOpen, setSubmenuOpen] = useState({});
   const [anchorEls, setAnchorEls] = useState({});
-  const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 0, seconds: 0 });
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
 
   // Country selector
@@ -79,24 +78,6 @@ const navigate = useNavigate();
 
 
   const handleDrawerToggle = () => setMobileOpen((s) => !s);
-
-  // Countdown Timer
-  useEffect(() => {
-    const targetTime = Date.now() + 5 * 60 * 60 * 1000;
-    const id = setInterval(() => {
-      const diff = targetTime - Date.now();
-      if (diff <= 0) {
-        clearInterval(id);
-        setTimeLeft({ hours: 0, minutes: 0, seconds: 0 });
-      } else {
-        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-        const minutes = Math.floor((diff / (1000 * 60)) % 60);
-        const seconds = Math.floor((diff / 1000) % 60);
-        setTimeLeft({ hours, minutes, seconds });
-      }
-    }, 1000);
-    return () => clearInterval(id);
-  }, []);
 
   const handleCalendlyClick = () => {
     window.open("/services", "_blank", "noopener,noreferrer");
@@ -137,7 +118,7 @@ const navigate = useNavigate();
                 </Link>
               )}
               {item.submenu && (
-                <ArrowDropDownIcon sx={{ transform: submenuOpen[item.label] ? "rotate(180deg)" : "rotate(0deg)", color: "#1d4230", transition: "0.3s" }} />
+                <ExpandMoreIcon sx={{ transform: submenuOpen[item.label] ? "rotate(180deg)" : "rotate(0deg)", color: "#1d4230", transition: "0.3s" }} />
               )}
             </Box>
 
@@ -183,14 +164,14 @@ const navigate = useNavigate();
       backgroundColor: "#f9f9f9",
       "&:hover": { backgroundColor: "#f0f0f0" },
     }}
-    endIcon={<ArrowDropDownIcon />}
+    endIcon={<ExpandMoreIcon />}
   >
     <ReactCountryFlag
       countryCode={country}
       svg
       style={{ width: '22px', height: '16px', marginRight: '6px' }}
     />
-    {country}
+    {countries.find((c) => c.code === country)?.label || country}
   </Button>
 
   <Menu
@@ -215,7 +196,7 @@ const navigate = useNavigate();
           svg
           style={{ width: '22px', height: '16px', marginRight: '6px' }}
         />
-        {c.code}
+        {c.label}
       </MenuItem>
     ))}
   </Menu>
@@ -256,7 +237,7 @@ const navigate = useNavigate();
                       onClick={(e) => setAnchorEls((prev) => ({ [item.label]: prev[item.label] ? null : e.currentTarget }))}
                       sx={{ ml: 0.2, color: "#000", "&:hover": { color: "#ff9401", background: "transparent" } }}
                     >
-                      <ArrowDropDownIcon sx={{ transform: anchorEls[item.label] ? "rotate(180deg)" : "rotate(0deg)", transition: "0.3s" }} />
+                      <ExpandMoreIcon sx={{ transform: anchorEls[item.label] ? "rotate(180deg)" : "rotate(0deg)", transition: "0.3s" }} />
                     </IconButton>
                     <Menu anchorEl={anchorEls[item.label] ?? null} open={Boolean(anchorEls[item.label])} onClose={() => setAnchorEls({})} MenuListProps={{ onMouseLeave: () => setAnchorEls({}) }} anchorOrigin={{ vertical: "bottom", horizontal: "left" }} transformOrigin={{ vertical: "top", horizontal: "left" }} sx={{ mt: 1, "& .MuiPaper-root": { borderRadius: "10px", boxShadow: "0 6px 20px rgba(0,0,0,0.08)", backgroundColor: "#fffaf3" } }}>
                       {item.submenu.map((sub) => (
@@ -289,14 +270,14 @@ const navigate = useNavigate();
       backgroundColor: "#f9f9f9",
       "&:hover": { backgroundColor: "#f0f0f0" },
     }}
-    endIcon={<ArrowDropDownIcon />}
+    endIcon={<ExpandMoreIcon />}
   >
     <ReactCountryFlag
       countryCode={country}
       svg
       style={{ width: '22px', height: '16px', marginRight: '6px' }}
     />
-    {country}
+    {countries.find((c) => c.code === country)?.label || country}
   </Button>
 
   <Menu
@@ -320,7 +301,7 @@ const navigate = useNavigate();
           svg
           style={{ width: '22px', height: '16px', marginRight: '6px' }}
         />
-        {c.code}
+        {c.label}
       </MenuItem>
     ))}
   </Menu>

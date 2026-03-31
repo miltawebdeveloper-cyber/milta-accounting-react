@@ -84,8 +84,8 @@ const ContactInfoSection = () => {
           {/* ================= LEFT CONTENT ================= */}
           <Grid item xs={12} md={6}>
             <motion.div
-              initial={{ opacity: 0, x: -80 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true }}
             >
@@ -94,6 +94,7 @@ const ContactInfoSection = () => {
                   color: "#97ba3a",
                   fontWeight: 600,
                   mb: 1,
+                  textAlign: { xs: "center", md: "left" },
                 }}
               >
                 ● Contact Info
@@ -106,8 +107,9 @@ const ContactInfoSection = () => {
                   lineHeight: 1.25,
                   mb: 3,
                   color: "#2b6d2a",
+                  textAlign: { xs: "center", md: "left" },
                   fontSize: {
-                    xs: "34px",
+                    xs: "28px",
                     md: "42px",
                   },
                 }}
@@ -124,10 +126,12 @@ const ContactInfoSection = () => {
                   color: "#6b7280",
                   maxWidth: { xs: "100%", md: 420 },
                   lineHeight: 1.8,
+                  textAlign: { xs: "center", md: "left" },
                   fontSize: {
-                    xs: "16px",
+                    xs: "15px",
                     md: "16px",
                   },
+                  mb: { xs: 5, md: 0 },
                 }}
               >
                 Our professional team supports UK businesses with accounting,
@@ -140,13 +144,13 @@ const ContactInfoSection = () => {
           {/* ================= RIGHT CONTACT INFO ================= */}
           <Grid item xs={12} md={6}>
             <motion.div
-              initial={{ opacity: 0, x: 80 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true }}
             >
               <Box sx={{ pl: { md: 6 } }}>
-                <Box sx={{ display: { xs: "none", md: "block" } }}>
+                <Box>
                   {contactItems.map((item, idx) => (
                     <motion.div
                       key={idx}
@@ -165,13 +169,14 @@ const ContactInfoSection = () => {
                         mb={4}
                         gap={3}
                         sx={{
-                          flexDirection: { xs: "column", sm: "row" },
+                          flexDirection: { xs: "row", sm: "row" },
+                          justifyContent: { xs: "flex-start", md: "flex-start" },
                         }}
                       >
                         <Box
                           sx={{
-                            width: 56,
-                            height: 56,
+                            width: { xs: 48, md: 56 },
+                            height: { xs: 48, md: 56 },
                             color: "#fff",
                             borderRadius: "50%",
                             backgroundColor: "#97ba3a",
@@ -185,10 +190,10 @@ const ContactInfoSection = () => {
                         </Box>
 
                         <Box>
-                          <Typography fontSize={14} color="text.secondary">
+                          <Typography fontSize={13} color="text.secondary">
                             {item.label}
                           </Typography>
-                          <Typography fontWeight={600}>
+                          <Typography fontWeight={600} fontSize={{ xs: 15, md: 16 }}>
                             {item.details}
                           </Typography>
                         </Box>
@@ -200,7 +205,7 @@ const ContactInfoSection = () => {
                 </Box>
 
                 {/* Social Icons */}
-                <Box display="flex" gap={2} flexWrap="wrap">
+                <Box display="flex" gap={2} flexWrap="wrap" justifyContent={{ xs: "center", md: "flex-start" }}>
                   {socialLinks.map((social, idx) => (
                     <motion.div
                       key={idx}
@@ -220,16 +225,22 @@ const ContactInfoSection = () => {
                         sx={{
                           border: "1px solid #e5e7eb",
                           color: "#2b6d2a",
-                          width: 40,
-                          height: 40,
+                          width: { xs: 44, md: 40 }, // 📱 Slightly larger tap target for mobile
+                          height: { xs: 44, md: 40 },
+                          transition: "all 0.2s ease-in-out",
                           "&:hover": {
                             backgroundColor: "#97ba3a",
                             color: "#fff",
+                            transform: "translateY(-3px) scale(1.1)", // 📱 Visual feedback
+                          },
+                          "&:active": {
+                            transform: "scale(0.9)", // 📱 Tactile press effect
                           },
                         }}
                       >
                         {social.icon}
                       </IconButton>
+
                     </motion.div>
                   ))}
                 </Box>

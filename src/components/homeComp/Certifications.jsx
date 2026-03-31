@@ -18,20 +18,11 @@ const certifications = [
 ];
 
 const CertificationSection = () => {
-  const [visible, setVisible] = useState([]);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   // Filter certifications for mobile (show only first 9)
   const displayedCertifications = isMobile ? certifications.slice(0, 9) : certifications;
-
-  useEffect(() => {
-    displayedCertifications.forEach((_, i) => {
-      setTimeout(() => {
-        setVisible((prev) => [...prev, i]);
-      }, i * 300);
-    });
-  }, [displayedCertifications]);
 
   return (
     <Box
@@ -81,19 +72,23 @@ const CertificationSection = () => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              opacity: visible.includes(index) ? 1 : 0,
-              transform: visible.includes(index)
-                ? "translateY(0)"
-                : "translateY(20px)",
-              transition: "all 0.6s ease",
+              // ⚛️ Pure CSS Animation (Better for Page Score)
+              animation: `fadeUpIn 0.8s ease forwards ${index * 0.15}s`,
+              opacity: 0,
+              "@keyframes fadeUpIn": {
+                "0%": { opacity: 0, transform: "translateY(20px)" },
+                "100%": { opacity: 1, transform: "translateY(0)" },
+              },
             }}
           >
             <Box
               component="img"
               src={logo}
-              alt={`Certification ${index + 1}`}
+              alt={`Certification badge ${index + 1}`}
+              loading="lazy" // ⚛️ High performance lazy loading
               sx={{
                 width: { xs: "80px", sm: "130px", md: "150px" },
+                aspectRatio: "3 / 2", // ⚛️ Reserve space to prevent CLS
                 height: "auto",
                 maxWidth: "100%",
                 objectFit: "contain",
@@ -103,6 +98,7 @@ const CertificationSection = () => {
             />
           </Grid>
         ))}
+
       </Grid>
     </Box>
   );

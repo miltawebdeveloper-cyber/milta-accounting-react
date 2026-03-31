@@ -1,12 +1,12 @@
-// src/App.js
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "../components/common/Header";
 import Footer from "../components/common/Footer3";
+import ScrollToTop from "../components/common/ScrollToTop";
+import StickyButtons from "../components/common/StickyButtons";
 import Home from "../pages/Home";
 import Contact from "../pages/ContactUs";
 import About from "../pages/AboutUs";
-
 import Services from "../pages/Services";
 import BookkeepingServicePage from "../pages/BookkeepingServicePage";
 import FAQ from "../pages/FAQ";
@@ -23,8 +23,6 @@ import RestaurantIndustries from "../pages/RestaurantIndustries";
 import RetailIndustry from "../pages/RetailIndustry";
 import RealEstateCompanies from "../pages/RealEstateCompanies";
 import NonProfitOrganizations from "../pages/NonProfitOrganizations";
-import ScrollToTop from "../components/common/ScrollToTop";
-import StickyButtons from "../components/common/StickyButtons";
 import PrivacyPolicy from "../pages/PrivacyPolicy";
 import TermsofService from "../pages/TermsofService";
 import Career from "../pages/Career";
@@ -33,14 +31,15 @@ import Blog from "../pages/Blog";
 import BlogDetails from "../pages/BlogDetails";
 import DigitalMarketing from "../pages/DigitalMarketing";
 import ApplyForm from "../components/ApplyForm";
-import QuickBooksDesktop from "../pages/QuickBooksDesktop"; 
+import QuickBooksDesktop from "../pages/QuickBooksDesktop";
 import QuickBooksOnline from "../pages/quickBooksOnline";
-import Xero from "../pages/Xero";                             
-import WaveAccounting from "../pages/WaveAccounting";         
+import Xero from "../pages/Xero";
+import WaveAccounting from "../pages/WaveAccounting";
 import AccountingSoftware from "../pages/AccountingSoftware";
 import AddBlog from "../pages/Addblog";
 import Payroll from "../pages/PayrollService";
 import Areas from "../pages/Areas";
+
 
 
 /* ---------- State-wise Bookkeeping Pages ---------- */
@@ -175,15 +174,16 @@ function App() {
       <ScrollToTop />
       <Ticker />
       <Header />
-      
-      
-      <Routes>
+
+
+        <Routes>
+
         {/* -------- Main Pages -------- */}
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
-      
+
         <Route path="/faqs" element={<FAQ />} />
 
         {/* -------- Services -------- */}
@@ -222,10 +222,10 @@ function App() {
         <Route path="/us/industry/accounting-services-for-restaurant-businesses/" element={<RestaurantIndustries />} />
         <Route path="/us/industry/accounting-services-for-retail-businesses/" element={<RetailIndustry />} />
         <Route path="/us/services/payroll-management-services-in-the-usa/" element={<Payroll />} />
-        
+
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-of-service" element={<TermsofService />} />
-        <Route path="/career" element={<Career/>} />
+        <Route path="/career" element={<Career />} />
         <Route path="/career-opportunities" element={<CareerSub />} />
         <Route path="/blogs" element={<Blog />} />
         <Route path="/us/blogs/:slug" element={<BlogDetails />} />
@@ -237,8 +237,8 @@ function App() {
         <Route path="/us/software/xero-for-small-business/" element={<Xero />} />
         <Route path="/us/software/wave-accounting-for-small-business/" element={<WaveAccounting />} />
         <Route path="/us/software/tools-we-use/" element={<AccountingSoftware />} />
-            
-       <Route path="/add-blog" element={<AddBlog />} />
+
+        <Route path="/add-blog" element={<AddBlog />} />
         <Route path="/areas-we-serve" element={<Areas />} />
 
         {/* ---------- State-wise Bookkeeping ---------- */}
@@ -274,7 +274,7 @@ function App() {
         <Route path="/us/services/tax-planning-and-preparation-service-in-texas/" element={<TaxTE />} />
 
 
-         <Route path="/us/services/best-cpa-services-for-small-businesses-in-the-connecticut/" element={<CpaCT />} />
+        <Route path="/us/services/best-cpa-services-for-small-businesses-in-the-connecticut/" element={<CpaCT />} />
         <Route path="/us/services/best-cpa-services-for-small-businesses-in-the-florida/" element={<CpaFL />} />
         <Route path="/us/services/best-cpa-services-for-small-businesses-in-the-georgia/" element={<CpaGA />} />
         <Route path="/us/services/best-cpa-services-for-small-businesses-in-the-maryland/" element={<CpaMD />} />
@@ -302,8 +302,8 @@ function App() {
         <Route path="/us/services/virtual-assistant-service-in-southcarolina/" element={<VaSC />} />
         <Route path="/us/services/virtual-assistant-service-in-virginia/" element={<VaVA />} />
         <Route path="/us/services/virtual-assistant-service-in-northcarolina/" element={<VaNC />} />
-         <Route path="/us/services/virtual-assistant-service-in-california/" element={<VaCA />} />
-         <Route path="/us/services/virtual-assistant-service-in-texas/" element={<VaTE />} />
+        <Route path="/us/services/virtual-assistant-service-in-california/" element={<VaCA />} />
+        <Route path="/us/services/virtual-assistant-service-in-texas/" element={<VaTE />} />
 
         <Route path="/us/services/best-digital-marketing-agency-in-connecticut" element={<DmCT />} />
         <Route path="/us/services/best-digital-marketing-agency-in-florida" element={<DmFL />} />
@@ -331,7 +331,7 @@ function App() {
         <Route path="/us/services/outsourcing-accounting-data-entry-pennsylvania/" element={<DePA />} />
         <Route path="/us/services/outsourcing-accounting-data-entry-southcarolina/" element={<DeSC />} />
         <Route path="/us/services/outsourcing-accounting-data-entry-northcarolina/" element={<DeNC />} />
-        <Route path="/us/services/outsourcing-accounting-data-entry-virginia/" element={<DeVI />}/>
+        <Route path="/us/services/outsourcing-accounting-data-entry-virginia/" element={<DeVI />} />
         <Route path="/us/services/outsourcing-accounting-data-entry-california/" element={<DeCA />} />
         <Route path="/us/services/outsourcing-accounting-data-entry-texas/" element={<DeTE />} />
 
@@ -367,14 +367,16 @@ function App() {
 
 
 
-     
-        
 
-      </Routes> 
-       <StickyButtons />
+
+
+      </Routes>
+      <StickyButtons />
       <Footer />
     </>
   );
 }
+
+
 
 export default App;

@@ -83,7 +83,7 @@ const ToolsSection = () => {
               <Box
                 key={index}
                 sx={{
-                  minWidth: { xs: 90, sm: 90, md: 120, lg: 150 },
+                  minWidth: { xs: 90, sm: 100, md: 120, lg: 150 },
                   height: { xs: "80px", sm: "100px", md: "110px", lg: "120px" },
                   background: "rgba(255,255,255,0.7)",
                   borderRadius: { xs: "12px", sm: "16px", md: "20px" },
@@ -103,9 +103,12 @@ const ToolsSection = () => {
                 <Box
                   component="img"
                   src={tool.src}
-                  alt="tool"
+                  alt="Software tool logo"
+                  loading="lazy" // ⚛️ Below-the-fold optimization
+                  width={120} // ⚛️ Prevents CLS
+                  height={80}
                   sx={{
-                    width: { xs: 70, sm: 50, md: 70, lg: 120 },
+                    width: { xs: 70, sm: 70, md: 80, lg: 120 },
                     height: "auto",
                     maxWidth: "80%",
                     maxHeight: "80%",
@@ -119,6 +122,7 @@ const ToolsSection = () => {
                 />
               </Box>
             ))}
+
           </Box>
         </Box>
 

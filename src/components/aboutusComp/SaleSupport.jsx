@@ -99,8 +99,8 @@ function SaleSupport() {
               </Typography>
 
               <Typography color="#ff9401" fontWeight={600}>
-                US: <a href="tel:+13254754737" style={linkStyle}>+1 325-475-4737</a> /{" "}
-                <a href="tel:+18133030213" style={linkStyle}>+1 813-303-0213</a>
+                US: <a href="tel:+18133030213" style={linkStyle}>+1 (813) 303-0213</a> /{" "}
+                <a href="tel:+18135600065" style={linkStyle}>+1 (813) 560-0065</a>
               </Typography>
 
               <Box mt={3}>

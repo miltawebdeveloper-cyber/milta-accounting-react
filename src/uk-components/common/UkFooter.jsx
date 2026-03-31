@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 
 import {
   Box,
@@ -39,16 +39,27 @@ const Footer = () => {
 
     emailjs
       .send(
-        "service_bzq4oup",
-        "template_2p21kkt",
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
           form_type: "Footer Newsletter",
-          email: newsletterEmail,
           newsletter_section: "display:block;",
+          subscription_section: "display:block;",
           contact_section: "display:none;",
+          job_section: "display:none;",
+          subscriber_email: newsletterEmail,
           source: "UK Footer",
+
+          // 🔒 CLEAR CONTACT DATA
+          first_name: "",
+          last_name: "",
+          email: "",
+          phone_number: "",
+          service_interest: "",
+          message: "",
+          revenue: "",
         },
-        "BYgwI5Ebr7rcWTjuw"
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
       .then(() => {
         alert("Thank you for subscribing!");
@@ -267,7 +278,14 @@ const Footer = () => {
           }}
         >
           {/* Left Column: Legal Links */}
-          <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: 2,
+              justifyContent: { xs: "center", md: "flex-start" }, // 📱 Center on mobile
+            }}
+          >
             {legalLinks.map((item, i) => (
               <Typography
                 key={i}
@@ -280,6 +298,7 @@ const Footer = () => {
               </Typography>
             ))}
           </Box>
+
 
           {/* Right Column: Copyright */}
           <Typography

@@ -80,8 +80,8 @@ const HeroSection = () => {
           {/* ================= LEFT IMAGE ================= */}
           <Box
             component={motion.div}
-            initial={{ opacity: 0, x: -80 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }} // 📱 Fade-up on mobile
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             sx={{
@@ -148,8 +148,8 @@ const HeroSection = () => {
           {/* ================= RIGHT CONTENT ================= */}
           <Box
             component={motion.div}
-            initial={{ opacity: 0, x: 80 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }} // 📱 Fade-up on mobile
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9 }}
             viewport={{ once: true }}
             sx={{
@@ -158,6 +158,7 @@ const HeroSection = () => {
               maxWidth: 750,
             }}
           >
+
             <Typography
               sx={{
                 color: "#97ba3a",

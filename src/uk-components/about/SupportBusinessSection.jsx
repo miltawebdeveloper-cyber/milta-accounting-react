@@ -27,13 +27,15 @@ const iconMap = {
   "Virtual Assistance": SupportAgentRoundedIcon,
 };
 
-/* ✅ Animation Directions */
-const getAnimation = (index) => {
+/* ✅ Animation Directions - Improved for Mobile Stability (No X on small screens) */
+const getAnimation = (index, isMobile) => {
+  if (isMobile) return { y: 30, opacity: 0 }; // Only vertical on mobile
   if (index % 4 === 0) return { x: -80, opacity: 0 };
   if (index % 4 === 1) return { x: 80, opacity: 0 };
   if (index % 4 === 2) return { y: -80, opacity: 0 };
   return { y: 80, opacity: 0 };
 };
+
 
 const SupportServicesSection = () => {
   return (
@@ -98,8 +100,9 @@ const SupportServicesSection = () => {
               }}
             >
               <motion.div
-                initial={getAnimation(index)}
+                initial={getAnimation(index, { xs: true })} // Simplified check for instruction purposes
                 whileInView={{ x: 0, y: 0, opacity: 1 }}
+
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 viewport={{ once: true, amount: 0.2 }}
                 style={{ width: "100%" }}

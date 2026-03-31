@@ -82,7 +82,7 @@ const AboutAccountingSection = () => {
         <Typography
           sx={{
             fontWeight: 700,
-            mb: 9,
+            mb: { xs: 5, md: 9 }, // 📱 Reduced gap on mobile
             fontSize: { xs: "28px", md: "42px" },
             color: "#2b6d2a",
             lineHeight: 1.2,
@@ -92,16 +92,16 @@ const AboutAccountingSection = () => {
         </Typography>
 
         {/* Cards Grid */}
-        <Grid container spacing={5} justifyContent="center">
+        <Grid container spacing={{ xs: 3, md: 5 }} justifyContent="center">
           {features.map((feature, index) => {
             const Icon = iconMap[feature.title] || CheckCircleRoundedIcon;
             return (
               <Grid item xs={12} sm={6} md={4} key={index}>
                 <Box
                 sx={{
-                  maxWidth: 340,
+                  maxWidth: { xs: "100%", sm: 340 }, // 📱 No fixed width on mobile
                   height: "100%",
-                  p: 5,
+                  p: { xs: 3, md: 5 }, // 📱 Smaller padding on mobile
                   borderRadius: "26px",
 
                   /* Premium Glass Card */
