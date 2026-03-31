@@ -41,13 +41,10 @@ function SaleSupport() {
               </Typography>
 
               <Typography color="#ff9401" fontWeight={600}>
-                <a href="mailto:John@miltafs.com" style={linkStyle}>
-                  John@miltafs.com
+                <a href="mailto:frank@miltafs.com" style={linkStyle}>
+                  frank@miltafs.com
                 </a>
-                {" / "}
-                <a href="mailto:Chris@miltafs.com" style={linkStyle}>
-                  Chris@miltafs.com
-                </a>
+
               </Typography>
 
               <Box mt={3}>
