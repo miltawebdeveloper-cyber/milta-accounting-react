@@ -18,7 +18,7 @@ import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import DevicesOutlinedIcon from "@mui/icons-material/DevicesOutlined";
 import WorkOutlineOutlinedIcon from "@mui/icons-material/WorkOutlineOutlined";
 import AccountBalanceOutlinedIcon from "@mui/icons-material/AccountBalanceOutlined";
-import AccountsPayableImage from "../../../assets/accounts-payable.jpg";
+import AccountsPayableImage from "../../../assets/accounts-payable.webp";
 
 /* Features */
 const features = [

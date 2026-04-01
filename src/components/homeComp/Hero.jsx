@@ -9,44 +9,39 @@ import "swiper/css/navigation";
 
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import work1 from "../../assets/money-2.webp";
+import work2 from "../../assets/money-3.webp";
+import work3 from "../../assets/Accounts1.webp";
+import work4 from "../../assets/Accountable-4.webp";
+
 
 const slides = [
   {
     title: "Expert Outsourcing <br> Accounting & Bookkeeping Services",
     description:
       "Trusted by 100+ Clients Across 12 Countries. Proudly serving small businesses, growing enterprises, and Fortune 500 companies.",
-    image:
-      "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg",
-       alt: "Outsourcing accounting and bookkeeping services for global businesses",
+    image: work3,
+    alt: "Outsourcing accounting and bookkeeping services for global businesses",
   },
   {
     title: "Tax Planning and <br> Preparation Services in the USA!",
     description:
       "Professional US Expat Tax Service for Federal, State, and City Tax Preparation.",
-    image:
-      "https://images.pexels.com/photos/4386379/pexels-photo-4386379.jpeg",
-      alt: "Tax planning and preparation services for businesses in the USA",
+    image: work1,
+    alt: "Tax planning and preparation services for businesses in the USA",
   },
   {
     title: "The Best CPA Service <br> for Small Businesses in the USA",
     description: "We offer the best CPA service for small businesses in the USA.",
-    image:
-      "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg",
-       alt: "Certified public accountant services for small businesses in the USA",
+    image: work4,
+    alt: "Certified public accountant services for small businesses in the USA",
   },
-  {
-    title: "Boost Your Business <br> with a Virtual Assistant!",
-    description: "Get the skilled help you need to scale faster.",
-    image:
-      "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg",
-       alt: "Virtual assistant helping businesses improve productivity",
-  },
+
   {
     title: "Expert Financial Controller <br> Services in the USA",
     description: "Improve your accounting systems with experts.",
-    image:
-      "https://images.pexels.com/photos/4386442/pexels-photo-4386442.jpeg",
-       alt: "Professional financial controller services for business accounting",
+    image: work2,
+    alt: "Professional financial controller services for business accounting",
   },
 ];
 

@@ -58,7 +58,6 @@ function App() {
     ogImage: "https://www.miltafs.com/images/miltafs-og.jpg",
      ogTitle: "Best Law Firm Accounting Services in the UK",
     ogDescription: "We deliver specialist law firm accounting services designed to provide complete financial clarity and compliance.",
-    ogImage: "https://www.miltafs.com/images/miltafs-og.jpg",
     ogUrl: "https://www.miltafs.com/uk/law-firm-accounting-services/",
         schema: faqSchema,
 

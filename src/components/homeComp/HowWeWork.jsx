@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Container, Typography, Grid } from "@mui/material";
 import StylishDividerText from "./StylishDividerText";
-import work from "../../assets/work.jpg";
+import work from "../../assets/work.webp";
 const steps = [
   {
     number: "01",

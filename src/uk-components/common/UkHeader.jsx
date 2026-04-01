@@ -65,8 +65,6 @@ export default function UkHeader() {
         { label: "Virtual Assistance", to: "/uk/virtual-assistant-services-in-the-uk" },
         { label: "Data Entry Services", to: "/uk/accounting-data-entry-services-uk" },
 
-
-
       ],
     },
     {
@@ -313,7 +311,7 @@ export default function UkHeader() {
           <Toolbar
             sx={{
               justifyContent: "space-between",
-              minHeight: { 
+              minHeight: {
                 xs: scrolled ? 58 : 72, // 📱 Slimmer on mobile
                 md: scrolled ? 70 : 85  // 💻 Standard on desktop
               },

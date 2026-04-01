@@ -3,7 +3,7 @@
 import React from "react";
 import { Box, Typography, Button, Container } from "@mui/material";
 
-import Accounting from "../../assets/accouting-professional.jpg";
+import Accounting from "../../assets/accouting-professional.webp";
 
 const HeroSection = () => {
   return (

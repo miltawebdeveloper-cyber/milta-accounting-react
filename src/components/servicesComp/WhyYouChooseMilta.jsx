@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Grid, Typography, List, ListItem, ListItemText } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import heroImage from "../../assets/heroImage.png";
+import heroImage from "../../assets/heroImage.webp";
 
 const features = [
   "Available Full-Time: Gain access to full-time professionals dedicated to your accounting needs.",

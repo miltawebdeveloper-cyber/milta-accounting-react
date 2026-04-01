@@ -5,8 +5,8 @@ import {
   Grid,
   Card,
 } from "@mui/material";
-import MD1 from "../../assets/images/MD1.jpg";
-import MD2 from "../../assets/images/MD2.jpg";
+import MD1 from "../../assets/images/MD1.webp";
+import MD2 from "../../assets/images/MD2.webp";
 
 /* GLOBAL FONT */
 const globalFont = {

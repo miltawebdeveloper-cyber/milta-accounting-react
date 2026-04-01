@@ -17,7 +17,7 @@ import SavingsOutlinedIcon from "@mui/icons-material/SavingsOutlined";
 import SpeedOutlinedIcon from "@mui/icons-material/SpeedOutlined";
 import TuneOutlinedIcon from "@mui/icons-material/TuneOutlined";
 import SupportAgentOutlinedIcon from "@mui/icons-material/SupportAgentOutlined";
-import Virtual from "../../../assets/virtual-assistant-services.jpg"; 
+import Virtual from "../../../assets/virtual-assistant-services.webp"; 
 
 
 /* Features */

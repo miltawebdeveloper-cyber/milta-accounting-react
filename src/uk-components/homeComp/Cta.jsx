@@ -2,7 +2,7 @@
 import React from "react";
 import { Box, Typography, Button, Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import ctaImg from "../../assets/ctaImg.jpg";
+import ctaImg from "../../assets/ctaImg.webp";
 
 const CTASection = () => {
   const navigate = useNavigate();
