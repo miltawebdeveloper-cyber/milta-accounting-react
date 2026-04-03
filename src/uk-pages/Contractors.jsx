@@ -52,7 +52,7 @@ function ContractorsUK() {
             }}
           >
             {/* Main content goes here */}
-            
+
             <Overview />
             <Services />
             <Advantages />
@@ -60,48 +60,48 @@ function ContractorsUK() {
 
           {/* ===== RIGHT COLUMN: Reach Out Contact Form ===== */}
           {/* ===== RIGHT COLUMN: Reach Out Contact Form ===== */}
-<Box
-  sx={{
-    display: { xs: "none", lg: "block" },
-    flex: "0 0 20%",
-    maxWidth: "25%",
-    minHeight: "600px",
-  }}
->
-  {/* Inner card-style box */}
-  <Box
-    sx={{
-      p: 3,
-      bgcolor: "#fff",                  // white background
-      borderRadius: 3,                  // rounded corners
-      boxShadow: "0 24px 60px rgba(0,0,0,0.08)",  // shadow like sidebar
-      border: "1px solid #e6e6e6",     // border like sidebar
-      fontFamily: "'Syne', sans-serif",
-      height: "520px",                    // fill parent column
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "flex-start",
-    }}
-  >
-    {/* Dot + Heading */}
-    <Box sx={{ mb: 1.5, textAlign: "center" }}>
-      
-      <Box
-        component="h3"
-        sx={{
-          fontWeight: 700,
-          fontSize: { xs: "1rem", md: "1.5rem" },
-          color: "#1d4230",
-        }}
-      >
-        Reach Out to Us
-      </Box>
-    </Box>
+          <Box
+            sx={{
+              display: { xs: "none", lg: "block" },
+              flex: "0 0 20%",
+              maxWidth: "25%",
+              minHeight: "600px",
+            }}
+          >
+            {/* Inner card-style box */}
+            <Box
+              sx={{
+                p: 3,
+                bgcolor: "#fff",                  // white background
+                borderRadius: 3,                  // rounded corners
+                boxShadow: "0 24px 60px rgba(0,0,0,0.08)",  // shadow like sidebar
+                border: "1px solid #e6e6e6",     // border like sidebar
+                fontFamily: "'Syne', sans-serif",
+                height: "520px",                    // fill parent column
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-start",
+              }}
+            >
+              {/* Dot + Heading */}
+              <Box sx={{ mb: 1.5, textAlign: "center" }}>
 
-    {/* Contact Form */}
-    <ContactForm />
-  </Box>
-</Box>
+                <Box
+                  component="h3"
+                  sx={{
+                    fontWeight: 700,
+                    fontSize: { xs: "1rem", md: "1.5rem" },
+                    color: "#1d4230",
+                  }}
+                >
+                  Reach Out to Us
+                </Box>
+              </Box>
+
+              {/* Contact Form */}
+              <ContactForm />
+            </Box>
+          </Box>
 
         </Container>
       </Box>

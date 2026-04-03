@@ -95,7 +95,7 @@ const AboutUs = () => {
               px: { xs: 3, md: 4 },
               py: { xs: 1.2, md: 1.5 },
               borderRadius: 30,
-              bgcolor: "#2b6d2a",
+              bgcolor: "#97ba3a",
               color: "#fff",
               fontWeight: 700,
               boxShadow: "0 5px 15px rgba(50, 141, 38, 0.4)",

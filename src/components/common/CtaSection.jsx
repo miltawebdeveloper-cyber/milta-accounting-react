@@ -3,8 +3,9 @@ import { Box, Container, Typography } from "@mui/material";
 import CustomButton from "../common/CustomButton";
 
 function CTASection() {
-        const handleCalendlyClick = () => {
-window.open("/contact", "_blank", "noopener,noreferrer");}
+  const handleCalendlyClick = () => {
+    window.open("/contact#get-in-touch", "_blank", "noopener,noreferrer");
+  }
   return (
     <Box
       sx={{
@@ -55,7 +56,8 @@ window.open("/contact", "_blank", "noopener,noreferrer");}
         </Typography>
 
         <CustomButton
-         onClick={handleCalendlyClick}
+          onClick={handleCalendlyClick}
+
           sx={{
             backgroundColor: "#ff9401",
             color: "#fff",

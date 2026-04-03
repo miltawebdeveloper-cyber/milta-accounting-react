@@ -94,7 +94,7 @@ const AboutUs = () => {
               px: { xs: 3, md: 4 },
               py: { xs: 1.2, md: 1.5 },
               borderRadius: 30,
-              bgcolor: "#2b6d2a",
+              bgcolor: "#97ba3a",
               color: "#fff",
               fontWeight: 700,
               fontSize: { xs: "14px", md: "15px" },

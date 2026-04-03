@@ -124,26 +124,7 @@ const BookkeepingIntroSection = () => {
                   Get Started
                 </Button>
 
-                <Button
-                  component={RouterLink}
-                  to="/uk/contact"
-                  variant="outlined"
-                  sx={{
-                    px: 4,
-                    py: 1.6,
-                    fontWeight: 600,
-                    borderRadius: 2,
-                    textTransform: "none",
-                    borderColor: "#2b6d2a",
-                    color: "#2b6d2a",
-                    "&:hover": {
-                      borderColor: "#2b6d2a",
-                      backgroundColor: "rgba(0,0,0,0.03)",
-                    },
-                  }}
-                >
-                  Book a Call
-                </Button>
+               
               </Box>
 
             </Box>

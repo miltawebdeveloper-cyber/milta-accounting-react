@@ -1,10 +1,11 @@
-// src/components/servicesComp/bookKeeping/TopNotch.jsx
-import React from "react";
+import React, { useState } from "react";
 import { Box, Typography, Container, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import ContactPopup from "../../common/ContactPopup";
 
 const TopNotch = () => {
   const navigate = useNavigate();
+  const [contactModalOpen, setContactModalOpen] = useState(false);
 
   return (
     <Box sx={{ py: { xs: 6, md: 5 }, backgroundColor: "#fff" }}>
@@ -89,13 +90,7 @@ const TopNotch = () => {
           >
             <Button
               variant="outlined"
-              onClick={() =>
-                window.open(
-                  "https://calendly.com/rob-miltafs/30min",
-                  "_blank",
-                  "noopener,noreferrer"
-                )
-              }
+              onClick={() => setContactModalOpen(true)}
               sx={{
                 borderColor: "#ff9401",
                 color: "#ff9401",
@@ -113,7 +108,7 @@ const TopNotch = () => {
                 transition: "all 0.3s ease",
               }}
             >
-              Get Started | Book a Call
+              More Details
             </Button>
           </Box>
         </Box>
@@ -141,6 +136,10 @@ const TopNotch = () => {
           />
         </Box>
       </Container>
+      <ContactPopup 
+        open={contactModalOpen}
+        handleClose={() => setContactModalOpen(false)}
+      />
     </Box>
   );
 };

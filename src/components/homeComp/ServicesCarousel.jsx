@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Typography, Button, Card, Grid } from "@mui/material";
 import StylishDividerText from "./StylishDividerText";
+import ContactPopup from "../common/ContactPopup";
 
 const services = [
   {
@@ -22,9 +23,11 @@ const services = [
 ];
 
 const ServicesSection = () => {
+  const [contactModalOpen, setContactModalOpen] = useState(false);
+
   const handleChatClick = () => {
-  window.open("tel:3254754737", "_blank");
-};
+    setContactModalOpen(true);
+  };
   return (
     <Box
       sx={{
@@ -132,7 +135,7 @@ const ServicesSection = () => {
                   "&:hover": { backgroundColor: "#091f1c" },
                 }}
               >
-                Schedule a Call
+                Book a Consultation
               </Button>
             )}
           </Card>
@@ -174,6 +177,12 @@ const ServicesSection = () => {
           ))}
         </Grid>
       </Box>
+
+      {/* Contact Popup */}
+      <ContactPopup
+        open={contactModalOpen}
+        handleClose={() => setContactModalOpen(false)}
+      />
     </Box>
   );
 };

@@ -1,6 +1,6 @@
-// src/components/servicesComp/bookKeeping/TopNotch.jsx
-import React from "react";
+import React, { useState } from "react";
 import { Box, Typography, Container, Button } from "@mui/material";
+import ContactPopup from "../../common/ContactPopup";
 
 const FinancialControllerIllustration = (props) => (
   
@@ -85,8 +85,10 @@ const FinancialControllerIllustration = (props) => (
 );
 
 const TopNotch = () => {
-      const handleCalendlyClick = () => {
-window.open("/contact", "_blank", "noopener,noreferrer");}
+  const [contactModalOpen, setContactModalOpen] = useState(false);
+  const handleCalendlyClick = () => {
+    setContactModalOpen(true);
+  };
   return (
     <Box sx={{ py: { xs: 8, md: 6 }, backgroundColor: "#fff" }}>
       <Container maxWidth="lg">
@@ -160,19 +162,10 @@ window.open("/contact", "_blank", "noopener,noreferrer");}
                   "&:hover": { backgroundColor: "#e68300" },
                 }}
               >
-                💼 Schedule Your Free Consultation
+               Schedule Your Free Consultation
               </Button>
 
-              <Typography
-                sx={{
-                  mt: { xs: 2, sm: 0 },
-                  fontWeight: 500,
-                  color: "#0d3731",
-                  fontFamily: "'Poppins', sans-serif",
-                }}
-              >
-                ⏰ Hurry! The trial ends in 48 hours.
-              </Typography>
+            
             </Box>
           </Box>
 
@@ -189,6 +182,7 @@ window.open("/contact", "_blank", "noopener,noreferrer");}
           </Box>
         </Box>
       </Container>
+      <ContactPopup open={contactModalOpen} handleClose={() => setContactModalOpen(false)} />
     </Box>
   );
 };

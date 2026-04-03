@@ -15,11 +15,16 @@ import {
   useMediaQuery,
   Container,
   Collapse,
+  Dialog,
+  DialogTitle,
+  DialogContent,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import CloseIcon from "@mui/icons-material/Close";
+import ContactPopup from "./ContactPopup";
 import logo from "../../assets/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ReactCountryFlag from "react-country-flag";
 import { useNavigate } from "react-router-dom";
 
@@ -65,22 +70,35 @@ function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [submenuOpen, setSubmenuOpen] = useState({});
   const [anchorEls, setAnchorEls] = useState({});
+  const [contactModalOpen, setContactModalOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const isActivePath = (path, submenu) => {
+    if (!path) return false;
+    // Home only active on exact '/'
+    if (path === "/") return location.pathname === "/";
+    if (location.pathname === path) return true;
+    if (path === "/services" && location.pathname.includes("/services/")) return true;
+    if (path === "/industry" && location.pathname.includes("/industry/")) return true;
+    if (submenu && submenu.some((sub) => location.pathname === sub.to || location.pathname.startsWith(sub.to))) return true;
+    return location.pathname.startsWith(path);
+  };
 
 
   // Country selector
   const [countryAnchor, setCountryAnchor] = useState(null);
   const [country, setCountry] = useState("US");
- const countries = [
-  { code: "US", label: "United States" },
-  { code: "GB", label: "United Kingdom" },
-];
+  const countries = [
+    { code: "US", label: "United States" },
+    { code: "GB", label: "United Kingdom" },
+  ];
 
 
   const handleDrawerToggle = () => setMobileOpen((s) => !s);
 
   const handleCalendlyClick = () => {
-    window.open("/services", "_blank", "noopener,noreferrer");
+    setContactModalOpen(true);
   };
 
   const toggleSubmenu = (label) => {
@@ -89,7 +107,7 @@ function Header() {
 
   // Mobile Drawer with collapsible submenus + country selector
   const mobileDrawer = (
-    <Box sx={{ width:"100%", px: 2, py: 2 }}>
+    <Box sx={{ width: "100%", px: 2, py: 2 }}>
       {/* Logo */}
       <Box sx={{ textAlign: "center", mb: 2 }}>
         <Box component="img" src={logo} alt="Logo" sx={{ width: "100%", maxWidth: 220, height: "auto", mx: "auto", display: "block" }} />
@@ -147,72 +165,72 @@ function Header() {
       </List>
 
       {/* Country Selector in Mobile Drawer */}
-       {/* Mobile Drawer Country Selector */}
-<Box sx={{ mt: 2, px: 1 }}>
-  <Button
-    onClick={(e) => setCountryAnchor(e.currentTarget)}
-    sx={{
-      width: "100%",
-      justifyContent: "flex-start",
-      textTransform: "none",
-      fontWeight: 600,
-      color: "#000",
-      border: "1px solid #ccc",
-      borderRadius: "8px",
-      px: 2,
-      py: 1,
-      backgroundColor: "#f9f9f9",
-      "&:hover": { backgroundColor: "#f0f0f0" },
-    }}
-    endIcon={<ExpandMoreIcon />}
-  >
-    <ReactCountryFlag
-      countryCode={country}
-      svg
-      style={{ width: '22px', height: '16px', marginRight: '6px' }}
-    />
-    {countries.find((c) => c.code === country)?.label || country}
-  </Button>
+      {/* Mobile Drawer Country Selector */}
+      <Box sx={{ mt: 2, px: 1 }}>
+        <Button
+          onClick={(e) => setCountryAnchor(e.currentTarget)}
+          sx={{
+            width: "100%",
+            justifyContent: "flex-start",
+            textTransform: "none",
+            fontWeight: 600,
+            color: "#000",
+            border: "1px solid #ccc",
+            borderRadius: "8px",
+            px: 2,
+            py: 1,
+            backgroundColor: "#f9f9f9",
+            "&:hover": { backgroundColor: "#f0f0f0" },
+          }}
+          endIcon={<ExpandMoreIcon />}
+        >
+          <ReactCountryFlag
+            countryCode={country}
+            svg
+            style={{ width: '22px', height: '16px', marginRight: '6px' }}
+          />
+          {countries.find((c) => c.code === country)?.label || country}
+        </Button>
 
-  <Menu
-    anchorEl={countryAnchor}
-    open={Boolean(countryAnchor)}
-    onClose={() => setCountryAnchor(null)}
-  >
-    {countries.map((c) => (
-      <MenuItem
-        key={c.code}
-        onClick={() => {
-          setCountry(c.code);
-          setCountryAnchor(null);
-          setMobileOpen(false); // close drawer
-          if (c.code === "US") navigate("/");
-          else if (c.code === "GB") navigate("/uk");
-        }}
-        sx={{ fontWeight: 500 }}
-      >
-        <ReactCountryFlag
-          countryCode={c.code}
-          svg
-          style={{ width: '22px', height: '16px', marginRight: '6px' }}
-        />
-        {c.label}
-      </MenuItem>
-    ))}
-  </Menu>
-</Box>
+        <Menu
+          anchorEl={countryAnchor}
+          open={Boolean(countryAnchor)}
+          onClose={() => setCountryAnchor(null)}
+        >
+          {countries.map((c) => (
+            <MenuItem
+              key={c.code}
+              onClick={() => {
+                setCountry(c.code);
+                setCountryAnchor(null);
+                setMobileOpen(false); // close drawer
+                if (c.code === "US") navigate("/");
+                else if (c.code === "GB") navigate("/uk");
+              }}
+              sx={{ fontWeight: 500 }}
+            >
+              <ReactCountryFlag
+                countryCode={c.code}
+                svg
+                style={{ width: '22px', height: '16px', marginRight: '6px' }}
+              />
+              {c.label}
+            </MenuItem>
+          ))}
+        </Menu>
+      </Box>
 
     </Box>
   );
 
   return (
     <>
-      <AppBar position={isMobile ? "static" : "sticky"} elevation={0} sx={{ backgroundColor: "#ffffff", borderBottom: "1px solid #eee", zIndex: 1300 }}>
-        <Container maxWidth={false} sx={{ maxWidth: "1300px", py:"10px", minHeight: { xs: 56, sm: 64, md: 72 }}}>
+      <AppBar position={isMobile ? "static" : "sticky"} elevation={0} sx={{ backgroundColor: "#ffffff", borderBottom: "1px solid #eee", zIndex: 1300, "& a": { textDecoration: "none" } }}>
+        <Container maxWidth={false} sx={{ maxWidth: "1300px", py: "10px", minHeight: { xs: 56, sm: 64, md: 72 } }}>
           <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
             {/* Logo */}
             <Box sx={{ display: "flex", alignItems: "center", height: "100%" }}>
-              <Link to="/" style={{ display: "flex", alignItems: "center", height: "100%" }}>
+              <Link to="/" style={{ display: "flex", alignItems: "center", height: "100%", textDecoration: "none" }}>
                 <Box component="img" src={logo} alt="Logo" sx={{ maxHeight: { xs: 32, sm: 42, md: 56 }, width: "auto", objectFit: "contain" }} />
               </Link>
             </Box>
@@ -241,14 +259,37 @@ function Header() {
                     </IconButton>
                     <Menu anchorEl={anchorEls[item.label] ?? null} open={Boolean(anchorEls[item.label])} onClose={() => setAnchorEls({})} MenuListProps={{ onMouseLeave: () => setAnchorEls({}) }} anchorOrigin={{ vertical: "bottom", horizontal: "left" }} transformOrigin={{ vertical: "top", horizontal: "left" }} sx={{ mt: 1, "& .MuiPaper-root": { borderRadius: "10px", boxShadow: "0 6px 20px rgba(0,0,0,0.08)", backgroundColor: "#fffaf3" } }}>
                       {item.submenu.map((sub) => (
-                        <MenuItem key={sub.label} component={Link} to={sub.to} onClick={() => setAnchorEls({})} sx={{ fontWeight: 500, "&:hover": { backgroundColor: "#ff9401", color: "#fff" } }}>
+                        <MenuItem
+                          key={sub.label}
+                          component={Link}
+                          to={sub.to}
+                          onClick={() => setAnchorEls({})}
+                          sx={{
+                            fontWeight: 500,
+                            color: location.pathname === sub.to ? "#ff9401" : "#444",
+                            backgroundColor: location.pathname === sub.to ? "rgba(255, 148, 1, 0.15)" : "transparent",
+                            "&:hover": { backgroundColor: "#ff9401", color: "#fff" },
+                          }}
+                        >
                           {sub.label}
                         </MenuItem>
                       ))}
                     </Menu>
                   </Box>
                 ) : (
-                  <Button key={item.label} component={Link} to={item.to} sx={{ color: "#000", textTransform: "none", fontWeight: 500, "&:hover": { color: "#ff9401" } }}>
+                  <Button
+                    key={item.label}
+                    component={Link}
+                    to={item.to}
+                    sx={{
+                      color: isActivePath(item.to, item.submenu) ? "#ff9401" : "#000",
+                      textTransform: "none",
+                      fontWeight: isActivePath(item.to, item.submenu) ? 700 : 500,
+                      textDecoration: "none",
+                      px: 1.2,
+                      "&:hover": { color: "#ff9401" },
+                    }}
+                  >
                     {item.label}
                   </Button>
                 )
@@ -256,56 +297,56 @@ function Header() {
 
               {/* Desktop Country Selector */}
               {/* Desktop Country Selector */}
-<Box>
-  <Button
-    onClick={(e) => setCountryAnchor(e.currentTarget)}
-    sx={{
-      textTransform: "none",
-      fontWeight: 600,
-      color: "#000",
-      border: "1px solid #ccc",
-      borderRadius: "8px",
-      px: 2,
-      py: 0.8,
-      backgroundColor: "#f9f9f9",
-      "&:hover": { backgroundColor: "#f0f0f0" },
-    }}
-    endIcon={<ExpandMoreIcon />}
-  >
-    <ReactCountryFlag
-      countryCode={country}
-      svg
-      style={{ width: '22px', height: '16px', marginRight: '6px' }}
-    />
-    {countries.find((c) => c.code === country)?.label || country}
-  </Button>
+              <Box>
+                <Button
+                  onClick={(e) => setCountryAnchor(e.currentTarget)}
+                  sx={{
+                    textTransform: "none",
+                    fontWeight: 600,
+                    color: "#000",
+                    border: "1px solid #ccc",
+                    borderRadius: "8px",
+                    px: 2,
+                    py: 0.8,
+                    backgroundColor: "#f9f9f9",
+                    "&:hover": { backgroundColor: "#f0f0f0" },
+                  }}
+                  endIcon={<ExpandMoreIcon />}
+                >
+                  <ReactCountryFlag
+                    countryCode={country}
+                    svg
+                    style={{ width: '22px', height: '16px', marginRight: '6px' }}
+                  />
+                  {countries.find((c) => c.code === country)?.label || country}
+                </Button>
 
-  <Menu
-    anchorEl={countryAnchor}
-    open={Boolean(countryAnchor)}
-    onClose={() => setCountryAnchor(null)}
-  >
-    {countries.map((c) => (
-      <MenuItem
-        key={c.code}
-        onClick={() => {
-          setCountry(c.code); 
-          setCountryAnchor(null); 
-          if (c.code === "US") navigate("/"); 
-          else if (c.code === "GB") navigate("/uk");
-        }}
-        sx={{ fontWeight: 500 }}
-      >
-        <ReactCountryFlag
-          countryCode={c.code}
-          svg
-          style={{ width: '22px', height: '16px', marginRight: '6px' }}
-        />
-        {c.label}
-      </MenuItem>
-    ))}
-  </Menu>
-</Box>
+                <Menu
+                  anchorEl={countryAnchor}
+                  open={Boolean(countryAnchor)}
+                  onClose={() => setCountryAnchor(null)}
+                >
+                  {countries.map((c) => (
+                    <MenuItem
+                      key={c.code}
+                      onClick={() => {
+                        setCountry(c.code);
+                        setCountryAnchor(null);
+                        if (c.code === "US") navigate("/");
+                        else if (c.code === "GB") navigate("/uk");
+                      }}
+                      sx={{ fontWeight: 500 }}
+                    >
+                      <ReactCountryFlag
+                        countryCode={c.code}
+                        svg
+                        style={{ width: '22px', height: '16px', marginRight: '6px' }}
+                      />
+                      {c.label}
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </Box>
 
               {/* Get Started Button */}
               <Button variant="contained" onClick={handleCalendlyClick} sx={{ ml: 1, background: "linear-gradient(135deg, #2b6d2a, #4f8630)", textTransform: "none", fontWeight: 600, px: 3, py: 1, borderRadius: "25px" }}>
@@ -325,6 +366,11 @@ function Header() {
       <Drawer anchor="right" open={mobileOpen} onClose={handleDrawerToggle} sx={{ "& .MuiDrawer-paper": { width: 260, paddingTop: "10px", backgroundColor: "#fff" } }}>
         {mobileDrawer}
       </Drawer>
+
+      <ContactPopup
+        open={contactModalOpen}
+        handleClose={() => setContactModalOpen(false)}
+      />
     </>
   );
 }

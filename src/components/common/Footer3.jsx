@@ -102,7 +102,6 @@ export default function FooterLayout() {
           // 🔒 CLEAR CONTACT DATA
           first_name: "",
           last_name: "",
-          email: "",
           phone_number: "",
           service_interest: "",
           message: "",
@@ -122,7 +121,7 @@ export default function FooterLayout() {
   };
 
   const handleCalendlyClick = () => {
-    window.open("/contact", "_blank", "noopener,noreferrer");
+    window.open("/contact#get-in-touch", "_blank", "noopener,noreferrer");
   };
 
 

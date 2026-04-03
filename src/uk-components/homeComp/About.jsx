@@ -219,7 +219,7 @@ const HeroSection = () => {
 
             <Button
               component="a"
-              href="/uk/contact"
+              href="/uk/about"
               variant="contained"
               sx={{
                 bgcolor: "#2b6d2a",

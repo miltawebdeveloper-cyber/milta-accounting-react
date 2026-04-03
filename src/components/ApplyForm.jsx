@@ -16,6 +16,9 @@ const ApplyForm = () => {
 
   const [resumePreview, setResumePreview] = useState(null);
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [statusMessage, setStatusMessage] = useState("");
+  const [statusType, setStatusType] = useState("");
 
   const validate = () => {
     let newErrors = {};
@@ -68,6 +71,10 @@ const ApplyForm = () => {
     e.preventDefault();
     if (!validate()) return;
 
+    setLoading(true);
+    setStatusMessage("");
+    setStatusType("");
+
     const payload = new FormData();
     payload.append("firstName", formData.firstName);
     payload.append("phone", formData.phone);
@@ -84,11 +91,28 @@ const ApplyForm = () => {
     if (response.error) {
       console.error("API ERROR:", response.error);
       alert(`Failed to save the application: ${response.error}`);
+      setLoading(false);
+      setStatusType("error");
+      setStatusMessage("Failed to submit application. Please try again.");
       return;
     }
 
     const resumeURL = response.resumeURL || "Resume not uploaded";
 
+    // Immediate success feedback (no waiting for emailjs)
+    setFormData({
+      firstName: "",
+      phone: "",
+      jobType: "",
+      position: "",
+      email: "",
+      reference: "",
+      resume: null,
+    });
+    setResumePreview(null);
+    setLoading(false);
+    setStatusType("success");
+    setStatusMessage("Application submitted successfully. We will contact you soon.");
 
     emailjs
       .send(
@@ -124,19 +148,14 @@ const ApplyForm = () => {
     import.meta.env.VITE_EMAILJS_PUBLIC_KEY
   )
       .then(() => {
-        // ✅ Reset form
-        setFormData({
-          firstName: "",
-          phone: "",
-          jobType: "",
-          position: "",
-          email: "",
-          reference: "",
-          resume: null,
-        });
-        setResumePreview(null);
+        setStatusType("success");
+        setStatusMessage("Email notification sent to the team.");
       })
-      .catch(() => {});
+      .catch((error) => {
+        console.error("Emailjs send error:", error);
+        setStatusType("warning");
+        setStatusMessage("Application saved, but email notification failed. Our team still has your details.");
+      });
   };
 
   return (
@@ -264,9 +283,37 @@ const ApplyForm = () => {
           )}
 
           {/* CTA */}
-          <button type="submit" style={styles.submitBtn}>
-            SUBMIT YOUR APPLICATION
+          <button type="submit" style={styles.submitBtn} disabled={loading}>
+            {loading ? "Submitting..." : "SUBMIT YOUR APPLICATION"}
           </button>
+
+          {statusMessage && (
+            <div
+              style={
+                statusType === "success"
+                  ? {
+                      marginTop: "10px",
+                      padding: "12px 14px",
+                      borderRadius: "12px",
+                      border: "1px solid #ffffff",
+                      backgroundColor: "rgba(16, 185, 129, 0.12)",
+                      color: "#f8fffd",
+                      fontWeight: 700,
+                      textAlign: "center",
+                      fontSize: "0.95rem",
+                    }
+                  : {
+                      marginTop: "10px",
+                      color: "#ffffff",
+                      fontWeight: 700,
+                      textAlign: "center",
+                      fontSize: "0.95rem",
+                    }
+              }
+            >
+              {statusMessage}
+            </div>
+          )}
         </form>
       </div>
     </div>

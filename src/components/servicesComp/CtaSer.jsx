@@ -1,97 +1,78 @@
 import React from "react";
-import { Box, Container, Typography } from "@mui/material";
-import CustomButton from "../common/CustomButton";
+import { Box, Container, Typography, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 function ServicesCtaSection() {
-  const themeColor = "#ff9401";
-    const handleCalendlyClick = () => {
-window.open("/contact", "_blank", "noopener,noreferrer");}
+  const navigate = useNavigate();
+
   return (
-    <Box
-      sx={{
-        py: { xs: 6, md: 10 }, // reduced vertical space
-        backgroundColor: themeColor,
-        color: "#fff",
-        position: "relative",
-        overflow: "hidden",
-        textAlign: "center",
-        borderRadius: 4, // subtle rounded edges
-        boxShadow: "0 8px 20px rgba(0,0,0,0.15)", // soft shadow
-      }}
-    >
-      {/* Decorative Background Shapes */}
+    <>
       <Box
         sx={{
-          position: "absolute",
-          top: "-60px",
-          left: "-60px",
-          width: 150,
-          height: 150,
-          backgroundColor: "#ffffff22",
-          borderRadius: "50%",
-          zIndex: 1,
+          py: { xs: 5, md: 7 },
+          backgroundColor: "#1d4230",
+          textAlign: "center",
+          borderTop: "1px solid #e8e0d0",
+          borderBottom: "1px solid #e8e0d0",
         }}
-      />
-      <Box
-        sx={{
-          position: "absolute",
-          bottom: "-60px",
-          right: "-60px",
-          width: 200,
-          height: 200,
-          backgroundColor: "#ffffff11",
-          borderRadius: "50%",
-          zIndex: 1,
-        }}
-      />
+      >
+        <Container maxWidth="md">
+          <Typography
+            variant="h5"
+            fontWeight={700}
+            sx={{
+              mb: 1.5,
+              fontSize: { xs: "1.4rem", sm: "1.8rem", md: "2rem" },
+              lineHeight: 1.3,
+              color: "#ffffffff",
+            }}
+          >
+            Seeking Customized Solutions for Outsourced Bookkeeping &amp; Accounting Services?
+          </Typography>
 
-      <Container maxWidth="md" sx={{ position: "relative", zIndex: 2 }}>
-        <Typography
-          variant="h5"
-          fontWeight={700}
-          sx={{
-            mb: 2,
-            fontSize: { xs: "1.6rem", sm: "2rem", md: "2.2rem" },
-            lineHeight: 1.3,
-            color: "#fff",
-          }}
-        >
-          Seeking Customized Solutions for Outsourced Bookkeeping & Accounting Services?
-        </Typography>
+          <Typography
+            variant="body1"
+            sx={{
+              mb: 3.5,
+              fontSize: { xs: "0.95rem", sm: "1rem", md: "1.05rem" },
+              lineHeight: 1.7,
+              color: "#ffffffff",
+              maxWidth: "620px",
+              mx: "auto",
+            }}
+          >
+            If you're looking for specialized accounting services for small businesses, we're here to help! Share your needs, and we'll craft a solution just for you.
+          </Typography>
 
-        <Typography
-          variant="body1"
-          sx={{
-            mb: 4,
-            fontSize: { xs: "0.95rem", sm: "1.1rem", md: "1.15rem" },
-            lineHeight: 1.6,
-            color: "#ffffffdd",
-          }}
-        >
-          If you’re looking for specialized accounting services for small businesses, we’re here to help! Share your needs, and we’ll craft a solution just for you.
-        </Typography>
+          <Button
+            onClick={() => navigate("/contact#get-in-touch")}
+            variant="outlined"
+            sx={{
+              borderColor: "#ff9401",
+              color: "#ff9401",
+              fontWeight: 700,
+              fontSize: { xs: "0.9rem", sm: "1rem" },
+              px: { xs: 4, sm: 5 },
+              py: { xs: 1.2, sm: 1.5 },
+              borderRadius: "30px",
+              textTransform: "none",
+              borderWidth: "2px",
+              "&:hover": {
+                backgroundColor: "#fff4e5",
+                borderColor: "#e68300",
+                color: "#e68300",
+                transform: "translateY(-2px)",
+                boxShadow: "0 6px 18px rgba(255,148,1,0.2)",
+              },
+              transition: "all 0.3s ease",
+            }}
+          >
+            Contact Us
+          </Button>
+        </Container>
+      </Box>
 
-        <CustomButton
-        onClick={handleCalendlyClick}
-          sx={{
-            backgroundColor: "#1d2b36",
-            color: "#fff",
-            fontSize: { xs: "0.85rem", sm: "0.95rem", md: "1rem" },
-            px: { xs: 4, sm: 5 },
-            py: { xs: 1.5, sm: 2 },
-            "&:hover": {
-              backgroundColor: "#162129",
-              transform: "scale(1.05)",
-            },
-            transition: "all 0.3s ease",
-            fontWeight: 600,
-            borderRadius: 2,
-          }}
-        >
-          Contact Us
-        </CustomButton>
-      </Container>
-    </Box>
+    </>
   );
 }
 

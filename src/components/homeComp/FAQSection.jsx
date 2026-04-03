@@ -52,7 +52,7 @@ const FAQSection = ({
   ];
 
   return (
-    <Box sx={{ py: 4, backgroundColor: bgColor }}>
+    <Box sx={{ pt: 2, pb: 4, backgroundColor: bgColor }}>
       <Container
         maxWidth={false}
         sx={{

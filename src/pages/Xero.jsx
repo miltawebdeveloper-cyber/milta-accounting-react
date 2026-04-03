@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Container,
@@ -132,6 +132,12 @@ const processSteps = [
 /* ===================== COMPONENT ===================== */
 
 const XeroAccountingModern = () => {
+  const [expanded, setExpanded] = useState(false);
+
+  const handleAccordionChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
+
   useFullSEO({
     // MAIN SEO
     title: "Xero Accounting for the United States - Milta",
@@ -227,7 +233,12 @@ const XeroAccountingModern = () => {
         </Typography>
 
         {howWeUse.map((section, index) => (
-          <Accordion key={index} sx={{ mb: 2, borderRadius: 3 }}>
+          <Accordion
+            key={index}
+            expanded={expanded === index}
+            onChange={handleAccordionChange(index)}
+            sx={{ mb: 2, borderRadius: 3 }}
+          >
             <AccordionSummary
               expandIcon={<ExpandMoreIcon sx={{ color: "#fff" }} />}
               sx={{
@@ -235,7 +246,9 @@ const XeroAccountingModern = () => {
                 color: "#fff",
               }}
             >
-              <Typography fontWeight={600}>{section.title}</Typography>
+              <Typography fontWeight={600} sx={{color: "#ffffff" }}>
+                {section.title}
+              </Typography>
             </AccordionSummary>
 
             <AccordionDetails sx={{ backgroundColor: "#f8fbfa" }}>
@@ -328,7 +341,7 @@ const XeroAccountingModern = () => {
                       boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
                     }}
                   >
-                    <Typography fontWeight={600} mb={1}>
+                    <Typography fontWeight={600} mb={1} sx={{ color: "#ffffffff" }}>
                       {step.title}
                     </Typography>
 

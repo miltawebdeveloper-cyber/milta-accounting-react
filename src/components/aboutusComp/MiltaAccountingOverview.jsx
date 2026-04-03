@@ -4,7 +4,7 @@ import CustomButton from "../common/CustomButton";
 
 const MiltaAccountingOverview = () => {
           const handleCalendlyClick = () => {
-window.open("/contact", "_blank", "noopener,noreferrer");}
+window.open("/services", "_blank", "noopener,noreferrer");}
   return (
     <Box sx={{ py: 8, backgroundColor: "#ffffffff" }}>
       <Container maxWidth="md">
@@ -61,7 +61,7 @@ window.open("/contact", "_blank", "noopener,noreferrer");}
           </Typography>
 
           {/* Call to Action Button */}
-          <CustomButton  onClick={handleCalendlyClick} >Get Started</CustomButton>
+          <CustomButton  onClick={handleCalendlyClick} >Our Services</CustomButton>
         </Box>
       </Container>
     </Box>

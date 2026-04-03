@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Container,
@@ -140,7 +140,14 @@ const processSteps = [
 /* ===================== COMPONENT ===================== */
 
 const QuickBooksDesktopModernHybrid = () => {
+  const [expanded, setExpanded] = useState(false);
+
+  const handleAccordionChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
+
   useFullSEO({
+
     // MAIN SEO
     title: "QuickBooks Desktop for Small Business - Milta",
     description:
@@ -241,7 +248,12 @@ const QuickBooksDesktopModernHybrid = () => {
         </Typography>
 
         {howWeUse.map((section, index) => (
-          <Accordion key={index} sx={{ mb: 2, borderRadius: 3 }}>
+          <Accordion
+            key={index}
+            expanded={expanded === index}
+            onChange={handleAccordionChange(index)}
+            sx={{ mb: 2, borderRadius: 3 }}
+          >
             <AccordionSummary
               expandIcon={<ExpandMoreIcon sx={{ color: "#fff" }} />}
               sx={{
@@ -249,7 +261,7 @@ const QuickBooksDesktopModernHybrid = () => {
                 color: "#fff",
               }}
             >
-              <Typography fontWeight={600}>{section.title}</Typography>
+              <Typography fontWeight={600} sx={{ color: "#fff" }}>{section.title}</Typography>
             </AccordionSummary>
 
             <AccordionDetails sx={{ backgroundColor: "#f8fbfa" }}>

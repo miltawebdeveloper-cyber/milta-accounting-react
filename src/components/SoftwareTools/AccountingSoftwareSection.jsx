@@ -206,7 +206,7 @@ This page explains how we use each accounting tool, why they matter, and how our
                     }}
                     onClick={() => navigate(item.url)}
                   >
-                    Learn More
+                    Read More
                   </Button>
                 </CardActions>
               </Card>

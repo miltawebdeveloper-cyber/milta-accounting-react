@@ -54,7 +54,6 @@ const Footer = () => {
           // 🔒 CLEAR CONTACT DATA
           first_name: "",
           last_name: "",
-          email: "",
           phone_number: "",
           service_interest: "",
           message: "",

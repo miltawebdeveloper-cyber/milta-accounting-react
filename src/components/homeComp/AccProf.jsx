@@ -76,18 +76,7 @@ const HireDedicatedProfessionals = () => {
     >
       {/* REAL CONTENT */}
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 3 }}>
-        <Typography
-          sx={{
-            textAlign: "center",
-            fontWeight: 600,
-            color: "#ff9401",
-            textTransform: "uppercase",
-            mb: 1,
-            letterSpacing: "1px",
-          }}
-        >
-          Hire a Dedicated Accountant
-        </Typography>
+        
 
         <Typography
           variant="h4"

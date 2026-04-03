@@ -6,6 +6,7 @@ import {
   AccordionSummary,
   AccordionDetails,
   Container,
+  Grid,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import StylishDividerText from "../../homeComp/StylishDividerText";
@@ -14,10 +15,15 @@ const FAQSection = ({
   faqs = [],
   title = "Frequently Asked Questions",
   subtitle = "Here to help you out",
-  maxWidth = "900px",
+  maxWidth = "1100px",
   bgColor = "#f4f8ee",
 }) => {
   const [expanded, setExpanded] = useState(null);
+
+  // Split FAQs into two columns
+  const midPoint = Math.ceil(faqs.length / 2);
+  const leftColumnFaqs = faqs.slice(0, midPoint);
+  const rightColumnFaqs = faqs.slice(midPoint);
 
   return (
     <Box sx={{ py: 2, backgroundColor: bgColor }}>
@@ -52,52 +58,132 @@ const FAQSection = ({
           </Typography>
         )}
 
-        {/* FAQ Accordions */}
-        {faqs.map((faq, index) => (
-          <Accordion
-            key={index}
-            expanded={expanded === `panel-${index}`}
-            onChange={() => setExpanded(expanded === `panel-${index}` ? null : `panel-${index}`)}
+        {/* Two Column FAQ Layout with 550px each */}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", md: "row" },
+            justifyContent: "center",
+            gap: { xs: 2, md: 4 },
+            width: "100%",
+          }}
+        >
+          {/* Left Column - 550px */}
+          <Box
             sx={{
-              borderRadius: "12px !important",
-              mb: 1.5,
-              boxShadow: "none",
-              border: "1px solid #e0e0e0",
-              "&:before": { display: "none" },
-              "&.Mui-expanded": {
-                backgroundColor: "#ffffff",
-                borderColor: "#d9f7d9",
-              },
+              flex: { md: "0 0 550px" },
+              width: { xs: "100%", md: "550px" },
+              maxWidth: { xs: "100%", md: "550px" },
             }}
           >
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon sx={{ color: "#1d4230" }} />}
-              sx={{
-                fontWeight: 600,
-                color: "#1d4230",
-                fontFamily: "'Poppins', sans-serif",
-                textAlign: "left",
-              }}
-            >
-              <Typography sx={{ textAlign: "left" }}>
-                {faq.question}
-              </Typography>
-            </AccordionSummary>
-
-            <AccordionDetails sx={{ textAlign: "left" }}>
-              <Typography
-                variant="body2"
-                color="text.secondary"
+            {leftColumnFaqs.map((faq, index) => (
+              <Accordion
+                key={`left-${index}`}
+                expanded={expanded === `left-panel-${index}`}
+                onChange={() => setExpanded(expanded === `left-panel-${index}` ? null : `left-panel-${index}`)}
                 sx={{
-                  fontFamily: "'Poppins', sans-serif",
-                  lineHeight: 1.6,
+                  borderRadius: "12px !important",
+                  mb: 1.5,
+                  boxShadow: "none",
+                  border: "1px solid #e0e0e0",
+                  "&:before": { display: "none" },
+                  "&.Mui-expanded": {
+                    backgroundColor: "#ffffff",
+                    borderColor: "#d9f7d9",
+                  },
                 }}
               >
-                {faq.answer}
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-        ))}
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon sx={{ color: "#1d4230" }} />}
+                  sx={{
+                    fontWeight: 600,
+                    color: "#1d4230",
+                    fontFamily: "'Poppins', sans-serif",
+                    textAlign: "left",
+                    "& .MuiAccordionSummary-content": {
+                      margin: "12px 0",
+                    },
+                  }}
+                >
+                  <Typography sx={{ textAlign: "left", fontWeight: 600 }}>
+                    {faq.question}
+                  </Typography>
+                </AccordionSummary>
+
+                <AccordionDetails sx={{ textAlign: "left" }}>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{
+                      fontFamily: "'Poppins', sans-serif",
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    {faq.answer}
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+            ))}
+          </Box>
+
+          {/* Right Column - 550px */}
+          <Box
+            sx={{
+              flex: { md: "0 0 550px" },
+              width: { xs: "100%", md: "550px" },
+              maxWidth: { xs: "100%", md: "550px" },
+            }}
+          >
+            {rightColumnFaqs.map((faq, index) => (
+              <Accordion
+                key={`right-${index}`}
+                expanded={expanded === `right-panel-${index}`}
+                onChange={() => setExpanded(expanded === `right-panel-${index}` ? null : `right-panel-${index}`)}
+                sx={{
+                  borderRadius: "12px !important",
+                  mb: 1.5,
+                  boxShadow: "none",
+                  border: "1px solid #e0e0e0",
+                  "&:before": { display: "none" },
+                  "&.Mui-expanded": {
+                    backgroundColor: "#ffffff",
+                    borderColor: "#d9f7d9",
+                  },
+                }}
+              >
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon sx={{ color: "#1d4230" }} />}
+                  sx={{
+                    fontWeight: 600,
+                    color: "#1d4230",
+                    fontFamily: "'Poppins', sans-serif",
+                    textAlign: "left",
+                    "& .MuiAccordionSummary-content": {
+                      margin: "12px 0",
+                    },
+                  }}
+                >
+                  <Typography sx={{ textAlign: "left", fontWeight: 600 }}>
+                    {faq.question}
+                  </Typography>
+                </AccordionSummary>
+
+                <AccordionDetails sx={{ textAlign: "left" }}>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{
+                      fontFamily: "'Poppins', sans-serif",
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    {faq.answer}
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+            ))}
+          </Box>
+        </Box>
       </Container>
     </Box>
   );
@@ -110,7 +196,7 @@ const faqs = [
   {
     question: "What is accounting data entry?",
     answer:
-      "Accounting data entry involves recording financial transactions into organized systems for accurate reporting and analysis. It’s essential for maintaining up-to-date financial records.",
+      "Accounting data entry involves recording financial transactions into organized systems for accurate reporting and analysis. It's essential for maintaining up-to-date financial records.",
   },
   {
     question: "Why should I outsource accounting data entry?",
@@ -157,9 +243,9 @@ const FaqDataEntry = () => {
     <FAQSection
       faqs={faqs}
       title="Accounting Data Entry FAQs"
-      subtitle="Frequently A sked Questions"
+      subtitle="Frequently Asked Questions"
       bgColor="#f4f8ee"
-      maxWidth="900px"
+      maxWidth="1200px"
     />
   );
 };

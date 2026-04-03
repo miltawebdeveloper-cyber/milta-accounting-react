@@ -1,8 +1,9 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Box, Typography, Button, Container, Grid } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import { useNavigate } from "react-router-dom";
+import ContactPopup from "../common/ContactPopup";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -22,6 +23,8 @@ const slides = [
       "Trusted by 100+ Clients Across 12 Countries. Proudly serving small businesses, growing enterprises, and Fortune 500 companies.",
     image: work3,
     alt: "Outsourcing accounting and bookkeeping services for global businesses",
+    link: "/us/services/bookkeeping-company-in-the-usa/",
+    btnText: "Learn More",
   },
   {
     title: "Tax Planning and <br> Preparation Services in the USA!",
@@ -29,24 +32,30 @@ const slides = [
       "Professional US Expat Tax Service for Federal, State, and City Tax Preparation.",
     image: work1,
     alt: "Tax planning and preparation services for businesses in the USA",
+    link: "/us/services/tax-planning-and-preparation-services-usa/",
+    btnText: "Learn More",
   },
   {
     title: "The Best CPA Service <br> for Small Businesses in the USA",
     description: "We offer the best CPA service for small businesses in the USA.",
     image: work4,
     alt: "Certified public accountant services for small businesses in the USA",
+    link: "/us/services/best-cpa-services-for-small-businesses-in-the-usa/",
+    btnText: "Learn More",
   },
-
   {
     title: "Expert Financial Controller <br> Services in the USA",
     description: "Improve your accounting systems with experts.",
     image: work2,
     alt: "Professional financial controller services for business accounting",
+    link: "/us/services/financial-controller-services-in-the-usa/",
+    btnText: "Learn More",
   },
 ];
 
 export default function BannerSlider() {
   const navigate = useNavigate();
+  const [contactModalOpen, setContactModalOpen] = useState(false);
 
   // ✅ Navigation Button Refs
   const prevRef = useRef(null);
@@ -150,7 +159,7 @@ export default function BannerSlider() {
 
                       <Button
                         variant="contained"
-                        onClick={() => navigate("/contact")}
+                        onClick={() => navigate(slide.link)}
                         sx={{
                           background: "#ff9401",
                           color: "#fff",
@@ -164,7 +173,7 @@ export default function BannerSlider() {
                           "&:hover": { background: "#ffb000" },
                         }}
                       >
-                        Contact Us
+                        {slide.btnText}
                       </Button>
                     </Box>
                   </Grid>
@@ -228,6 +237,7 @@ export default function BannerSlider() {
           <ArrowForwardIosIcon sx={{ fontSize: { xs: 16, md: 20 } }} />
         </Box>
       </Box>
+      <ContactPopup open={contactModalOpen} handleClose={() => setContactModalOpen(false)} />
     </Box>
   );
 }

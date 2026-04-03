@@ -10,16 +10,18 @@ function SaleSupport() {
     cursor: "pointer",
   };
 
-  const handleSalesEmail = () => {
-    window.location.href = "mailto:Chris@miltafs.com";
+  const supportButtonText = "Send Mail";
+
+  const openMailTo = (address) => {
+    window.location.href = `mailto:${address}`;
   };
 
-  const handleSupportEmail = () => {
-    window.location.href = "mailto:info@miltafs.com";
-  };
+  const supportButtonAction = () => openMailTo("info@miltafs.com");
+
+  const handleSalesAction = () => openMailTo("frank@miltafs.com");
 
   const handleCall = () => {
-    window.location.href = "tel:+13254754737";
+    window.location.href = "tel:+18133030213";
   };
 
   return (
@@ -41,14 +43,17 @@ function SaleSupport() {
               </Typography>
 
               <Typography color="#ff9401" fontWeight={600}>
-                <a href="mailto:frank@miltafs.com" style={linkStyle}>
+                <a
+                  href="mailto:frank@miltafs.com"
+                  style={linkStyle}
+                >
                   frank@miltafs.com
                 </a>
 
               </Typography>
 
               <Box mt={3}>
-                <CustomButton onClick={handleSalesEmail}>
+                <CustomButton onClick={handleSalesAction}>
                   Contact Sales
                 </CustomButton>
               </Box>
@@ -69,14 +74,17 @@ function SaleSupport() {
               </Typography>
 
               <Typography color="#ff9401" fontWeight={600}>
-                <a href="mailto:info@miltafs.com" style={linkStyle}>
+                <a
+                  href="mailto:info@miltafs.com"
+                  style={linkStyle}
+                >
                   info@miltafs.com
                 </a>
               </Typography>
 
               <Box mt={3}>
-                <CustomButton onClick={handleSupportEmail}>
-                  Send Email
+                <CustomButton onClick={supportButtonAction}>
+                  {supportButtonText}
                 </CustomButton>
               </Box>
             </Box>

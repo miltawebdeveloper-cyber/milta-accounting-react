@@ -5,8 +5,8 @@ import {
   Grid,
   Card,
 } from "@mui/material";
-import MD1 from "../../assets/images/MD1.webp";
-import MD2 from "../../assets/images/MD2.webp";
+import MD1 from "../../assets/images/MD1.png";
+import MD2 from "../../assets/images/MD2.png";
 
 /* GLOBAL FONT */
 const globalFont = {
@@ -112,7 +112,7 @@ const PartnerSection = () => {
                   sx={{
                     position: "absolute",
                     inset: 0,
-                    bgcolor: "rgba(7, 43, 23, 0.45)", // reduced from 0.65
+                    bgcolor: "rgba(7, 43, 23, 0.63)", // reduced from 0.65
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "center",

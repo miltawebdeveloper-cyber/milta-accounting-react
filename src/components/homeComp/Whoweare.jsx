@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Typography, Grid, Button } from "@mui/material";
 import StylishDividerText from "./StylishDividerText";
+import ContactPopup from "../common/ContactPopup";
 
 const steps = [
   {
@@ -22,8 +23,10 @@ const steps = [
 ];
 
 const ServicesSection = () => {
+  const [contactModalOpen, setContactModalOpen] = useState(false);
+
   const handleClick = () => {
-    window.open("/contact", "_blank");
+    setContactModalOpen(true);
   };
 
   return (
@@ -136,7 +139,7 @@ const ServicesSection = () => {
                       },
                     }}
                   >
-                    Schedule A Call
+                    Book a Consultation
                   </Button>
                 )}
               </Box>
@@ -144,6 +147,10 @@ const ServicesSection = () => {
           ))}
         </Grid>
       </Box>
+      <ContactPopup 
+        open={contactModalOpen}
+        handleClose={() => setContactModalOpen(false)}
+      />
     </Box>
   );
 };

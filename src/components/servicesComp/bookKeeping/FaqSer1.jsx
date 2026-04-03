@@ -6,6 +6,7 @@ import {
   AccordionSummary,
   AccordionDetails,
   Container,
+  Grid,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import StylishDividerText from "../../homeComp/StylishDividerText";
@@ -19,14 +20,19 @@ const FAQSection = ({
 }) => {
   const [expanded, setExpanded] = useState(null);
 
+  // Split FAQs into two columns
+  const midPoint = Math.ceil(faqs.length / 2);
+  const leftColumnFaqs = faqs.slice(0, midPoint);
+  const rightColumnFaqs = faqs.slice(midPoint);
+
   return (
     <Box sx={{ py: 3, backgroundColor: bgColor }}>
       <Container
         maxWidth={false}
         sx={{
-          maxWidth: maxWidth,
+          maxWidth: { xs: "100%", sm: "100%", md: "1200px" },
           mx: "auto",
-          px: { xs: 2, sm: 4, md: 6 },
+          px: { xs: 2, sm: 3, md: 4 },
         }}
       >
         {/* Subtitle */}
@@ -44,60 +50,159 @@ const FAQSection = ({
               fontWeight: 700,
               color: "#1d4230",
               fontFamily: "'Poppins', sans-serif",
-              mb: 4,
+              mb: { xs: 3, sm: 4 },
               textAlign: "center",
+              fontSize: { xs: "1.75rem", sm: "2rem", md: "2.25rem" },
             }}
           >
             {title}
           </Typography>
         )}
 
-        {/* FAQ Accordions */}
-        {faqs.map((faq, index) => (
-          <Accordion
-            key={index}
-            expanded={expanded === `panel-${index}`}
-            onChange={() => setExpanded(expanded === `panel-${index}` ? null : `panel-${index}`)}
+        {/* Two Column FAQ Layout */}
+        <Grid
+          container
+          spacing={{ xs: 2, sm: 3, md: 4 }}
+          sx={{
+            justifyContent: "center",
+          }}
+        >
+          {/* Left Column */}
+          <Grid
+            item
+            xs={12}
+            md={6}
             sx={{
-              borderRadius: "12px !important",
-              mb: 1.5,
-              boxShadow: "none",
-              border: "1px solid #e0e0e0",
-              "&:before": { display: "none" },
-              "&.Mui-expanded": {
-                backgroundColor: "#ffffff",
-                borderColor: "#d9f7d9",
-              },
+              maxWidth: { md: "550px" },
+              width: "100%",
             }}
           >
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon sx={{ color: "#1d4230" }} />}
-              sx={{
-                fontWeight: 600,
-                color: "#1d4230",
-                fontFamily: "'Poppins', sans-serif",
-                textAlign: "left",
-              }}
-            >
-              <Typography sx={{ textAlign: "left" }}>
-                {faq.question}
-              </Typography>
-            </AccordionSummary>
-
-            <AccordionDetails sx={{ textAlign: "left" }}>
-              <Typography
-                variant="body2"
-                color="text.secondary"
+            {leftColumnFaqs.map((faq, index) => (
+              <Accordion
+                key={`left-${index}`}
+                expanded={expanded === `left-panel-${index}`}
+                onChange={() => setExpanded(expanded === `left-panel-${index}` ? null : `left-panel-${index}`)}
                 sx={{
-                  fontFamily: "'Poppins', sans-serif",
-                  lineHeight: 1.6,
+                  borderRadius: "12px !important",
+                  mb: 1.5,
+                  boxShadow: "none",
+                  border: "1px solid #e0e0e0",
+                  "&:before": { display: "none" },
+                  "&.Mui-expanded": {
+                    backgroundColor: "#ffffff",
+                    borderColor: "#d9f7d9",
+                  },
                 }}
               >
-                {faq.answer}
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-        ))}
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon sx={{ color: "#1d4230" }} />}
+                  sx={{
+                    fontWeight: 600,
+                    color: "#1d4230",
+                    fontFamily: "'Poppins', sans-serif",
+                    textAlign: "left",
+                    padding: { xs: "0 16px", sm: "0 24px" },
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      textAlign: "left",
+                      fontSize: { xs: "0.95rem", sm: "1rem" },
+                      fontWeight: 600,
+                    }}
+                  >
+                    {faq.question}
+                  </Typography>
+                </AccordionSummary>
+
+                <AccordionDetails sx={{
+                  textAlign: "left",
+                  padding: { xs: "8px 16px 16px", sm: "8px 24px 24px" }
+                }}>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{
+                      fontFamily: "'Poppins', sans-serif",
+                      lineHeight: 1.6,
+                      fontSize: { xs: "0.875rem", sm: "0.9rem" },
+                    }}
+                  >
+                    {faq.answer}
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+            ))}
+          </Grid>
+
+          {/* Right Column */}
+          <Grid
+            item
+            xs={12}
+            md={6}
+            sx={{
+              maxWidth: { md: "550px" },
+              width: "100%",
+            }}
+          >
+            {rightColumnFaqs.map((faq, index) => (
+              <Accordion
+                key={`right-${index}`}
+                expanded={expanded === `right-panel-${index}`}
+                onChange={() => setExpanded(expanded === `right-panel-${index}` ? null : `right-panel-${index}`)}
+                sx={{
+                  borderRadius: "12px !important",
+                  mb: 1.5,
+                  boxShadow: "none",
+                  border: "1px solid #e0e0e0",
+                  "&:before": { display: "none" },
+                  "&.Mui-expanded": {
+                    backgroundColor: "#ffffff",
+                    borderColor: "#d9f7d9",
+                  },
+                }}
+              >
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon sx={{ color: "#1d4230" }} />}
+                  sx={{
+                    fontWeight: 600,
+                    color: "#1d4230",
+                    fontFamily: "'Poppins', sans-serif",
+                    textAlign: "left",
+                    padding: { xs: "0 16px", sm: "0 24px" },
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      textAlign: "left",
+                      fontSize: { xs: "0.95rem", sm: "1rem" },
+                      fontWeight: 600,
+                    }}
+                  >
+                    {faq.question}
+                  </Typography>
+                </AccordionSummary>
+
+                <AccordionDetails sx={{
+                  textAlign: "left",
+                  padding: { xs: "8px 16px 16px", sm: "8px 24px 24px" }
+                }}>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{
+                      fontFamily: "'Poppins', sans-serif",
+                      lineHeight: 1.6,
+                      fontSize: { xs: "0.875rem", sm: "0.9rem" },
+                    }}
+                  >
+                    {faq.answer}
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+            ))}
+          </Grid>
+        </Grid>
       </Container>
     </Box>
   );
@@ -125,7 +230,7 @@ const faqs = [
   {
     question: "How do your bookkeeping services benefit my small business?",
     answer:
-      "Our services streamline your financial operations, prevent errors, and help you save time. You’ll gain clear insights into your financial health and ensure compliance with legal requirements, which is crucial for making strategic decisions and achieving business growth.",
+      "Our services streamline your financial operations, prevent errors, and help you save time. You'll gain clear insights into your financial health and ensure compliance with legal requirements, which is crucial for making strategic decisions and achieving business growth.",
   },
   {
     question: "Do you offer payroll and bookkeeping services together?",
@@ -155,7 +260,7 @@ const faqs = [
   {
     question: "How can I get started with your bookkeeping services in USA?",
     answer:
-      "Contact us today to schedule a consultation. Whether you’re searching for bookkeeping services near me or need help managing your payroll, our team is ready to support your small business.",
+      "Contact us today to schedule a consultation. Whether you're searching for bookkeeping services near me or need help managing your payroll, our team is ready to support your small business.",
   },
 ];
 
@@ -169,7 +274,7 @@ const FaqBookKeep = () => {
       title="Frequently Asked Questions"
       subtitle="Bookkeeping FAQs"
       bgColor="#f4f8ee"
-      maxWidth="900px"
+      maxWidth="1200px"
     />
   );
 };

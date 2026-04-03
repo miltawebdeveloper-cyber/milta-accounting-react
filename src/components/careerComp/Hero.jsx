@@ -47,7 +47,7 @@ function ContactPageHero() {
             fontSize: { xs: "0.9rem", sm: "1rem" },
           }}
         >
-          Get in Touch
+          Learn More
         </CustomButton>
       </Container>
 

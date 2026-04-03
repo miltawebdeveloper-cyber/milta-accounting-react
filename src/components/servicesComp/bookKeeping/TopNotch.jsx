@@ -106,7 +106,7 @@ const TopNotch = () => {
               variant="outlined"
               onClick={() =>
                 window.open(
-                  "https://calendly.com/rob-miltafs/30min",
+                  "/services",
                   "_blank",
                   "noopener,noreferrer"
                 )
@@ -128,7 +128,7 @@ const TopNotch = () => {
                 transition: "all 0.3s ease",
               }}
             >
-               Get Started | Book a Call
+               Get Started 
             </Button>
           </Box>
         </Box>

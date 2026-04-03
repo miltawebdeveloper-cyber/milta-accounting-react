@@ -6,7 +6,7 @@ const WhyChooseMiltaVA = () => {
   const highlights = [
     {
       title: "Customized Solutions",
-      desc: "We recognize that every business has unique needs. Our services are designed to meet your objectives and deliver measurable outcomes.",
+      desc: "We recognize that every business has its own unique goals, challenges, and operational needs. That’s why our services are thoughtfully designed and fully customizable to align with your specific objectives. We take the time to understand your requirements in detail, allowing us to deliver tailored solutions that drive efficiency, improve performance, and support your growth. Our focus is not just on providing services, but on delivering measurable outcomes that create real value and long-term success for your business.",
       icon: "https://cdn-icons-png.flaticon.com/512/2331/2331970.png",
     },
     {
@@ -21,12 +21,12 @@ const WhyChooseMiltaVA = () => {
     },
     {
       title: "Commitment to Confidentiality",
-      desc: "Your business information is safe with us. We follow strict data security protocols to maintain confidentiality and trust.",
+      desc: "Your business information is completely safe and secure with us. We understand the importance of confidentiality and treat your data with the highest level of care and responsibility. Our team follows strict data security protocols and industry best practices to ensure that all your information is protected from unauthorized access, misuse, or disclosure.",
       icon: "https://cdn-icons-png.flaticon.com/512/942/942751.png",
     },
     {
       title: "Scalability",
-      desc: "Our services grow alongside your business, ensuring consistent support and flexibility at every stage of your journey.",
+      desc: "Our services are designed to grow alongside your business, providing consistent, reliable support as your needs evolve. We understand that every stage of your journey comes with new challenges and opportunities, which is why we offer flexible solutions customized to your changing requirements. Whether you’re just starting or scaling to the next level, our team is committed to adapting with you—ensuring seamless support, improved efficiency, and long-term success every step of the way.",
       icon: "https://cdn-icons-png.flaticon.com/512/3062/3062634.png",
     },
   ];
@@ -57,7 +57,8 @@ const WhyChooseMiltaVA = () => {
               color: "text.secondary",
               fontFamily: "'Poppins', sans-serif",
               lineHeight: 1.8,
-              maxWidth: "920px",
+              maxWidth: "1200px",
+              width: "100%",
               mx: "auto",
             }}
           >
@@ -73,6 +74,8 @@ const WhyChooseMiltaVA = () => {
               <Box
                 sx={{
                   display: "flex",
+                  maxWidth: "1200px",
+                  width: "100%",
                   flexDirection: { xs: "column", sm: "row" },
                   alignItems: "center",
                   textAlign: { xs: "center", sm: "left" },

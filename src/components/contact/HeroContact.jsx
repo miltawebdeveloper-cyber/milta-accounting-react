@@ -8,7 +8,7 @@ function ContactPageHero() {
   return (
     <Box
       sx={{
-        minHeight: "50vh",
+        minHeight: "40vh",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",

@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import { keyframes } from "@mui/system";
 
 /* ===== Slide Right to Left Animation (Only Once) ===== */
@@ -20,23 +21,30 @@ const slideRightLeft = keyframes`
 const StickyButtons = () => {
   const buttons = [
     {
-      icon: <EmailIcon sx={{ fontSize: { xs: 18, md: 22 } }} />,
-      bg: "linear-gradient(135deg, #ff8c00, #ff6600)",
-      hoverBg: "linear-gradient(135deg, #ffa733, #ff751a)",
+      icon: <EmailIcon sx={{ fontSize: { xs: 18, md: 22 }, color: "#D44638" }} />,
+      bg: "#ffffff",
+      hoverBg: "#f5f5f5",
       link: "mailto:info@miltafs.com",
       external: false,
     },
     {
-      icon: <FacebookIcon sx={{ fontSize: { xs: 18, md: 22 } }} />,
-      bg: "linear-gradient(135deg, #25D366, #128C7E)",
-      hoverBg: "linear-gradient(135deg, #2fe075, #22a06f)",
+      icon: <CalendarMonthIcon sx={{ fontSize: { xs: 18, md: 22 }, color: "#ff9401" }} />,
+      bg: "#ffffff",
+      hoverBg: "#f5f5f5",
+      link: "https://calendly.com/frank-miltafs/milta-accounting-service-zoom-meeting",
+      external: false,
+    },
+    {
+      icon: <FacebookIcon sx={{ fontSize: { xs: 18, md: 22 }, color: "#1877F2" }} />,
+      bg: "#ffffff",
+      hoverBg: "#f5f5f5",
       link: "https://www.facebook.com/miltaaccountingservices/",
       external: true,
     },
     {
-      icon: <InstagramIcon sx={{ fontSize: { xs: 18, md: 22 } }} />,
-      bg: "linear-gradient(135deg, #ff8c00, #ff6600)",
-      hoverBg: "linear-gradient(135deg, #ffa733, #ff751a)",
+      icon: <InstagramIcon sx={{ fontSize: { xs: 18, md: 22 }, color: "#E1306C" }} />,
+      bg: "#ffffff",
+      hoverBg: "#f5f5f5",
       link: "https://www.instagram.com/milta_accountings/",
       external: true,
     },
@@ -80,12 +88,19 @@ const StickyButtons = () => {
             height: "48px",
             borderRadius: "25px 0 0 25px",
             cursor: "pointer",
-            transition: "all 0.3s ease",
+            transition: "all 0.25s ease",
+            boxShadow: "0 1px 8px rgba(0,0,0,0.08)",
+            border: "1px solid rgba(0, 0, 0, 0.45)",
 
             "&:hover": {
               background: btn.hoverBg,
-              transform: "scale(1.2)",
-              boxShadow: "0 4px 14px rgba(0,0,0,0.3)",
+              transform: "scale(1.15)",
+              boxShadow: "0 8px 20px rgba(0,0,0,0.24)",
+              border: "1px solid rgba(0, 0, 0, 0.8)",
+            },
+            "&:focus-visible": {
+              outline: "3px solid rgba(0, 0, 0, 0.45)",
+              outlineOffset: "2px",
             },
 
             "@media (max-width:600px)": {

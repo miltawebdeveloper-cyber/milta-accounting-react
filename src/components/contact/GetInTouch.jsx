@@ -1,12 +1,13 @@
 import React from "react";
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Typography, Button } from "@mui/material";
 import ContactForm from "../common/ContactForm";
 
 function ContactUsSection() {
   return (
     <Box
+      id="get-in-touch"
       sx={{
-        pt: { xs: 6, md: 3 },
+        pt: { xs: 6, md: 9 },
         pb: { xs: 6, md: 10 },
         background: "linear-gradient(180deg, #f9fdf9 0%, #f2f7f2 100%)",
       }}
@@ -76,22 +77,10 @@ function ContactUsSection() {
                 compliance, payroll standards, and reporting requirements—so
                 you can focus on growth while we handle the numbers.
               </Typography>
-            </Box>
 
-            {/* IMAGE */}
-            <Box
-              component="img"
-              src="https://img.freepik.com/free-vector/contact-us-concept-illustration_114360-3147.jpg"
-              alt="Contact Us"
-              sx={{
-                width: "100%",
-                maxWidth: 300,
-                mt: 4,
-                alignSelf: "center",
-                mixBlendMode: "multiply",
-                filter: "drop-shadow(0 18px 35px rgba(0,0,0,0.3))",
-              }}
-            />
+              {/* CONTACT REDIRECT BUTTON */}
+
+            </Box>
           </Box>
 
           {/* RIGHT FORM */}
@@ -112,7 +101,7 @@ function ContactUsSection() {
                 mb: 1,
               }}
             >
-              GET FREE DEMO
+              Our Free Consultation request
             </Typography>
 
             {/* TRUST LINE */}
@@ -125,8 +114,7 @@ function ContactUsSection() {
                 fontSize: "0.95rem",
               }}
             >
-              Expert Accounting, Tax & Compliance Support You Can Trust
-            </Typography>
+              Complete the form below to schedule your free consultation. Our team will reach out to you at the earliest.            </Typography>
 
             <ContactForm />
           </Box>

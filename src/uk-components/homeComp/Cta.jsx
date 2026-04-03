@@ -100,7 +100,7 @@ const CTASection = () => {
           <Button
             variant="contained"
             fullWidth={{ xs: true, sm: false }}
-            onClick={() => navigate("/uk/contact")}
+            onClick={() => navigate("/uk/services")}
             sx={{
               bgcolor: "#2b6d2a",
               color: "#fff",

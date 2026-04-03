@@ -15,6 +15,7 @@ import HeroSection from "../components/aboutusComp/HeroSec";
 import Path from "../components/aboutusComp/Path";
 import PartnerSection from "../components/aboutusComp/PartnerSection";
 import useFullSEO from "../utils/useFullSEO";
+import Whoweare from "../components/homeComp/Whoweare";
 
 function App() {
 
@@ -49,8 +50,7 @@ function App() {
         <CTASection />
 
         <OurStrengthsSection />
-        <ServicesCarousel />
-
+        <Whoweare />
       </main>
     </ThemeProvider>
   );

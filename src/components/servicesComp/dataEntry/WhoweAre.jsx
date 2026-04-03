@@ -169,26 +169,7 @@ window.open("/contact", "_blank", "noopener,noreferrer");}
               }}
             >
 
-              <Button
-                       onClick={handleCalendlyClick}
-
-                variant="outlined"
-                sx={{
-                  borderColor: "#ff9401",
-                  color: "#ff9401",
-                  fontWeight: 600,
-                  px: 4,
-                  py: 1.3,
-                  textTransform: "none",
-                  fontFamily: "'Poppins', sans-serif",
-                  "&:hover": {
-                    backgroundColor: "#ff94011a",
-                    borderColor: "#ff9401",
-                  },
-                }}
-              >
-                Book a Call
-              </Button>
+             
             </Box>
           </Box>
 

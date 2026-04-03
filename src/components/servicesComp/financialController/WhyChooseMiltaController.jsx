@@ -6,22 +6,22 @@ const WhyChooseMiltaController = () => {
   const highlights = [
     {
       title: "Affordable and Scalable",
-      desc: "We offer cost-effective solutions designed to meet the needs of small and medium-sized businesses, scaling with your growth.",
+      desc: "We offer cost-effective solutions customized to the needs of small and medium-sized businesses. Our services scale seamlessly with your growth, ensuring continuous support at every stage. ",
       icon: "https://cdn-icons-png.flaticon.com/512/1995/1995574.png",
     },
     {
       title: "Experienced Team",
-      desc: "Our financial controllers have extensive experience and a deep understanding of the financial challenges faced by SMBs.",
+      desc: "Our financial controllers bring extensive experience and a strong understanding of the unique challenges faced by SMBs. They provide strategic insights and practical solutions to help you manage finances with confidence and clarity.",
       icon: "https://cdn-icons-png.flaticon.com/512/4149/4149670.png",
     },
     {
       title: "Customized Solutions",
-      desc: "We tailor our services to meet the unique needs of your business, ensuring that you receive the right financial oversight.",
+      desc: "We customize our services to align with your business’s unique needs and goals.This ensures you receive the right level of financial oversight, accuracy, and support at every stage.",
       icon: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
     },
     {
       title: "Focus on Compliance and Accuracy",
-      desc: "We prioritize regulatory compliance, accuracy, and financial integrity in everything we do.",
+      desc: "We prioritize regulatory compliance and accuracy in every process to ensure reliable outcomes. Our commitment to financial integrity builds trust and supports your business with confidence.",
       icon: "https://cdn-icons-png.flaticon.com/512/942/942751.png",
     },
   ];
