@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Box, TextField, MenuItem, Button } from "@mui/material";
-import emailjs from "@emailjs/browser";
+import { Box, TextField, MenuItem, Button, Typography } from "@mui/material";
 import { submitContactForm } from "../../api/client";
 
 const ContactForm = () => {
@@ -14,12 +13,14 @@ const ContactForm = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [statusMessage, setStatusMessage] = useState("");
+  const [statusType, setStatusType] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "phoneNumber") {
-      const numericValue = value.replace(/\D/g, ""); // 🔥 Remove non-numeric
-      if (numericValue.length <= 10) { // 🔥 Limit 10 digits
+      const numericValue = value.replace(/\D/g, "");
+      if (numericValue.length <= 10) {
         setFormData({ ...formData, [name]: numericValue });
       }
       return;
@@ -30,13 +31,12 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // ✅ Validation
     if (
       !formData.firstName ||
       !formData.lastName ||
       !formData.email ||
       !formData.phoneNumber ||
-      formData.phoneNumber.length !== 10 || // 🔥 Ensure exactly 10
+      formData.phoneNumber.length !== 10 ||
       !formData.serviceInterest
     ) {
       alert("Please fill all required fields.");
@@ -44,8 +44,9 @@ const ContactForm = () => {
     }
 
     setLoading(true);
+    setStatusMessage("");
+    setStatusType("");
 
-    // ✅ Save to DB
     const response = await submitContactForm({
       firstName: formData.firstName,
       lastName: formData.lastName,
@@ -57,63 +58,30 @@ const ContactForm = () => {
 
     if (response.error) {
       console.error("API Error:", JSON.stringify(response.error, null, 2));
-      alert("Failed to save message in database.");
       setLoading(false);
+      setStatusType("error");
+      setStatusMessage("Failed to submit. Please try again.");
       return;
     }
 
-    // ✅ SEND EMAIL (CLEAN + SAFE)
-    emailjs
-      .send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        {
-          form_type: "Get In Touch",
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNumber: "",
+      serviceInterest: "",
+      message: "",
+    });
+    setLoading(false);
 
-          // 🎯 VISIBILITY CONTROL (template_2p21kkt)
-          newsletter_section: "display:none;",
-          subscription_section: "display:none;",
-          contact_section: "display:block;",
-          job_section: "display:none;",
+    if (response.emailNotification && !response.emailNotification.success) {
+      setStatusType("warning");
+      setStatusMessage("Your message was saved, but the email notification could not be delivered.");
+      return;
+    }
 
-          // ✅ DATA (template_2p21kkt)
-          first_name: formData.firstName || "",
-          firstName: formData.firstName || "", // 🔥 Populated for template compatibility
-          last_name: formData.lastName || "",
-          lastName: formData.lastName || "",   // 🔥 Populated for template compatibility
-          email: formData.email || "",
-          phone_number: formData.phoneNumber || "",
-          phone: formData.phoneNumber || "",   // 🔥 Populated for template compatibility
-          service_interest: formData.serviceInterest || "",
-          message: formData.message || "",
-          revenue: "",
- 
-          // 🔒 CLEAR OTHER SECTIONS
-          subscriber_email: "",
-          jobType: "",
-          position: "",
-          reference: "",
-          resumeURL: "",
-        },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      )
-      .then(() => {
-        // ✅ Reset form
-        setFormData({
-          firstName: "",
-          lastName: "",
-          email: "",
-          phoneNumber: "",
-          serviceInterest: "",
-          message: "",
-        });
-
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Email Error:", error);
-        setLoading(false);
-      });
+    setStatusType("success");
+    setStatusMessage("Thanks. Your message has been sent successfully.");
   };
 
   const textFieldSx = {
@@ -141,7 +109,6 @@ const ContactForm = () => {
   return (
     <Box sx={{ px: { xs: 2, sm: 3 }, background: "transparent", borderRadius: "14px" }}>
       <Box component="form" onSubmit={handleSubmit}>
-        {/* First + Last Name */}
         <Box sx={{ display: "flex", gap: 2, flexDirection: { xs: "column", sm: "row" }, mb: 3 }}>
           <TextField
             name="firstName"
@@ -163,7 +130,6 @@ const ContactForm = () => {
           />
         </Box>
 
-        {/* Email + Phone */}
         <Box sx={{ display: "flex", gap: 2, flexDirection: { xs: "column", sm: "row" }, mb: 3 }}>
           <TextField
             name="email"
@@ -186,7 +152,6 @@ const ContactForm = () => {
           />
         </Box>
 
-        {/* Service Interested */}
         <TextField
           select
           name="serviceInterest"
@@ -195,9 +160,18 @@ const ContactForm = () => {
           variant="standard"
           fullWidth
           sx={{ mb: 3, ...textFieldSx }}
+          SelectProps={{
+            displayEmpty: true,
+            renderValue: (selected) => {
+              if (!selected) {
+                return "Select a Service";
+              }
+              return selected;
+            },
+          }}
         >
           <MenuItem value="" disabled>
-            Service Interested *
+            Select a Service
           </MenuItem>
           <MenuItem value="Tax Service">Tax Service</MenuItem>
           <MenuItem value="Bookkeeping Service">Bookkeeping Service</MenuItem>
@@ -209,7 +183,6 @@ const ContactForm = () => {
           </MenuItem>
         </TextField>
 
-        {/* Message */}
         <TextField
           name="message"
           placeholder="Message"
@@ -222,7 +195,6 @@ const ContactForm = () => {
           variant="standard"
         />
 
-        {/* Submit Button */}
         <Button
           type="submit"
           variant="contained"
@@ -245,6 +217,46 @@ const ContactForm = () => {
         >
           {loading ? "Sending..." : "Send Message"}
         </Button>
+
+        {statusMessage && (
+          <Box
+            sx={{
+              mt: 2,
+              px: 2,
+              py: 1.25,
+              borderRadius: 1.5,
+              border: 1,
+              borderColor:
+                statusType === "success"
+                  ? "success.main"
+                  : statusType === "warning"
+                    ? "warning.main"
+                    : "error.main",
+              backgroundColor:
+                statusType === "success"
+                  ? "rgba(16, 185, 129, 0.12)"
+                  : statusType === "warning"
+                    ? "rgba(245, 158, 11, 0.12)"
+                    : "rgba(239, 68, 68, 0.12)",
+              textAlign: "center",
+            }}
+          >
+            <Typography
+              sx={{
+                color:
+                  statusType === "success"
+                    ? "success.main"
+                    : statusType === "warning"
+                      ? "warning.main"
+                      : "error.main",
+                fontWeight: 700,
+                fontSize: "0.95rem",
+              }}
+            >
+              {statusMessage}
+            </Typography>
+          </Box>
+        )}
       </Box>
     </Box>
   );

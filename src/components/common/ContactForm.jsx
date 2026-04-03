@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Box, TextField, MenuItem, Button, Typography } from "@mui/material";
-import emailjs from "@emailjs/browser";
 import { submitContactForm } from "../../api/client";
 
 const ContactForm = ({ onSuccess }) => {
@@ -19,26 +18,27 @@ const ContactForm = ({ onSuccess }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     if (name === "phoneNumber") {
-      const numericValue = value.replace(/\D/g, ""); // 🔥 Remove non-numeric
-      if (numericValue.length <= 10) { // 🔥 Limit 10 digits
+      const numericValue = value.replace(/\D/g, "");
+      if (numericValue.length <= 10) {
         setFormData({ ...formData, [name]: numericValue });
       }
       return;
     }
+
     setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // ✅ Validation
     if (
       !formData.firstName ||
       !formData.lastName ||
       !formData.email ||
       !formData.phoneNumber ||
-      formData.phoneNumber.length !== 10 || // 🔥 Ensure exactly 10
+      formData.phoneNumber.length !== 10 ||
       !formData.serviceInterest
     ) {
       alert("Please fill all required fields.");
@@ -49,7 +49,6 @@ const ContactForm = ({ onSuccess }) => {
     setStatusMessage("");
     setStatusType("");
 
-    // ✅ Save to DB
     const response = await submitContactForm({
       firstName: formData.firstName,
       lastName: formData.lastName,
@@ -68,7 +67,6 @@ const ContactForm = ({ onSuccess }) => {
       return;
     }
 
-    // ✅ Immediate success signaling (BEFORE email send completion)
     setFormData({
       firstName: "",
       lastName: "",
@@ -78,61 +76,20 @@ const ContactForm = ({ onSuccess }) => {
       message: "",
     });
     setLoading(false);
-    setStatusType("success");
-    setStatusMessage("Thanks! Your message has been sent successfully.");
+
+    if (response.emailNotification && !response.emailNotification.success) {
+      setStatusType("warning");
+      setStatusMessage("Sent to DB successfully but email could not be delivered. We'll follow up soon.");
+    } else {
+      setStatusType("success");
+      setStatusMessage("Awesome! Your form has been submitted. Expect to hear from us shortly.");
+    }
 
     if (onSuccess) {
       setTimeout(() => {
         onSuccess();
-      }, 10000); // close after 10s
+      }, 10000);
     }
-
-    // ✅ SEND EMAIL (CLEAN + SAFE), continue in background
-    emailjs
-      .send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        {
-          form_type: "Our Free Consultation request",
-
-          // 🎯 VISIBILITY CONTROL (template_2p21kkt)
-          newsletter_section: "display:none;",
-          subscription_section: "display:none;",
-          contact_section: "display:block;",
-          job_section: "display:none;",
-
-          // ✅ DATA (template_2p21kkt)
-          first_name: formData.firstName || "",
-          firstName: formData.firstName || "", // 🔥 Populated for template compatibility
-          last_name: formData.lastName || "",
-          lastName: formData.lastName || "",   // 🔥 Populated for template compatibility
-          email: formData.email || "",
-          phone_number: formData.phoneNumber || "",
-          phone: formData.phoneNumber || "",   // 🔥 Populated for template compatibility
-          service_interest: formData.serviceInterest || "",
-          message: formData.message || "",
-          revenue: "",
-
-          // 🔒 CLEAR OTHER SECTIONS
-          subscriber_email: "",
-          jobType: "",
-          position: "",
-          reference: "",
-          resumeURL: "",
-        },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      )
-      .then(() => {
-        // Email send success (already told user form is submitted)
-        setStatusType("success");
-        setStatusMessage("Awesome! Your form has been submitted. Expect to hear from us shortly.");
-      })
-      .catch((error) => {
-        console.error("Email Error:", error);
-        // Keep primary submission success message; email is a secondary channel.
-        setStatusType("warning");
-        setStatusMessage("Sent to DB successfully but email could not be delivered. We'll follow up soon.");
-      });
   };
 
   const textFieldSx = {
@@ -160,7 +117,6 @@ const ContactForm = ({ onSuccess }) => {
   return (
     <Box sx={{ px: { xs: 2, sm: 3 }, background: "transparent", borderRadius: "14px" }}>
       <Box component="form" onSubmit={handleSubmit}>
-        {/* First + Last Name */}
         <Box sx={{ display: "flex", gap: 2, flexDirection: { xs: "column", sm: "row" }, mb: 3 }}>
           <TextField
             name="firstName"
@@ -182,7 +138,6 @@ const ContactForm = ({ onSuccess }) => {
           />
         </Box>
 
-        {/* Email + Phone */}
         <Box sx={{ display: "flex", gap: 2, flexDirection: { xs: "column", sm: "row" }, mb: 3 }}>
           <TextField
             name="email"
@@ -205,7 +160,6 @@ const ContactForm = ({ onSuccess }) => {
           />
         </Box>
 
-        {/* Service Interested */}
         <TextField
           select
           name="serviceInterest"
@@ -237,7 +191,6 @@ const ContactForm = ({ onSuccess }) => {
           </MenuItem>
         </TextField>
 
-        {/* Message */}
         <TextField
           name="message"
           placeholder="Message"
@@ -250,7 +203,6 @@ const ContactForm = ({ onSuccess }) => {
           variant="standard"
         />
 
-        {/* Submit Button */}
         <Button
           type="submit"
           variant="contained"

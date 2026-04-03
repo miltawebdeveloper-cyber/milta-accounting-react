@@ -27,6 +27,7 @@ import Clutch from "../../assets/clutch.webp";
 import Us from "../../assets/us.png";
 import India from "../../assets/india.png";
 import LogoWhite from "../../assets/milta_white.webp";
+import { submitNewsletterForm } from "../../api/client";
 
 // ---------------------------------------------
 // EXTRACTED LINKS
@@ -76,7 +77,7 @@ export default function FooterLayout() {
   const [newsletterEmail, setNewsletterEmail] = useState(""); // ✅ useState for newsletter
   const [loading, setLoading] = useState(false);
 
-  const handleNewsletterSubmit = (e) => {
+  const _handleNewsletterSubmit = (e) => {
     e.preventDefault();
     if (!newsletterEmail) {
       alert("Please enter your email.");
@@ -120,6 +121,32 @@ export default function FooterLayout() {
       });
   };
 
+  const handleNewsletterSubmitBrevo = async (e) => {
+    e.preventDefault();
+    if (!newsletterEmail) {
+      alert("Please enter your email.");
+      return;
+    }
+
+    setLoading(true);
+    const response = await submitNewsletterForm({ email: newsletterEmail });
+
+    if (response.error) {
+      alert("Failed to send subscription. Try again later.");
+      setLoading(false);
+      return;
+    }
+
+    if (response.emailNotification && !response.emailNotification.success) {
+      alert("Subscription was received, but the email notification could not be delivered.");
+    } else {
+      alert("Thank you for subscribing!");
+    }
+
+    setNewsletterEmail("");
+    setLoading(false);
+  };
+
   const handleCalendlyClick = () => {
     window.open("/contact#get-in-touch", "_blank", "noopener,noreferrer");
   };
@@ -136,7 +163,7 @@ export default function FooterLayout() {
 
         <Box
           component="form"
-          onSubmit={handleNewsletterSubmit}
+          onSubmit={handleNewsletterSubmitBrevo}
           sx={{
             display: "flex",
             gap: 2,

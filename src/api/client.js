@@ -107,6 +107,26 @@ export const submitContactForm = async (data) => {
   }
 };
 
+export const submitNewsletterForm = async (data) => {
+  try {
+    const response = await fetch(`${API_BASE}/newsletter`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.error || 'Failed to submit newsletter subscription');
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('submitNewsletterForm error:', error);
+    return { error: error.message || error };
+  }
+};
+
 export const submitApplicationForm = async (formData) => {
   try {
     const response = await fetch(`${API_BASE}/apply`, {

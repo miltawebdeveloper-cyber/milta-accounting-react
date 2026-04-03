@@ -24,6 +24,80 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
+const parseRecipients = (recipientsValue, fallbackEmail, fallbackName) => {
+  if (recipientsValue) {
+    return recipientsValue
+      .split(",")
+      .map((entry) => entry.trim())
+      .filter(Boolean)
+      .map((entry) => ({ email: entry, name: fallbackName || "Team" }));
+  }
+
+  if (fallbackEmail) {
+    return [{ email: fallbackEmail, name: fallbackName || "Team" }];
+  }
+
+  return [];
+};
+
+const sendBrevoTemplateEmail = async ({ templateId, params, recipients }) => {
+  const brevoApiKey = process.env.BREVO_API_KEY;
+
+  if (!brevoApiKey || !templateId || !recipients.length) {
+    return {
+      success: false,
+      message: "Brevo email skipped because BREVO_API_KEY, templateId, or recipients are missing.",
+    };
+  }
+
+  const brevoResponse = await fetch("https://api.brevo.com/v3/smtp/email", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "api-key": brevoApiKey,
+    },
+    body: JSON.stringify({
+      to: recipients,
+      templateId,
+      params,
+    }),
+  });
+
+  if (!brevoResponse.ok) {
+    const errorText = await brevoResponse.text();
+    throw new Error(`Brevo API Error: ${brevoResponse.status} ${errorText}`);
+  }
+
+  const result = await brevoResponse.json().catch(() => ({}));
+
+  return {
+    success: true,
+    message: "Brevo email notification sent successfully.",
+    result,
+  };
+};
+
+const jobRecipients = () =>
+  parseRecipients(
+    process.env.BREVO_JOB_TO_EMAILS,
+    process.env.BREVO_TO_EMAIL,
+    process.env.BREVO_TO_NAME || "HR Team"
+  );
+
+const contactRecipients = () =>
+  parseRecipients(
+    process.env.BREVO_CONTACT_TO_EMAILS || process.env.BREVO_NOTIFICATION_TO_EMAILS,
+    process.env.BREVO_TO_EMAIL,
+    process.env.BREVO_CONTACT_TO_NAME || "Team"
+  );
+
+const newsletterRecipients = () =>
+  parseRecipients(
+    process.env.BREVO_NEWSLETTER_TO_EMAILS || process.env.BREVO_NOTIFICATION_TO_EMAILS,
+    process.env.BREVO_TO_EMAIL,
+    process.env.BREVO_NEWSLETTER_TO_NAME || "Team"
+  );
+
 /* =========================================
    1. BLOG ENDPOINTS
    ========================================= */
@@ -143,10 +217,67 @@ app.post("/api/contact", async (req, res) => {
 
     if (error) throw error;
 
-    res.json({ success: true, data });
+    let emailNotification;
+
+    try {
+      emailNotification = await sendBrevoTemplateEmail({
+        templateId: Number(process.env.BREVO_CONTACT_TEMPLATE_ID),
+        recipients: contactRecipients(),
+        params: {
+          form_type: "contact",
+          first_name: firstName || "",
+          last_name: lastName || "",
+          email: email || "",
+          phone_number: phoneNumber || "",
+          service_interest: serviceInterest || "",
+          message: message || "",
+        },
+      });
+    } catch (emailError) {
+      console.error("Brevo contact email send error:", emailError);
+      emailNotification = {
+        success: false,
+        message: "Contact saved, but Brevo email notification failed.",
+        error: emailError.message,
+      };
+    }
+
+    res.json({ success: true, data, emailNotification });
   } catch (error) {
     console.error("POST /api/contact error:", error);
     res.status(500).json({ error: error.message });
+  }
+});
+
+app.post("/api/newsletter", async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    let emailNotification;
+
+    try {
+      emailNotification = await sendBrevoTemplateEmail({
+        templateId: Number(process.env.BREVO_NEWSLETTER_TEMPLATE_ID),
+        recipients: newsletterRecipients(),
+        params: {
+          form_type: "newsletter",
+          email: email || "",
+          subscriber_email: email || "",
+        },
+      });
+    } catch (emailError) {
+      console.error("Brevo newsletter email send error:", emailError);
+      emailNotification = {
+        success: false,
+        message: "Newsletter subscription saved, but Brevo email notification failed.",
+        error: emailError.message,
+      };
+    }
+
+    res.json({ success: true, emailNotification });
+  } catch (error) {
+    console.error("POST /api/newsletter error:", error);
+    res.status(500).json({ error: error.message || "Internal server error" });
   }
 });
 
@@ -167,7 +298,7 @@ app.post("/api/apply", upload.single("resume"), async (req, res) => {
       const fileName = `resume_${Date.now()}_${originalName}`;
 
       // Upload to Supabase Storage
-      const { data: uploadData, error: uploadError } = await supabase.storage
+      const { data: _uploadData, error: uploadError } = await supabase.storage
         .from("resumes")
         .upload(fileName, file.buffer, {
           contentType: file.mimetype,
@@ -205,7 +336,35 @@ app.post("/api/apply", upload.single("resume"), async (req, res) => {
       return res.status(500).json({ error: `Database Error: ${error.message}` });
     }
 
-    res.json({ success: true, data, resumeURL });
+    const brevoParams = {
+      form_type: "job application",
+      firstName: firstName || "",
+      email: email || "",
+      phone: phone || "",
+      jobType: jobType || "",
+      position: position || "",
+      reference: reference || "",
+      resumeURL,
+    };
+
+    let emailNotification;
+
+    try {
+      emailNotification = await sendBrevoTemplateEmail({
+        templateId: Number(process.env.BREVO_JOB_TEMPLATE_ID),
+        recipients: jobRecipients(),
+        params: brevoParams,
+      });
+    } catch (emailError) {
+      console.error("Brevo email send error:", emailError);
+      emailNotification = {
+        success: false,
+        message: "Application saved, but Brevo email notification failed.",
+        error: emailError.message,
+      };
+    }
+
+    res.json({ success: true, data, resumeURL, emailNotification });
   } catch (error) {
     console.error("POST /api/apply critical error:", error);
     res.status(500).json({ error: error.message || "Internal server error" });

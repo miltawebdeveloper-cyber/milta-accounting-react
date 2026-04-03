@@ -1,6 +1,5 @@
 // src/components/ApplyForm.jsx
 import React, { useState } from "react";
-import emailjs from "@emailjs/browser";
 import { submitApplicationForm } from "../api/client";
 
 const ApplyForm = () => {
@@ -21,29 +20,35 @@ const ApplyForm = () => {
   const [statusType, setStatusType] = useState("");
 
   const validate = () => {
-    let newErrors = {};
+    const newErrors = {};
 
-    if (!formData.firstName.trim())
+    if (!formData.firstName.trim()) {
       newErrors.firstName = "First name is required";
+    }
 
-    if (!formData.phone.trim())
+    if (!formData.phone.trim()) {
       newErrors.phone = "Phone number is required";
-    else if (!/^[0-9]{10}$/.test(formData.phone))
+    } else if (!/^[0-9]{10}$/.test(formData.phone)) {
       newErrors.phone = "Enter a valid 10-digit phone number";
+    }
 
-    if (!formData.email.trim())
+    if (!formData.email.trim()) {
       newErrors.email = "Email is required";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = "Enter a valid email";
+    }
 
-    if (!formData.jobType)
+    if (!formData.jobType) {
       newErrors.jobType = "Select job type";
+    }
 
-    if (!formData.position)
+    if (!formData.position) {
       newErrors.position = "Select position";
+    }
 
-    if (!formData.resume)
+    if (!formData.resume) {
       newErrors.resume = "Resume is required";
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -51,20 +56,22 @@ const ApplyForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     if (name === "phone") {
-      const numericValue = value.replace(/\D/g, ""); // 🔥 Remove non-numeric
-      if (numericValue.length <= 10) { // 🔥 Limit 10 digits
+      const numericValue = value.replace(/\D/g, "");
+      if (numericValue.length <= 10) {
         setFormData({ ...formData, [name]: numericValue });
       }
       return;
     }
+
     setFormData({ ...formData, [name]: value });
   };
 
   const handleFile = (e) => {
     const file = e.target.files[0];
     setFormData({ ...formData, resume: file });
-    setResumePreview(URL.createObjectURL(file));
+    setResumePreview(file ? URL.createObjectURL(file) : null);
   };
 
   const handleSubmit = async (e) => {
@@ -97,9 +104,6 @@ const ApplyForm = () => {
       return;
     }
 
-    const resumeURL = response.resumeURL || "Resume not uploaded";
-
-    // Immediate success feedback (no waiting for emailjs)
     setFormData({
       firstName: "",
       phone: "",
@@ -111,60 +115,24 @@ const ApplyForm = () => {
     });
     setResumePreview(null);
     setLoading(false);
+
+    if (response.emailNotification && !response.emailNotification.success) {
+      setStatusType("warning");
+      setStatusMessage(
+        "Application submitted successfully, but the email notification was skipped or failed."
+      );
+      return;
+    }
+
     setStatusType("success");
     setStatusMessage("Application submitted successfully. We will contact you soon.");
-
-    emailjs
-      .send(
-        import.meta.env.VITE_EMAILJS_APPLY_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_APPLY_TEMPLATE_ID,
-        {
-      form_type: "Job Application",
-
-      // 🔥 VISIBILITY CONTROL
-      // ✅ JOB APPLICATION DATA
-      firstName: formData.firstName,
-      first_name: formData.firstName, // ⚛️ Added snake_case for template compatibility
-      email: formData.email,
-      phone: formData.phone,
-      phone_number: formData.phone, // ⚛️ Added snake_case support
-      jobType: formData.jobType,
-      position: formData.position,
-      reference: formData.reference,
-      resumeURL: resumeURL,
- 
-      // 🎯 VISIBILITY CONTROL
-      job_section: "display:block;",
-      contact_section: "display:none;",
-      newsletter_section: "display:none;",
- 
-      // 🔒 CLEAR OTHER SECTIONS
-      last_name: "",
-      service_interest: "",
-      revenue: "",
-      message: "",
-      subscriber_email: "",
-    },
-    import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-  )
-      .then(() => {
-        setStatusType("success");
-        setStatusMessage("Email notification sent to the team.");
-      })
-      .catch((error) => {
-        console.error("Emailjs send error:", error);
-        setStatusType("warning");
-        setStatusMessage("Application saved, but email notification failed. Our team still has your details.");
-      });
   };
 
   return (
     <div style={styles.page}>
       <div style={styles.card}>
-        {/* Headline */}
         <h2 style={styles.title}>Build Your Career with Confidence</h2>
 
-        {/* Subtext */}
         <p style={styles.subtitle}>
           Join a team that works with U.S.-based clients, follows global accounting
           standards, and values accuracy, growth, and professional development at
@@ -172,7 +140,6 @@ const ApplyForm = () => {
         </p>
 
         <form onSubmit={handleSubmit} style={styles.form}>
-          {/* ROW 1 */}
           <div style={styles.row}>
             <div style={styles.fieldBox}>
               <input
@@ -182,9 +149,7 @@ const ApplyForm = () => {
                 onChange={handleChange}
                 style={styles.input}
               />
-              {errors.firstName && (
-                <p style={styles.error}>{errors.firstName}</p>
-              )}
+              {errors.firstName && <p style={styles.error}>{errors.firstName}</p>}
             </div>
 
             <div style={styles.fieldBox}>
@@ -199,7 +164,6 @@ const ApplyForm = () => {
             </div>
           </div>
 
-          {/* ROW 2 */}
           <div style={styles.row}>
             <div style={styles.fieldBox}>
               <select
@@ -234,13 +198,10 @@ const ApplyForm = () => {
                 <option>Business Development Executive</option>
                 <option>Virtual Assistant</option>
               </select>
-              {errors.position && (
-                <p style={styles.error}>{errors.position}</p>
-              )}
+              {errors.position && <p style={styles.error}>{errors.position}</p>}
             </div>
           </div>
 
-          {/* ROW 3 */}
           <div style={styles.row}>
             <div style={styles.fieldBox}>
               <input
@@ -264,7 +225,6 @@ const ApplyForm = () => {
             </div>
           </div>
 
-          {/* Resume */}
           <label style={styles.uploadBtn}>
             Upload Resume
             <input type="file" onChange={handleFile} style={{ display: "none" }} />
@@ -282,7 +242,6 @@ const ApplyForm = () => {
             </a>
           )}
 
-          {/* CTA */}
           <button type="submit" style={styles.submitBtn} disabled={loading}>
             {loading ? "Submitting..." : "SUBMIT YOUR APPLICATION"}
           </button>

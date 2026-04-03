@@ -20,6 +20,7 @@ import {
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { useNavigate } from "react-router-dom";
+import { submitNewsletterForm } from "../../api/client";
 
 const Footer = () => {
   const [newsletterEmail, setNewsletterEmail] = useState("");
@@ -28,7 +29,7 @@ const Footer = () => {
   const navigate = useNavigate();
 
   // ================= NEWSLETTER SUBMIT =================
-  const handleNewsletterSubmit = (e) => {
+  const _handleNewsletterSubmit = (e) => {
     e.preventDefault();
     if (!newsletterEmail) {
       alert("Please enter your email address.");
@@ -70,6 +71,30 @@ const Footer = () => {
         alert("Something went wrong. Please try again later.");
         setLoading(false);
       });
+  };
+
+  const handleNewsletterSubmitBrevo = async (e) => {
+    e.preventDefault();
+    if (!newsletterEmail) {
+      alert("Please enter your email address.");
+      return;
+    }
+
+    setLoading(true);
+    const response = await submitNewsletterForm({ email: newsletterEmail });
+
+    if (response.error) {
+      alert("Something went wrong. Please try again later.");
+      setLoading(false);
+      return;
+    }
+
+    if (response.emailNotification && !response.emailNotification.success) {
+      alert("Subscription was received, but the email notification could not be delivered.");
+    }
+
+    setNewsletterEmail("");
+    setLoading(false);
   };
 
   // ================= LINKS =================
@@ -244,7 +269,7 @@ const Footer = () => {
               Signup for updates, insights and promotions directly in your inbox.
             </Typography>
 
-            <Box component="form" onSubmit={handleNewsletterSubmit} sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+            <Box component="form" onSubmit={handleNewsletterSubmitBrevo} sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
               <TextField
                 placeholder="Email"
                 size="small"

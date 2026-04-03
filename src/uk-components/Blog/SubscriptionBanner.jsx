@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Box, Typography, TextField, Button } from "@mui/material";
 import emailjs from "@emailjs/browser";
+import { submitNewsletterForm } from "../../api/client";
 
 const SubscriptionBanner = () => {
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleNewsletterSubmit = (e) => {
+  const _handleNewsletterSubmit = (e) => {
     e.preventDefault();
     if (!newsletterEmail) {
       alert("Please enter your email.");
@@ -48,6 +49,30 @@ const SubscriptionBanner = () => {
         alert("Failed to send subscription. Try again later.");
         setLoading(false);
       });
+  };
+
+  const handleNewsletterSubmitBrevo = async (e) => {
+    e.preventDefault();
+    if (!newsletterEmail) {
+      alert("Please enter your email.");
+      return;
+    }
+
+    setLoading(true);
+    const response = await submitNewsletterForm({ email: newsletterEmail });
+
+    if (response.error) {
+      alert("Failed to send subscription. Try again later.");
+      setLoading(false);
+      return;
+    }
+
+    if (response.emailNotification && !response.emailNotification.success) {
+      alert("Subscription was received, but the email notification could not be delivered.");
+    }
+
+    setNewsletterEmail("");
+    setLoading(false);
   };
 
   return (
@@ -94,7 +119,7 @@ const SubscriptionBanner = () => {
       {/* Input + Button */}
       <Box
         component="form"
-        onSubmit={handleNewsletterSubmit}
+        onSubmit={handleNewsletterSubmitBrevo}
         sx={{
           mt: 4,
           display: "flex",
