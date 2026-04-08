@@ -3,11 +3,11 @@ import SidebarMenu from "../sidebarMenu";
 
 const BookkeepingSidebar = () => {
   const menuItems = [
-     { label: "Overview", id: "overview" },
-     { label: "Services", id: "services" },
-  { label: "Advantages", id: "advantages" },
- { label: "Benefits", id: "benefits" },
- { label: "FAQ", id: "faq" },
+    { label: "Overview", id: "overview" },
+    { label: "Services", id: "services" },
+    { label: "Advantages", id: "advantages" },
+    { label: "Benefits", id: "benefits" },
+    { label: "FAQ", id: "faq" },
   ];
 
   const handleItemClick = (id) => {

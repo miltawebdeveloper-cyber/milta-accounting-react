@@ -98,17 +98,6 @@ const newsletterRecipients = () =>
     process.env.BREVO_NEWSLETTER_TO_NAME || "Team"
   );
 
-const queueBrevoEmail = ({ label, templateId, recipients, params }) => {
-  setImmediate(async () => {
-    try {
-      const result = await sendBrevoTemplateEmail({ templateId, recipients, params });
-      console.log(`${label} email queued successfully.`, result.result || result.message);
-    } catch (error) {
-      console.error(`${label} email send error:`, error);
-    }
-  });
-};
-
 /* =========================================
    1. BLOG ENDPOINTS
    ========================================= */
@@ -228,30 +217,32 @@ app.post("/api/contact", async (req, res) => {
 
     if (error) throw error;
 
-    queueBrevoEmail({
-      label: "Contact",
-      templateId: Number(process.env.BREVO_CONTACT_TEMPLATE_ID),
-      recipients: contactRecipients(),
-      params: {
-        form_type: "contact",
-        first_name: firstName || "",
-        last_name: lastName || "",
-        email: email || "",
-        phone_number: phoneNumber || "",
-        service_interest: serviceInterest || "",
-        message: message || "",
-      },
-    });
+    let emailNotification;
 
-    res.json({
-      success: true,
-      data,
-      emailNotification: {
-        success: true,
-        queued: true,
-        message: "Contact saved. Email notification is being sent in the background.",
-      },
-    });
+    try {
+      emailNotification = await sendBrevoTemplateEmail({
+        templateId: Number(process.env.BREVO_CONTACT_TEMPLATE_ID),
+        recipients: contactRecipients(),
+        params: {
+          form_type: "contact",
+          first_name: firstName || "",
+          last_name: lastName || "",
+          email: email || "",
+          phone_number: phoneNumber || "",
+          service_interest: serviceInterest || "",
+          message: message || "",
+        },
+      });
+    } catch (emailError) {
+      console.error("Brevo contact email send error:", emailError);
+      emailNotification = {
+        success: false,
+        message: "Contact saved, but Brevo email notification failed.",
+        error: emailError.message,
+      };
+    }
+
+    res.json({ success: true, data, emailNotification });
   } catch (error) {
     console.error("POST /api/contact error:", error);
     res.status(500).json({ error: error.message });
@@ -262,25 +253,28 @@ app.post("/api/newsletter", async (req, res) => {
   try {
     const { email } = req.body;
 
-    queueBrevoEmail({
-      label: "Newsletter",
-      templateId: Number(process.env.BREVO_NEWSLETTER_TEMPLATE_ID),
-      recipients: newsletterRecipients(),
-      params: {
-        form_type: "newsletter",
-        email: email || "",
-        subscriber_email: email || "",
-      },
-    });
+    let emailNotification;
 
-    res.json({
-      success: true,
-      emailNotification: {
-        success: true,
-        queued: true,
-        message: "Newsletter received. Email notification is being sent in the background.",
-      },
-    });
+    try {
+      emailNotification = await sendBrevoTemplateEmail({
+        templateId: Number(process.env.BREVO_NEWSLETTER_TEMPLATE_ID),
+        recipients: newsletterRecipients(),
+        params: {
+          form_type: "newsletter",
+          email: email || "",
+          subscriber_email: email || "",
+        },
+      });
+    } catch (emailError) {
+      console.error("Brevo newsletter email send error:", emailError);
+      emailNotification = {
+        success: false,
+        message: "Newsletter subscription saved, but Brevo email notification failed.",
+        error: emailError.message,
+      };
+    }
+
+    res.json({ success: true, emailNotification });
   } catch (error) {
     console.error("POST /api/newsletter error:", error);
     res.status(500).json({ error: error.message || "Internal server error" });
@@ -353,23 +347,24 @@ app.post("/api/apply", upload.single("resume"), async (req, res) => {
       resumeURL,
     };
 
-    queueBrevoEmail({
-      label: "Job application",
-      templateId: Number(process.env.BREVO_JOB_TEMPLATE_ID),
-      recipients: jobRecipients(),
-      params: brevoParams,
-    });
+    let emailNotification;
 
-    res.json({
-      success: true,
-      data,
-      resumeURL,
-      emailNotification: {
-        success: true,
-        queued: true,
-        message: "Application saved. Email notification is being sent in the background.",
-      },
-    });
+    try {
+      emailNotification = await sendBrevoTemplateEmail({
+        templateId: Number(process.env.BREVO_JOB_TEMPLATE_ID),
+        recipients: jobRecipients(),
+        params: brevoParams,
+      });
+    } catch (emailError) {
+      console.error("Brevo email send error:", emailError);
+      emailNotification = {
+        success: false,
+        message: "Application saved, but Brevo email notification failed.",
+        error: emailError.message,
+      };
+    }
+
+    res.json({ success: true, data, resumeURL, emailNotification });
   } catch (error) {
     console.error("POST /api/apply critical error:", error);
     res.status(500).json({ error: error.message || "Internal server error" });

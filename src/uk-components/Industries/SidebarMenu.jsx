@@ -4,7 +4,7 @@ import { Box, Typography, List, ListItem, ListItemButton } from "@mui/material";
 const SidebarMenu = ({
   title = "Menu",
   items = [],
-  onItemClick = () => {},
+  onItemClick = () => { },
   accentColor = "#ff9401",
   activeColor = "#1d4230",
   bgColor = "#f9fafb",
@@ -16,7 +16,8 @@ const SidebarMenu = ({
         width,
         bgcolor: bgColor,
         borderRadius: 2,
-        p: 2,
+        py: 7,
+        px: 2,
         fontFamily: "'Poppins', sans-serif",
       }}
     >

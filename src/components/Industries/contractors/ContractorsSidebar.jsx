@@ -3,17 +3,17 @@ import SidebarMenu from "../sidebarMenu";
 
 const BookkeepingSidebar = () => {
   const menuItems = [
-     { label: "Overview", id: "overview" },
-     { label: "Services", id: "services" },
-  { label: "Advantages", id: "advantages" },
- { label: "Benefits", id: "benefits" },
- { label: "FAQ", id: "faq" },
+    { label: "Overview", id: "overview" },
+    { label: "Services", id: "services" },
+    { label: "Advantages", id: "advantages" },
+    { label: "Benefits", id: "benefits" },
+    { label: "FAQ", id: "faq" },
   ];
 
   const handleItemClick = (id) => {
     const target = document.getElementById(id);
     if (target) {
-      const yOffset = -80; // Offset for sticky headers if any
+      const yOffset = -250; // Offset for sticky headers if any
       const y =
         target.getBoundingClientRect().top + window.pageYOffset + yOffset;
 

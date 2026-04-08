@@ -3,11 +3,11 @@ import SidebarMenu from "../sidebarMenu";
 
 const BookkeepingSidebar = () => {
   const menuItems = [
-     { label: "Overview", id: "overview" },
-     { label: "Services", id: "services" },
-  { label: "Advantages", id: "advantages" },
- { label: "Benefits", id: "benefits" },
- { label: "FAQ", id: "faq" },
+    { label: "Overview", id: "overview" },
+    { label: "Services", id: "services" },
+    { label: "Advantages", id: "advantages" },
+    { label: "Benefits", id: "benefits" },
+    { label: "FAQ", id: "faq" },
   ];
 
   const handleItemClick = (id) => {
@@ -32,6 +32,8 @@ const BookkeepingSidebar = () => {
       accentColor="#ff9401"
       activeColor="#1d4230"
       bgColor="#f9fafb"
+      py: 7,
+        px: 2,
     />
   );
 };

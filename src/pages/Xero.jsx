@@ -129,6 +129,18 @@ const processSteps = [
   },
 ];
 
+const COLORS = {
+  primary: "#0b3d2e",
+  primaryLight: "#145a32",
+  primarySoft: "#eef6f2",
+  accent: "#f57c00",
+  accentLight: "#ffb74d",
+  surface: "#ffffff",
+  text: "#21312a",
+  textMuted: "#5a6e5e",
+  border: "#e8f0ed",
+};
+
 /* ===================== COMPONENT ===================== */
 
 const XeroAccountingModern = () => {
@@ -153,6 +165,29 @@ const XeroAccountingModern = () => {
     ogImage: "https://www.miltafs.com/images/miltafs-og.jpg",
     ogUrl: "https://www.miltafs.com/us/software/xero-for-small-business/",
   });
+
+  const cardGradients = [
+    {
+      bg: `linear-gradient(135deg, ${COLORS.primary} 0%, ${COLORS.primaryLight} 100%)`,
+      accent: COLORS.accent,
+    },
+    {
+      bg: `linear-gradient(135deg, ${COLORS.primaryLight} 0%, ${COLORS.primary} 100%)`,
+      accent: COLORS.accentLight,
+    },
+    {
+      bg: `linear-gradient(135deg, ${COLORS.primary} 0%, ${COLORS.primaryLight} 100%)`,
+      accent: COLORS.accent,
+    },
+    {
+      bg: `linear-gradient(135deg, ${COLORS.primaryLight} 0%, ${COLORS.primary} 100%)`,
+      accent: COLORS.accentLight,
+    },
+    {
+      bg: `linear-gradient(135deg, ${COLORS.primary} 0%, ${COLORS.primaryLight} 100%)`,
+      accent: COLORS.accent,
+    },
+  ];
 
   return (
     <Box
@@ -293,70 +328,178 @@ const XeroAccountingModern = () => {
 
         <Grid container spacing={4} justifyContent="center">
           {processSteps.map((step, index) => {
-            const gradients = [
-              "linear-gradient(135deg, #0b3d2e, #f57c00)",
-              "linear-gradient(135deg, #145a32, #ff9800)",
-              "linear-gradient(135deg, #0b3d2e, #ffb74d)",
-              "linear-gradient(135deg, #145a32, #ffa726)",
-              "linear-gradient(135deg, #0b3d2e, #fb8c00)",
-            ];
+            const gradient = cardGradients[index % cardGradients.length];
 
             return (
-              <Grid item key={index}>
+              <Grid
+                item
+                key={index}
+                xs={12}
+                sm={6}
+                md={2}
+                lg={2}
+                sx={{
+                  display: "flex",
+                  width: { xs: "100%", sm: "calc(50% - 32px)", md: "calc(33.333% - 32px)", lg: "calc(20% - 32px)" },
+                  minWidth: { xs: "auto", sm: "280px", md: "360px", lg: "340px" },
+                }}
+              >
                 <Paper
+                  elevation={0}
                   sx={{
-                    width: 350,
-                    height: 440,
-                    p: 3,
-                    borderRadius: 3,
-                    background: gradients[index % gradients.length],
+                    width: "100%",
+                    height: 450,
                     display: "flex",
                     flexDirection: "column",
-                    alignItems: "center",
-                    textAlign: "center",
-                    boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
-                    transition: "all 0.3s ease",
+                    borderRadius: 5,
+                    overflow: "hidden",
+                    transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
                     cursor: "pointer",
                     "&:hover": {
-                      transform: "translateY(-8px)",
-                      boxShadow: "0 12px 24px rgba(0,0,0,0.25)",
+                      transform: "translateY(-12px)",
+                      "& .step-icon-wrapper": {
+                        transform: "scale(1.1)",
+                      },
                     },
                   }}
                 >
-                  <Typography fontWeight={700} mb={2} sx={{ color: "#fff", letterSpacing: 1 }}>
-                    STEP {String(index + 1).padStart(2, "0")}
-                  </Typography>
-
-                  <Paper
+                  <Box
                     sx={{
-                      width: "100%",
-                      height: "100%",
-                      maxHeight: 340,
-                      borderRadius: 2,
-                      p: 2,
-                      backgroundColor: "#fff",
+                      background: gradient.bg,
+                      p: 2.5,
+                      textAlign: "center",
+                      position: "relative",
+                      height: 140,
                       display: "flex",
                       flexDirection: "column",
                       justifyContent: "center",
-                      boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
                     }}
                   >
-                    <Typography fontWeight={600} mb={1} sx={{ color: "#ffffffff" }}>
+                    <Box
+                      className="step-icon-wrapper"
+                      sx={{
+                        width: 52,
+                        height: 52,
+                        borderRadius: "16px",
+                        background: `linear-gradient(135deg, ${gradient.accent} 0%, ${gradient.accent}CC 100%)`,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        margin: "0 auto 12px auto",
+                        transition: "transform 0.3s ease",
+                        boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
+                      }}
+                    >
+                      <Typography
+                        sx={{
+                          fontSize: 22,
+                          fontWeight: 800,
+                          color: "#fff",
+                        }}
+                      >
+                        {String(index + 1).padStart(2, "0")}
+                      </Typography>
+                    </Box>
+                    <Typography
+                      sx={{
+                        fontSize: 16,
+                        fontWeight: 700,
+                        color: "#fff",
+                        letterSpacing: 0.3,
+                        lineHeight: 1.3,
+                      }}
+                    >
                       {step.title}
                     </Typography>
+                    <Box
+                      sx={{
+                        width: 40,
+                        height: 3,
+                        background: gradient.accent,
+                        margin: "10px auto 0 auto",
+                        borderRadius: 2,
+                      }}
+                    />
+                  </Box>
 
-                    <Typography variant="body2" sx={{ opacity: 0.7, mb: 1 }}>
+                  <Box
+                    sx={{
+                      background: COLORS.surface,
+                      p: 2.5,
+                      flex: 1,
+                      display: "flex",
+                      flexDirection: "column",
+                      overflowY: "auto",
+                      "&::-webkit-scrollbar": {
+                        width: "4px",
+                      },
+                      "&::-webkit-scrollbar-track": {
+                        background: COLORS.primarySoft,
+                        borderRadius: "4px",
+                      },
+                      "&::-webkit-scrollbar-thumb": {
+                        background: gradient.accent,
+                        borderRadius: "4px",
+                      },
+                    }}
+                  >
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: COLORS.textMuted,
+                        fontWeight: 500,
+                        mb: 2,
+                        textAlign: "center",
+                        fontStyle: "italic",
+                        fontSize: "0.8rem",
+                      }}
+                    >
                       {step.desc}
                     </Typography>
-
-                    <List dense>
+                    <Box component="ul" sx={{ m: 0, p: 0, listStyle: "none" }}>
                       {step.items.map((item, i) => (
-                        <ListItem key={i} sx={{ justifyContent: "center", py: 0 }}>
-                          <Typography variant="body2">{item}</Typography>
-                        </ListItem>
+                        <Box
+                          key={i}
+                          component="li"
+                          sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 1.5,
+                            py: 1,
+                            borderBottom: i !== step.items.length - 1 ? `1px solid ${COLORS.border}` : "none",
+                          }}
+                        >
+                          <Box
+                            sx={{
+                              width: 6,
+                              height: 6,
+                              borderRadius: "50%",
+                              background: gradient.accent,
+                              flexShrink: 0,
+                            }}
+                          />
+                          <Typography
+                            variant="body2"
+                            sx={{
+                              color: COLORS.text,
+                              fontWeight: 500,
+                              fontSize: "0.8rem",
+                              lineHeight: 1.4,
+                            }}
+                          >
+                            {item}
+                          </Typography>
+                        </Box>
                       ))}
-                    </List>
-                  </Paper>
+                    </Box>
+                  </Box>
+
+                  <Box
+                    sx={{
+                      height: 4,
+                      background: `linear-gradient(90deg, ${gradient.accent}, ${gradient.accent}80)`,
+                    }}
+                  />
                 </Paper>
               </Grid>
             );
