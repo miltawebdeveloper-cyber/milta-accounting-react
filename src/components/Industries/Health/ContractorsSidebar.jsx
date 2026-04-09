@@ -32,8 +32,6 @@ const BookkeepingSidebar = () => {
       accentColor="#ff9401"
       activeColor="#1d4230"
       bgColor="#f9fafb"
-      py: 7,
-        px: 2,
     />
   );
 };
